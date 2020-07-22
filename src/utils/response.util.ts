@@ -1,6 +1,6 @@
 import { DynamicObject } from '../types/util.types';
 
-interface IResponseSuccess<T extends DynamicObject> {
+export interface IResponseSuccess<T extends DynamicObject> {
   result: T;
 }
 

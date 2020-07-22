@@ -6,12 +6,13 @@ import {
   AuthorizationError,
   AuthenticationError
 } from '../../../utils/errors.util';
+import { APIResponse } from '../../../utils/response.util';
 
 export async function error(error: Error, request: Request, response: Response, next: NextFunction) {
 
   let status: number;
   let message: string;
-
+console.log(error)
   if (error instanceof ConflictError) {
     status = 409;
     message = error.message || 'Conflict'
@@ -32,5 +33,5 @@ export async function error(error: Error, request: Request, response: Response, 
     message = 'Server error';
   }
 
-  return response.status(status).json({message, status});
+  return response.status(status).json(APIResponse.error(status, message));
 }

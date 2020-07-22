@@ -1,12 +1,14 @@
+import passport from 'passport';
 import express, { Router, Request, Response } from 'express';
 import * as bodyParser from 'body-parser';
 import { CONFIG } from './config';
 import api from './api';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
-import { error } from './api/v1/middlewares/error.middleware';
+import { SESSION_OPTIONS } from './config/session.config';
+import session from 'express-session';
 
-const {NODE_ENV, NODE_PORT, NODE_HOST, CORS_OPTIONS} = CONFIG;
+const { NODE_PORT, NODE_HOST } = CONFIG;
 const app = express();
 
 app.set('port', NODE_PORT);
@@ -15,11 +17,11 @@ app.set('host', NODE_HOST);
 app.use(cors(CONFIG.CORS_OPTIONS));
 app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(session(SESSION_OPTIONS));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(express.static('public'));
-
-// Errors
-app.use(error);
 
 // Routes
 const apiRouter = Router();

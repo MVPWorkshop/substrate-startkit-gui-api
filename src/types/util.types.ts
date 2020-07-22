@@ -3,3 +3,5 @@ export type DynamicObject<
   Value = any,
   Key extends (string | number) = string
   > = {[K in Key]: Value};
+
+export type EmptyObject = {};
