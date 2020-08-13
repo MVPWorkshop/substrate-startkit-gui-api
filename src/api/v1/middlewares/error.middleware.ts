@@ -4,15 +4,16 @@ import {
   NotFoundError,
   InvalidRequestError,
   AuthorizationError,
-  AuthenticationError
+  AuthenticationError, CustomValidationError
 } from '../../../utils/errors.util';
 import { APIResponse } from '../../../utils/response.util';
 
-export async function error(error: Error, request: Request, response: Response, next: NextFunction) {
+export async function error(error: Error, request: Request, response: Response) {
 
   let status: number;
   let message: string;
-console.log(error)
+  let errors: any | undefined;
+
   if (error instanceof ConflictError) {
     status = 409;
     message = error.message || 'Conflict'
@@ -28,10 +29,14 @@ console.log(error)
   } else if (error instanceof AuthenticationError) {
     status = 401;
     message = error.message || 'Not authenticated';
+  } else if (error instanceof CustomValidationError) {
+    status = 422;
+    message = error.message || 'Validation error';
+    errors = error.err;
   } else {
     status = 500;
     message = 'Server error';
   }
 
-  return response.status(status).json(APIResponse.error(status, message));
+  return response.status(status).json(APIResponse.error(status, message, errors));
 }

@@ -1,5 +1,5 @@
 import { Request as ExpressRequest, Response as ExpressResponse, NextFunction } from 'express';
-import { EmptyObject } from '../../../types/util.types';
+import { EmptyObject, ParamsDictionary } from '../../../types/util.types';
 import { ILoggedInUser } from '../../../entities/user.entity';
 import { IResponseSuccess } from '../../../utils/response.util';
 
@@ -27,7 +27,7 @@ declare namespace AuthRouteDefinitions {
 
   type Response<T extends EAuthRoute> = ExpressResponse<IResponseSuccess<ResponseBody<T>>>
 
-  type Request<T extends EAuthRoute> = ExpressRequest<RequestParams<T>, IResponseSuccess<ResponseBody<T>>, RequestBody<T>, RequestQueries<T>>
+  type Request<T extends EAuthRoute> = ExpressRequest<RequestParams<T> & ParamsDictionary, IResponseSuccess<ResponseBody<T>>, RequestBody<T>, RequestQueries<T>>
 
   type RouteMethod<T extends EAuthRoute> = (request: Request<T>, response: Response<T>, next: NextFunction) => Promise<any>;
 }

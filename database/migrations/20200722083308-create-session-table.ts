@@ -1,9 +1,10 @@
-'use strict';
+import { QueryInterface } from 'sequelize';
+import { SequelizeMigration } from '../../src/types/util.types';
 
-const tableName = 'session';
+const sessionTableMigration: SequelizeMigration = () => {
+  const tableName = 'session';
 
-module.exports = {
-  up: (queryInterface, Sequelize) => {
+  const up = (queryInterface: QueryInterface, Sequelize: any) => {
     return queryInterface.createTable(tableName, {
       sid: {
         type: Sequelize.STRING(36),
@@ -26,9 +27,18 @@ module.exports = {
         type: Sequelize.DATE,
       },
     })
-  },
+  }
 
-  down: (queryInterface, Sequelize) => {
+  const down = (queryInterface: QueryInterface, Sequelize: any) => {
     return queryInterface.dropTable(tableName, {cascade: true});
   }
-};
+
+  return {
+    up,
+    down
+  }
+}
+
+module.exports = {
+  ...sessionTableMigration()
+}

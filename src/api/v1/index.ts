@@ -2,6 +2,8 @@ import { Router } from 'express';
 import StatusRoute from './routes/status.route';
 import AuthRoute from './routes/auth.route';
 import { error } from './middlewares/error.middleware';
+import PalletsRoute from './routes/pallets.route';
+import PalletsValidator from './validators/pallets.validator';
 
 const v1 = Router();
 
@@ -11,6 +13,10 @@ v1.get('/status', StatusRoute.getStatus);
 v1.get('/me', AuthRoute.me);
 v1.get('/auth/github', AuthRoute.githubAuth);
 v1.get('/auth/github/callback', AuthRoute.githubCallback);
+
+// Pallets route
+v1.get('/pallets', PalletsValidator.validateGetPalletsList, PalletsRoute.getPalletsList);
+v1.get('/pallets/:palletName', PalletsRoute.getPallet);
 
 v1.use(error);
 

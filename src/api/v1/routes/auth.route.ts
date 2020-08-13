@@ -13,8 +13,8 @@ class AuthRoute {
       const user = request.user as ILoggedInUser;
 
       return response.status(200).json(APIResponse.success(user))
-    } catch (e) {
-      next(e);
+    } catch (error) {
+      next(error);
     }
   };
 
@@ -25,8 +25,8 @@ class AuthRoute {
         scope: ['repo', 'user:email', 'read:user']
       })(request, response, next);
 
-    } catch (e) {
-      next(e);
+    } catch (error) {
+      next(error);
     }
   };
 
@@ -53,8 +53,8 @@ class AuthRoute {
 
       })(request, response, next);
 
-    } catch (e) {
-      next(e);
+    } catch (error) {
+      next(error);
     }
   }
 }
