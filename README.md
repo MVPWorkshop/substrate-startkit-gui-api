@@ -18,7 +18,7 @@ following next steps:
 3. Setup the postgres database
 4. In the root of the project, create `.env` file
 5. Fill the `.env` file, example of the values can
-   be copied from the `.env.example` file
+   be copied from the `.env.example` file (NOTE: All values should be filled)
    
    - `GITHUB_APP_CLIENT_ID` and `GITHUB_APP_CLIENT_SECRET`
      can be obtained by following this [guide](https://docs.github.com/en/developers/apps/creating-an-oauth-app)

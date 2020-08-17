@@ -74,6 +74,11 @@ export default class Pallet extends Model<Pallet> implements IPalletAttributes {
   @HasMany(() => PalletAuthor)
   authors: PalletAuthor[];
 
+  // Pallets this pallet depends on (Using)
   @HasMany(() => PalletDependency, {foreignKey: 'pallet_name'})
   dependencies: PalletDependency[];
+
+  // Pallets that depend on this pallet (Used by)
+  @HasMany(() => PalletDependency, {foreignKey: 'dependency_pallet_name'})
+  dependants: PalletDependency[];
 }

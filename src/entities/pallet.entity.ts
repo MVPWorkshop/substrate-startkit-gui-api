@@ -1,7 +1,4 @@
-import { ESubstrateVersion } from '../pallets/pallets.types';
-import { IPalletCategoryEntity, mapPalletCategoryEntity } from './palletCategory.entity';
-import { IPalletAuthorEntity, mapPalletAuthorEntity } from './palletAuthor.entity';
-import { IPalletDependencyEntity, mapPalletDependencyEntity } from './palletDependency.entity';
+import { ECommonAuthors, EPalletCategories, ESubstrateVersion, ESupportedPallets } from '../pallets/pallets.types';
 import Pallet from '../models/Pallet.model';
 
 export interface IPalletEntity {
@@ -14,9 +11,12 @@ export interface IPalletEntity {
   updated: Date;
   description: string;
   compatibility: ESubstrateVersion;
-  categories: IPalletCategoryEntity[];
-  authors: IPalletAuthorEntity[];
-  dependencies: IPalletDependencyEntity[];
+  categories: EPalletCategories[];
+  authors: (string | ECommonAuthors)[];
+  dependencies: {
+    using: ESupportedPallets[],
+    usedBy: ESupportedPallets[]
+  };
 }
 
 export function mapPalletEntity(pallet: Pallet): IPalletEntity {
@@ -30,9 +30,12 @@ export function mapPalletEntity(pallet: Pallet): IPalletEntity {
     updated: pallet.package_last_update,
     description: pallet.description,
     compatibility: pallet.compatibility,
-    categories: pallet.categories.map(palletCategory => mapPalletCategoryEntity(palletCategory)),
-    authors: pallet.authors.map(palletAuthor => mapPalletAuthorEntity(palletAuthor)),
-    dependencies: pallet.dependencies.map(palletDependency => mapPalletDependencyEntity(palletDependency))
+    categories: pallet.categories.map(palletCategory => palletCategory.category),
+    authors: pallet.authors.map(palletAuthor => palletAuthor.author),
+    dependencies: {
+      using: pallet.dependencies?.map(palletDependency => palletDependency.dependency_pallet_name),
+      usedBy: pallet.dependants?.map(palletDependency => palletDependency.dependency_pallet_name)
+    }
   }
 }
 

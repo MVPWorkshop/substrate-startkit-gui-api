@@ -13,6 +13,7 @@
     "build-ts": "rm -rf dist/ && tsc",
     "windows:build-ts": "rd /s /q \"dist\" && tsc",
     "migrate": "npm run build && sequelize db:migrate",
+    "seed": "npm run build && sequelize db:seed:all",
     "windows:migrate": "npm run windows:build && sequelize db:migrate",
     "windows:seed": "npm run windows:build && sequelize db:seed:all",
     "create:migration": "sequelize migration:generate --name",

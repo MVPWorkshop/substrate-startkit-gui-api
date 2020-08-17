@@ -22,7 +22,8 @@ class PalletsService {
       include: [
         { model: PalletCategory, where: categoryFilter },
         { model: PalletAuthor },
-        { model: PalletDependency }
+        { model: PalletDependency, as: 'dependencies' },
+        { model: PalletDependency, as: 'dependants' },
       ]
     })
   }
@@ -35,7 +36,8 @@ class PalletsService {
       include: [
         { model: PalletCategory },
         { model: PalletAuthor },
-        { model: PalletDependency }
+        { model: PalletDependency, as: 'dependencies' },
+        { model: PalletDependency, as: 'dependants' },
       ]
     })
   }
