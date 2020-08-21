@@ -8,7 +8,7 @@ import {
 } from '../../../utils/errors.util';
 import { APIResponse } from '../../../utils/response.util';
 
-export async function error(error: Error, request: Request, response: Response) {
+export async function error(error: Error, request: Request, response: Response, next: NextFunction) {
 
   let status: number;
   let message: string;

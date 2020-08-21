@@ -64,8 +64,8 @@ const PalletContractsConfig: IPalletConfig<EPalletContractsTraits, EPalletContra
         alias: 'contracts-primitives',
         gitRepo: defaultGitRepo,
         package: 'pallet-contracts-primitives',
-        tag: '2.0.0-rc5',
-        version: '2.0.0-rc',
+        tag: 'v2.0.0-rc5',
+        version: '2.0.0-rc5',
         defaultFeatures: false
       }
     ]

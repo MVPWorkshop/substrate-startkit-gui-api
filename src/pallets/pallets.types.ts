@@ -1,13 +1,13 @@
 import { DynamicObject, AllKeysRequired } from "../types/util.types";
 
 export enum EPalletModuleParts {
-  MODULE = 'MODULE',
-  CALL = 'CALL',
-  STORAGE = 'STORAGE',
-  EVENT = 'EVENT',
-  ORIGIN = 'ORIGIN',
-  CONFIG = 'CONFIG',
-  VALIDATE_UNSIGNED = 'VALIDATE_UNSIGNED'
+  MODULE = 'Module',
+  CALL = 'Call',
+  STORAGE = 'Storage',
+  EVENT = 'Event',
+  ORIGIN = 'Origin',
+  CONFIG = 'Config',
+  VALIDATE_UNSIGNED = 'ValidateUnsigned'
 }
 
 interface IPalletConstructRuntimeConfig {
@@ -56,13 +56,13 @@ interface IPalletRuntimeConfig<Traits extends string, GenesisFields extends stri
   additionalRuntimeLibCode?: string[];
 }
 
-interface ICargoSimpleDependency {
+export interface ICargoSimpleDependency {
   simple: true;
   package: string;
   version: string;
 }
 
-interface ICargoComplexDependency {
+export interface ICargoComplexDependency {
   simple?: false;
   package: string;
   version: string;
