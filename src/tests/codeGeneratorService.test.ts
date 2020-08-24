@@ -79,8 +79,7 @@ describe('Substrate code generates and can be successfully compiled', () => {
     }
 
     // Delete project folder after testing completed
-    const codeGenerator = new CodeGeneratorService();
-    await codeGenerator.removeProject(projectPath);
+    await CodeGeneratorService.removeProject(projectPath);
   });
 })
 

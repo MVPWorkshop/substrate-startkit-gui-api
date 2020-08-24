@@ -25,4 +25,8 @@ export default class User extends Model<User> {
   @AllowNull(false)
   @Column
   github_user_id: string;
+
+  @AllowNull(false)
+  @Column
+  github_username: string;
 }

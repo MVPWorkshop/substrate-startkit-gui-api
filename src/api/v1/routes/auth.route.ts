@@ -12,7 +12,12 @@ class AuthRoute {
 
       const user = request.user as ILoggedInUser;
 
-      return response.status(200).json(APIResponse.success(user))
+      return response.status(200).json(APIResponse.success({
+        id: user.id,
+        githubUserId: user.githubUserId,
+        githubUsername: user.githubUsername
+      }));
+
     } catch (error) {
       next(error);
     }

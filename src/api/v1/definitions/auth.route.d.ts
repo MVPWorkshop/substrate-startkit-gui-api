@@ -1,6 +1,6 @@
 import { Request as ExpressRequest, Response as ExpressResponse, NextFunction } from 'express';
 import { EmptyObject, ParamsDictionary } from '../../../types/util.types';
-import { ILoggedInUser } from '../../../entities/user.entity';
+import { IUser } from '../../../entities/user.entity';
 import { IResponseSuccess } from '../../../utils/response.util';
 
 export enum EAuthRoute {
@@ -13,7 +13,7 @@ declare namespace AuthRouteDefinitions {
 
   type ResponseBody<T extends EAuthRoute> =
     // GET /me
-    T extends EAuthRoute.GetMe | EAuthRoute.GetAuthGithubCallback ? ILoggedInUser :
+    T extends EAuthRoute.GetMe | EAuthRoute.GetAuthGithubCallback ? IUser :
     EmptyObject;
 
   type RequestBody<T extends EAuthRoute> =

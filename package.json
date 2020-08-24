@@ -17,7 +17,11 @@
     "windows:migrate": "npm run windows:build && sequelize db:migrate",
     "windows:seed": "npm run windows:build && sequelize db:seed:all",
     "create:migration": "sequelize migration:generate --name",
-    "create:seed": "sequelize seed:generate --name"
+    "create:seed": "sequelize seed:generate --name",
+    "undo:migrations": "yarn build && sequelize db:migrate:undo:all",
+    "windows:undo:migrations": "yarn windows:build && sequelize db:migrate:undo:all",
+    "undo:seed": "yarn build && sequelize db:seed:undo:all",
+    "windows:undo:seed": "yarn windows:build && sequelize db:seed:undo:all"
   },
   "repository": {
     "type": "git",
@@ -42,6 +46,7 @@
     "mkdirp": "^1.0.4",
     "moment": "^2.27.0",
     "ncp": "^2.0.0",
+    "nodegit": "^0.27.0",
     "passport": "^0.4.1",
     "passport-github2": "^0.1.12",
     "pg": "^8.2.1",
@@ -64,6 +69,7 @@
     "@types/mkdirp": "^1.0.1",
     "@types/ncp": "^2.0.4",
     "@types/node": "^14.0.13",
+    "@types/nodegit": "^0.26.7",
     "@types/passport": "^1.0.4",
     "@types/passport-github2": "^1.2.4",
     "@types/ps-tree": "^1.1.0",

@@ -34,7 +34,7 @@ class CodeGeneratorService {
     return newProjectPath;
   }
 
-  public async removeProject(projectPath: string) {
+  public static async removeProject(projectPath: string) {
     await FileUtil.removeDirectory(projectPath);
   }
 
@@ -107,7 +107,7 @@ class CodeGeneratorService {
       return projectPath;
 
     } catch (error) {
-      await this.removeProject(projectPath)
+      await CodeGeneratorService.removeProject(projectPath)
 
       throw error;
     }
