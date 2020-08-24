@@ -24,7 +24,8 @@ describe('Substrate code generates and can be successfully compiled', () => {
 
   const user: IUser = {
     githubUserId: 'testUserId',
-    id: 'testUserId'
+    id: 'testUserId',
+    githubUsername: 'testUsername'
   };
 
   beforeAll(async () => {
