@@ -32,7 +32,8 @@ following next steps:
     - Windows: `yarn windows:migrate`
     - Mac/Linux: `yarn migrate`
 8. Run seeders
-   `sequelize db:seed:all`
+    - Windows: `yarn windows:seed`
+    - Mac/Linux: `yarn seed`
 9. After everything has been completed, to run the
    app, use the `yarn dev` command for dev environment 
    or `yarn start` for production build
