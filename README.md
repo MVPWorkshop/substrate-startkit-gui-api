@@ -16,7 +16,7 @@ following next steps:
 
 1. Navigate to the root of the project
 2. Run `yarn` to install dependencies
-3. Setup the postgres database
+3. Setup the postgres database: `createdb <your_database_name>`
 4. In the root of the project, create `.env` file
 5. Fill the `.env` file, example of the values can
    be copied from the `.env.example` file (NOTE: All values should be filled)
