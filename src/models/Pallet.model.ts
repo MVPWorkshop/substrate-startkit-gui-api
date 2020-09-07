@@ -21,6 +21,7 @@ export interface IPalletAttributes {
   license: string,
   package_last_update: Date,
   description: string,
+  short_description: string,
   compatibility: ESubstrateVersion,
 }
 
@@ -63,6 +64,10 @@ export default class Pallet extends Model<Pallet> implements IPalletAttributes {
   @AllowNull(false)
   @Column
   description: string;
+
+  @AllowNull(false)
+  @Column
+  short_description: string;
 
   @AllowNull(false)
   @Column

@@ -43,7 +43,8 @@ const PalletBalancesConfig: IPalletConfig<EPalletBalancesTraits, EPalletBalances
     license: 'Apache-2.0',
     authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
     categories: [EPalletCategories.ACCOUNTS],
-    description: palletDescription
+    description: palletDescription,
+    shortDescription: 'FRAME pallet to manage balances'
   },
   dependencies: {
     pallet: {

@@ -4,7 +4,6 @@ API for substrate startkit gui frontend
 # Requirements
 - On your computer
     * Installed [yarn](https://yarnpkg.com/) package manager
-    * Installed globally `nodemon`, `sequelize-cli`
     * Installed [PostgreSQL](https://www.postgresql.org/)
     * Installed [GIT](https://git-scm.com/) version control system
 

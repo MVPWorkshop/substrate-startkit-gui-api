@@ -47,7 +47,8 @@ const PalletContractsConfig: IPalletConfig<EPalletContractsTraits, EPalletContra
     license: 'Apache-2.0',
     authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
     categories: [EPalletCategories.SMART_CONTRACTS],
-    description: palletDescription
+    description: palletDescription,
+    shortDescription: 'FRAME pallet for WASM contracts'
   },
   dependencies: {
     pallet: {

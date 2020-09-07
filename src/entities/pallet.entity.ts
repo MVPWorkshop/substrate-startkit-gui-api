@@ -2,7 +2,7 @@ import { ECommonAuthors, EPalletCategories, ESubstrateVersion, ESupportedPallets
 import Pallet from '../models/Pallet.model';
 
 export interface IPalletEntity {
-  name: string;
+  name: ESupportedPallets;
   size: number;
   downloads: number;
   packageName: string;
@@ -10,6 +10,7 @@ export interface IPalletEntity {
   license: string;
   updated: Date;
   description: string;
+  shortDescription: string;
   compatibility: ESubstrateVersion;
   categories: EPalletCategories[];
   authors: (string | ECommonAuthors)[];
@@ -29,12 +30,13 @@ export function mapPalletEntity(pallet: Pallet): IPalletEntity {
     license: pallet.license,
     updated: pallet.package_last_update,
     description: pallet.description,
+    shortDescription: pallet.short_description,
     compatibility: pallet.compatibility,
     categories: pallet.categories.map(palletCategory => palletCategory.category),
     authors: pallet.authors.map(palletAuthor => palletAuthor.author),
     dependencies: {
       using: pallet.dependencies?.map(palletDependency => palletDependency.dependency_pallet_name),
-      usedBy: pallet.dependants?.map(palletDependency => palletDependency.dependency_pallet_name)
+      usedBy: pallet.dependants?.map(palletDependency => palletDependency.pallet_name)
     }
   }
 }

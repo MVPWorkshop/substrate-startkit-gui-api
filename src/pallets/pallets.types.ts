@@ -102,6 +102,7 @@ export enum ECommonAuthors {
 
 interface IPalletMetadata {
   description: string;
+  shortDescription: string;
   compatibility: ESubstrateVersion;
   license?: string;
   authors?: (string | ECommonAuthors)[];
@@ -113,8 +114,8 @@ interface IPalletMetadata {
 }
 
 export enum ESupportedPallets {
-  PALLET_BALANCE = 'pallet-balance',
-  PALLET_CONTRACT = 'pallet-contract'
+  PALLET_BALANCE = 'pallet-balances',
+  PALLET_CONTRACT = 'pallet-contracts'
 }
 
 export const defaultGitRepo = 'https://github.com/paritytech/substrate.git';

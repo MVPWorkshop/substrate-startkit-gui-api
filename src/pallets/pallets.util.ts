@@ -20,6 +20,7 @@ export function palletsConfigToModel(config: IPalletConfig<string>): IPalletAttr
     license: config.metadata.license,
     package_last_update: moment(config.metadata.updated * 1000).toDate(),
     description: config.metadata.description,
+    short_description: config.metadata.shortDescription,
     compatibility: config.metadata.compatibility,
   }
 }
