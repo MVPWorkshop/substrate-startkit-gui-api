@@ -2,12 +2,13 @@ import {
   AllowNull,
   Column,
   DataType,
-  Default,
+  Default, HasMany,
   Model,
   PrimaryKey,
   Table,
   Unique
 } from 'sequelize-typescript';
+import Template from './Template.model';
 
 @Table({
   freezeTableName: true,
@@ -29,4 +30,7 @@ export default class User extends Model<User> {
   @AllowNull(false)
   @Column
   github_username: string;
+
+  @HasMany(() => Template, { foreignKey: 'author_id' })
+  templates: Template[];
 }

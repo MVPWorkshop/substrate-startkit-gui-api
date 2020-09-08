@@ -7,6 +7,8 @@ import PalletsValidator from './validators/pallets.validator';
 import GeneratorValidator from './validators/generator.validator';
 import GeneratorRoute from './routes/generator.route';
 import { isAuthenticated } from './middlewares/authenticated.middleware';
+import TemplatesRoute from './routes/templates.route';
+import TemplatesValidator from './validators/templates.validator';
 
 const v1 = Router();
 
@@ -20,6 +22,10 @@ v1.get('/auth/github/callback', AuthRoute.githubCallback);
 // Pallets route
 v1.get('/pallets', PalletsValidator.validateGetPalletsList, PalletsRoute.getPalletsList);
 v1.get('/pallets/:palletName', PalletsRoute.getPallet);
+
+// Templates route
+v1.get('/templates', TemplatesRoute.getTemplatesList);
+v1.post('/templates', isAuthenticated, TemplatesValidator.validatePostTemplate, TemplatesRoute.postTemplate);
 
 // Generator route
 v1.post('/generator', isAuthenticated, GeneratorValidator.validatePostGenerator, GeneratorRoute.postGenerator);
