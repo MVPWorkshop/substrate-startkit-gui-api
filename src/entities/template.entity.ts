@@ -1,9 +1,9 @@
-import { IUser } from './user.entity';
 import { ESupportedPallets } from '../pallets/pallets.types';
 import Template from '../models/Template.model';
 import { mapTemplateDependencyEntity } from './templateDependency.entity';
 
 export interface ITemplateEntity {
+  id: string;
   name: string;
   description: string;
   author: {
@@ -14,6 +14,7 @@ export interface ITemplateEntity {
 
 export function mapTemplateEntity(template: Template): ITemplateEntity {
   return {
+    id: template.id,
     name: template.name,
     author: {
       username: template.author.github_username
