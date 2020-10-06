@@ -5,6 +5,7 @@ import { ILoggedInUser } from '../../../entities/user.entity';
 import GithubService from '../../../services/github/github.service';
 import nodegit from 'nodegit';
 import UserService from '../../../services/user.service';
+import PalletsService from '../../../services/pallets.service';
 
 class GeneratorRoute {
   public static postGenerator: GeneratorRouteDefinitions.RouteMethod<EGeneratorRoute.PostGenerator> = async (request, response, next) => {
@@ -78,6 +79,9 @@ class GeneratorRoute {
 
       // After everything completed, remove the project from our file system
       await CodeGeneratorService.removeProject(projectPath);
+
+      // And count new downloads
+      await PalletsService.incrementNumberOfDownloads(pallets);
 
       response.status(200).json(APIResponse.success({
         repository: repositoryUrl

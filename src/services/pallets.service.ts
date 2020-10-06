@@ -4,6 +4,7 @@ import PalletCategory, { IPalletCategoryAttributes } from '../models/PalletCateg
 import PalletAuthor from '../models/PalletAuthor.model';
 import PalletDependency from '../models/PalletDependency.model';
 import { EPalletCategories, ESupportedPallets } from '../pallets/pallets.types';
+import { Op } from 'sequelize';
 
 class PalletsService {
   public static async list(category?: EPalletCategories): Promise<Pallet[]> {
@@ -39,6 +40,17 @@ class PalletsService {
         { model: PalletDependency, as: 'dependencies' },
         { model: PalletDependency, as: 'dependants' },
       ]
+    })
+  }
+
+  public static async incrementNumberOfDownloads(pallets: ESupportedPallets[], by: number = 1): Promise<Pallet> {
+    return Pallet.increment('downloads', {
+      by,
+      where: {
+        [Op.or]: pallets.map(palletName => ({
+          name: palletName
+        }))
+      }
     })
   }
 }
