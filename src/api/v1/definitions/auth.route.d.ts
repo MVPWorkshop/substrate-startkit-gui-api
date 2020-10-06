@@ -13,7 +13,7 @@ declare namespace AuthRouteDefinitions {
 
   type ResponseBody<T extends EAuthRoute> =
     // GET /me
-    T extends EAuthRoute.GetMe | EAuthRoute.GetAuthGithubCallback ? IUser :
+    T extends EAuthRoute.GetMe ? IUser :
     EmptyObject;
 
   type RequestBody<T extends EAuthRoute> =

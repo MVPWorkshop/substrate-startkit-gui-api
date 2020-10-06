@@ -68,6 +68,7 @@ class CodeGeneratorService {
       for (const palletDependency of config.dependencies.additionalPallets) {
         // We call this function recursively to add new pallets and by adding
         // the dependencies first we ensure the code is in correct order.
+        this._generatedPallets.set(palletDependency, true);
         this.addPalletToCode(palletDependency);
       }
     }
