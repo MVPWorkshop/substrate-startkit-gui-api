@@ -130,7 +130,7 @@ class SubstrateRuntimeUtil {
   private addAdditionalCode(existingCode: string, additionalCode: string[]): string {
 
     if (!additionalCode || !additionalCode.length) {
-      return;
+      return existingCode;
     }
 
     let additionalRuntimeCode = '';
@@ -194,11 +194,17 @@ class SubstrateRuntimeUtil {
 
     // We check if pallet implemented so we don't write double code
     if (!this.checkIfPalletImplemented()) {
+      console.log('----------------' + this._palletConfig.name + '------------------')
       this.addPalletTraits();
+      console.log('addPalletTraits', !!this._runtimeCode)
       this.addPalletToConstructRuntime();
+      console.log('addPalletToConstructRuntime', !!this._runtimeCode)
       this.addAdditionalRuntimeCode();
+      console.log('addAdditionalRuntimeCode', !!this._runtimeCode)
       this.addChainSpecCode();
+      console.log('addChainSpecCode', !!this._runtimeCode)
       this.addAdditionalChainSpecCode();
+      console.log('addAdditionalChainSpecCode', !!this._runtimeCode)
     }
 
     return {

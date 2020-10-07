@@ -115,7 +115,8 @@ interface IPalletMetadata {
 
 export enum ESupportedPallets {
   PALLET_BALANCE = 'pallet-balances',
-  PALLET_CONTRACT = 'pallet-contracts'
+  PALLET_CONTRACT = 'pallet-contracts',
+  PALLET_NICKS = 'pallet-nicks'
 }
 
 export const defaultGitRepo = 'https://github.com/paritytech/substrate.git';
