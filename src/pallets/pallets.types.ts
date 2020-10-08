@@ -115,7 +115,7 @@ interface IPalletMetadata {
   shortDescription: string;
   compatibility: ESubstrateVersion;
   license?: string;
-  authors?: (string | ECommonAuthors)[];
+  authors: (string | ECommonAuthors)[];
   categories?: EPalletCategories[];
   // Size in bytes
   size: number;
@@ -129,7 +129,8 @@ export enum ESupportedPallets {
   PALLET_NICKS = 'pallet-nicks',
   PALLET_AURA = 'pallet-aura',
   PALLET_GRANDPA = 'pallet-grandpa',
-  PALLET_RANDOMNESS_COLLECTIVE_FLIP = 'pallet-randomness-collective-flip'
+  PALLET_RANDOMNESS_COLLECTIVE_FLIP = 'pallet-randomness-collective-flip',
+  PALLET_SUDO = 'pallet-sudo'
 }
 
 export const defaultGitRepo = 'https://github.com/paritytech/substrate.git';

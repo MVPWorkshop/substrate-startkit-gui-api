@@ -14,6 +14,7 @@ import PalletNicks from './configs/pallet_nicks.config';
 import PalletAura from './configs/pallet_aura.config';
 import PalletGrandpaConfig from './configs/pallet_grandpa.config';
 import PalletRandomnessCollectiveFlip from './configs/pallet_randomness_collective_flip.config';
+import PalletSudoConfig from './configs/pallet_sudo.config';
 
 type PalletConfigs = DynamicObject<IPalletConfig<string>, ESupportedPallets, AllKeysRequired>;
 
@@ -23,7 +24,8 @@ export const configs: PalletConfigs = {
   [ESupportedPallets.PALLET_NICKS]: PalletNicks,
   [ESupportedPallets.PALLET_AURA]: PalletAura,
   [ESupportedPallets.PALLET_GRANDPA]: PalletGrandpaConfig,
-  [ESupportedPallets.PALLET_RANDOMNESS_COLLECTIVE_FLIP]: PalletRandomnessCollectiveFlip
+  [ESupportedPallets.PALLET_RANDOMNESS_COLLECTIVE_FLIP]: PalletRandomnessCollectiveFlip,
+  [ESupportedPallets.PALLET_SUDO]: PalletSudoConfig
 };
 
 export default configs;
