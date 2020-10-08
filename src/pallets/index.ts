@@ -15,6 +15,7 @@ import PalletAura from './configs/pallet_aura.config';
 import PalletGrandpaConfig from './configs/pallet_grandpa.config';
 import PalletRandomnessCollectiveFlip from './configs/pallet_randomness_collective_flip.config';
 import PalletSudoConfig from './configs/pallet_sudo.config';
+import PalletTimestampConfig from './configs/pallet_timestamp.config';
 
 type PalletConfigs = DynamicObject<IPalletConfig<string>, ESupportedPallets, AllKeysRequired>;
 
@@ -25,7 +26,8 @@ export const configs: PalletConfigs = {
   [ESupportedPallets.PALLET_AURA]: PalletAura,
   [ESupportedPallets.PALLET_GRANDPA]: PalletGrandpaConfig,
   [ESupportedPallets.PALLET_RANDOMNESS_COLLECTIVE_FLIP]: PalletRandomnessCollectiveFlip,
-  [ESupportedPallets.PALLET_SUDO]: PalletSudoConfig
+  [ESupportedPallets.PALLET_SUDO]: PalletSudoConfig,
+  [ESupportedPallets.PALLET_TIMESTAMP]: PalletTimestampConfig
 };
 
 export default configs;

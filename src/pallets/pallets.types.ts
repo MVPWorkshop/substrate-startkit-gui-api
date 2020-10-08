@@ -130,7 +130,8 @@ export enum ESupportedPallets {
   PALLET_AURA = 'pallet-aura',
   PALLET_GRANDPA = 'pallet-grandpa',
   PALLET_RANDOMNESS_COLLECTIVE_FLIP = 'pallet-randomness-collective-flip',
-  PALLET_SUDO = 'pallet-sudo'
+  PALLET_SUDO = 'pallet-sudo',
+  PALLET_TIMESTAMP = 'pallet-timestamp'
 }
 
 export const defaultGitRepo = 'https://github.com/paritytech/substrate.git';
