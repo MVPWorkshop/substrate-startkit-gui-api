@@ -107,8 +107,11 @@ class SubstrateRuntimeUtil {
     for (let i = 0; i < numberOfModules; i++) {
       const module = this._palletConfig.runtime.constructRuntime.modules[i];
 
-      // @ts-ignore Because it won't really matter if we index it with a key that doesn't exist it will return undefined
-      const isGenericModule = this._palletConfig.runtime.constructRuntime.generic[module]
+      let isGenericModule = false;
+      if (this._palletConfig.runtime.constructRuntime.generic) {
+        // @ts-ignore Because it won't really matter if we index it with a key that doesn't exist it will return undefined
+        isGenericModule = !!this._palletConfig.runtime.constructRuntime.generic[module];
+      }
       const generateDash = numberOfModules - 1 === i ? '' : ',';
 
       if (isGenericModule) {
@@ -194,17 +197,11 @@ class SubstrateRuntimeUtil {
 
     // We check if pallet implemented so we don't write double code
     if (!this.checkIfPalletImplemented()) {
-      console.log('----------------' + this._palletConfig.name + '------------------')
       this.addPalletTraits();
-      console.log('addPalletTraits', !!this._runtimeCode)
       this.addPalletToConstructRuntime();
-      console.log('addPalletToConstructRuntime', !!this._runtimeCode)
       this.addAdditionalRuntimeCode();
-      console.log('addAdditionalRuntimeCode', !!this._runtimeCode)
       this.addChainSpecCode();
-      console.log('addChainSpecCode', !!this._runtimeCode)
       this.addAdditionalChainSpecCode();
-      console.log('addAdditionalChainSpecCode', !!this._runtimeCode)
     }
 
     return {

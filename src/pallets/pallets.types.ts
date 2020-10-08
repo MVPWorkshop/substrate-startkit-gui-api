@@ -129,6 +129,7 @@ export enum ESupportedPallets {
   PALLET_NICKS = 'pallet-nicks',
   PALLET_AURA = 'pallet-aura',
   PALLET_GRANDPA = 'pallet-grandpa',
+  PALLET_RANDOMNESS_COLLECTIVE_FLIP = 'pallet-randomness-collective-flip'
 }
 
 export const defaultGitRepo = 'https://github.com/paritytech/substrate.git';
@@ -136,7 +137,7 @@ export const defaultGitRepo = 'https://github.com/paritytech/substrate.git';
 /**
  * This is the interface which every pallet config should implement
  */
-export interface IPalletConfig<PalletTraits extends string, GenesisFields extends string = string> {
+export interface IPalletConfig<PalletTraits extends string = string, GenesisFields extends string = string> {
   name: ESupportedPallets;
   metadata: IPalletMetadata;
   runtime: IPalletRuntimeConfig<PalletTraits, GenesisFields>;
