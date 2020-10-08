@@ -7,6 +7,7 @@ export enum EPalletModuleParts {
   EVENT = 'Event',
   ORIGIN = 'Origin',
   CONFIG = 'Config',
+  INHERENT = 'Inherent',
   VALIDATE_UNSIGNED = 'ValidateUnsigned'
 }
 
@@ -116,7 +117,8 @@ interface IPalletMetadata {
 export enum ESupportedPallets {
   PALLET_BALANCE = 'pallet-balances',
   PALLET_CONTRACT = 'pallet-contracts',
-  PALLET_NICKS = 'pallet-nicks'
+  PALLET_NICKS = 'pallet-nicks',
+  PALLET_AURA = 'pallet-aura'
 }
 
 export const defaultGitRepo = 'https://github.com/paritytech/substrate.git';

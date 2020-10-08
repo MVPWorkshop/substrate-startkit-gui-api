@@ -32,7 +32,7 @@ const PalletNicksConfig: IPalletConfig<EPalletNicksTraits> = {
     categories: [
       EPalletCategories.IDENTITY
     ],
-    updated: 1600802897,
+    updated: 1596018720,
     compatibility: ESubstrateVersion.TWO,
     description: palletDescription,
     license: 'Apache-2.0',
