@@ -6,5 +6,6 @@ export const palletsIncludedInTemplate: ESupportedPallets[] = [
   ESupportedPallets.PALLET_GRANDPA,
   ESupportedPallets.PALLET_RANDOMNESS_COLLECTIVE_FLIP,
   ESupportedPallets.PALLET_SUDO,
-  ESupportedPallets.PALLET_TIMESTAMP
+  ESupportedPallets.PALLET_TIMESTAMP,
+  ESupportedPallets.PALLET_TRANSACTION_PAYMENT
 ]
