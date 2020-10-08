@@ -78,7 +78,16 @@ export interface ICargoComplexDependency {
  */
 interface IPalletDependencyConfig {
   pallet: ICargoComplexDependency;
-  additionalPallets?: ESupportedPallets[];
+  /**
+   * @description Any additional pallets used by the configuration pallet
+   * If the pallet should be inside the node template code, shouldImplement should be marked
+   * as true if it's an dependency which is already implemented as part of the pallet this should be
+   * left undefined or false
+   */
+  additionalPallets?: {
+    palletName: ESupportedPallets;
+    shouldImplement?: boolean;
+  }[];
   additionalDeps?: (ICargoComplexDependency | ICargoSimpleDependency)[];
 }
 
@@ -118,7 +127,8 @@ export enum ESupportedPallets {
   PALLET_BALANCE = 'pallet-balances',
   PALLET_CONTRACT = 'pallet-contracts',
   PALLET_NICKS = 'pallet-nicks',
-  PALLET_AURA = 'pallet-aura'
+  PALLET_AURA = 'pallet-aura',
+  PALLET_GRANDPA = 'pallet-grandpa',
 }
 
 export const defaultGitRepo = 'https://github.com/paritytech/substrate.git';

@@ -72,7 +72,7 @@ export function palletsConfigToDependencyModel(config: IPalletConfig<string>): I
     return {
       id: uuidV4(),
       pallet_name: config.name,
-      dependency_pallet_name: pallet
+      dependency_pallet_name: pallet.palletName
     }
   })
 }

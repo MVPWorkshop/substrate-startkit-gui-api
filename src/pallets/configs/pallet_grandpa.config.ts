@@ -1,0 +1,97 @@
+import {
+  defaultGitRepo,
+  ECommonAuthors,
+  EPalletCategories,
+  EPalletModuleParts,
+  ESubstrateVersion,
+  ESupportedPallets,
+  IPalletConfig
+} from '../pallets.types';
+import { tabs } from '../../utils/common.util';
+
+enum EPalletGrandpaTraits {
+  Event = 'Event',
+  Call = 'Call',
+  KeyOwnerProof = 'KeyOwnerProof',
+  KeyOwnerIdentification = 'KeyOwnerIdentification',
+  KeyOwnerProofSystem = 'KeyOwnerProofSystem',
+  HandleEquivocation = 'HandleEquivocation'
+}
+
+enum EPalletGrandpaGenesisFields {
+  authorities = 'authorities'
+}
+
+const palletDescription = [
+  'GRANDPA Consensus module for runtime.',
+  'This manages the GRANDPA authority set ready for the native code. These authorities are only for GRANDPA finality, not for consensus overall.',
+  'In the future, it will also handle misbehavior reports, and on-chain finality notifications.',
+  'For full integration with GRANDPA, the GrandpaApi should be implemented. The necessary items are re-exported via the fg_primitives crate.'
+].join('\n');
+
+const PalletGrandpaConfig: IPalletConfig<EPalletGrandpaTraits, EPalletGrandpaGenesisFields> = {
+  name: ESupportedPallets.PALLET_GRANDPA,
+  metadata: {
+    size: 8613,
+    updated: 1596018720,
+    license: 'Apache-2.0',
+    compatibility: ESubstrateVersion.TWO,
+    authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
+    categories: [
+      EPalletCategories.CONSENSUS
+    ],
+    description: palletDescription,
+    shortDescription: 'FRAME pallet for GRANDPA finality gadget'
+  },
+  dependencies: {
+    pallet: {
+      defaultFeatures: false,
+      package: 'pallet-grandpa',
+      tag: 'v2.0.0-rc5',
+      version: '2.0.0-rc5',
+      gitRepo: defaultGitRepo,
+      alias: 'grandpa'
+    },
+    /**
+     * @TODO [ADDITIONAL PALLETS]
+     * pallet-session,
+     * pallet-finality-tracker
+     * pallet-authorship
+     */
+  },
+  runtime: {
+    palletTraits: {
+      [EPalletGrandpaTraits.Event]: 'Event',
+      [EPalletGrandpaTraits.Call]: 'Call',
+      [EPalletGrandpaTraits.KeyOwnerProofSystem]: '()',
+      [EPalletGrandpaTraits.HandleEquivocation]: '()',
+      [EPalletGrandpaTraits.KeyOwnerIdentification]: [
+        '<Self::KeyOwnerProofSystem as KeyOwnerProofSystem<(',
+        `${tabs(1)}KeyTypeId,`,
+        `${tabs(1)}GrandpaId,`,
+        ')>>::IdentificationTuple'
+      ].join('\n'),
+      [EPalletGrandpaTraits.KeyOwnerProof]: `\n${tabs(1)}<Self::KeyOwnerProofSystem as KeyOwnerProofSystem<(KeyTypeId, GrandpaId)>>::Proof`
+    },
+    constructRuntime: {
+      modules: [
+        EPalletModuleParts.EVENT,
+        EPalletModuleParts.CALL,
+        EPalletModuleParts.MODULE,
+        EPalletModuleParts.STORAGE,
+        EPalletModuleParts.CONFIG
+      ]
+    },
+    genesisConfig: {
+      configStructName: 'GrandpaConfig',
+      structFields: {
+        [EPalletGrandpaGenesisFields.authorities]: 'initial_authorities.iter().map(|x| (x.1.clone(), 1)).collect()'
+      }
+    },
+    additionalChainSpecCode: [
+      'use node_template_runtime::{GrandpaConfig};'
+    ]
+  }
+}
+
+export default PalletGrandpaConfig;

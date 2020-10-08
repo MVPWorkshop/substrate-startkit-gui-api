@@ -47,7 +47,9 @@ const PalletNicksConfig: IPalletConfig<EPalletNicksTraits> = {
       version: '2.0.0-rc5',
       defaultFeatures: false,
     },
-    additionalPallets: [ESupportedPallets.PALLET_BALANCE]
+    additionalPallets: [
+      { palletName: ESupportedPallets.PALLET_BALANCE, shouldImplement: false }
+    ]
   },
   runtime: {
     constructRuntime: {
