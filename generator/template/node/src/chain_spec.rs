@@ -135,6 +135,8 @@ fn testnet_genesis(
 	endowed_accounts: Vec<AccountId>,
 	enable_println: bool,
 ) -> GenesisConfig {
+	//Additional genesis variables
+
 	GenesisConfig {
 		system: Some(SystemConfig {
 			// Add Wasm runtime to storage.

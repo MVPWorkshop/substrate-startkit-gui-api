@@ -15,6 +15,7 @@ class SubstrateRuntimeUtil {
     palletTrait: RegExp;
     constructRuntime: RegExp;
     additionalCode: RegExp;
+    additionalGenesisVariables: RegExp;
     genesisConfig: RegExp;
   }
 
@@ -27,7 +28,8 @@ class SubstrateRuntimeUtil {
       palletTrait: new RegExp(/`^impl\s+/ + this.palletName + /::Trait\s+for\s+Runtime\s+\{{[^\}}]+\}}`/),
       constructRuntime: new RegExp(/construct_runtime!\(\s+pub\s+enum\s+Runtime[^{]+\{(?<pallets>[\s\S]+)\}\s+\);/),
       additionalCode: new RegExp(/\/\/Additional code/),
-      genesisConfig: new RegExp(/fn\s+testnet_genesis[^{]+\{\s+GenesisConfig\s+\{(?<configs>[\s\S]+)\}\s+\}/)
+      additionalGenesisVariables: new RegExp(/\/\/Additional genesis variables/),
+      genesisConfig: new RegExp(/fn\s+testnet_genesis[^{]+\{[\s\S]+GenesisConfig\s+\{(?<configs>[\s\S]+)\}\s+\}/)
     }
 
     if (!this.regex.constructRuntime.test(runtimeCode)) {
@@ -130,7 +132,7 @@ class SubstrateRuntimeUtil {
   }
 
   // Function which adds any additional code needed for the code to compile
-  private addAdditionalCode(existingCode: string, additionalCode: string[]): string {
+  private addAdditionalCode(existingCode: string, additionalCode: string[], testRegex: RegExp): string {
 
     if (!additionalCode || !additionalCode.length) {
       return existingCode;
@@ -143,7 +145,7 @@ class SubstrateRuntimeUtil {
       additionalRuntimeCode = additionalRuntimeCode + `${additionalCode}\n`;
     })
 
-    const additionalCodeRegex = this.regex.additionalCode.exec(existingCode);
+    const additionalCodeRegex = testRegex.exec(existingCode);
 
     if (!additionalCodeRegex) {
       throw new Error("Provided code doesn't contain additional code flag")
@@ -186,11 +188,25 @@ class SubstrateRuntimeUtil {
   }
 
   private addAdditionalChainSpecCode() {
-    this._chainSpecCode = this.addAdditionalCode(this._chainSpecCode, this._palletConfig.runtime.additionalChainSpecCode);
+    this._chainSpecCode = this.addAdditionalCode(
+      this._chainSpecCode,
+      this._palletConfig.runtime.additionalChainSpecCode.additionalCode,
+      this.regex.additionalCode
+    );
+
+    this._chainSpecCode = this.addAdditionalCode(
+      this._chainSpecCode,
+      this._palletConfig.runtime.additionalChainSpecCode.additionalVariables,
+      this.regex.additionalGenesisVariables
+    )
   }
 
   private addAdditionalRuntimeCode() {
-    this._runtimeCode = this.addAdditionalCode(this._runtimeCode, this._palletConfig.runtime.additionalRuntimeLibCode)
+    this._runtimeCode = this.addAdditionalCode(
+      this._runtimeCode,
+      this._palletConfig.runtime.additionalRuntimeLibCode,
+      this.regex.additionalCode
+    )
   }
 
   public generateCode(): IGenerateCodeReturn {

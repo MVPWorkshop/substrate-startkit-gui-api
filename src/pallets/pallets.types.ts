@@ -53,7 +53,11 @@ interface IPalletRuntimeConfig<Traits extends string, GenesisFields extends stri
   genesisConfig?: IPalletGenesisConfig<GenesisFields>;
 
   // Rust syntax for code that can't be automatically inserted by the generator
-  additionalChainSpecCode?: string[];
+  additionalChainSpecCode?: {
+    additionalCode?: string[];
+    additionalVariables?: string[];
+  };
+  additionalTestnetGenesisCode?: string[];
   additionalRuntimeLibCode?: string[];
 }
 

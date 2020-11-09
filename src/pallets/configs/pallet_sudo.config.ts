@@ -72,9 +72,11 @@ const PalletSudoConfig: IPalletConfig<EPalletSudoTraits, EPalletSudoGenesisField
         [EPalletSudoGenesisFields.key]: 'root_key'
       }
     },
-    additionalChainSpecCode: [
-      'use node_template_runtime::{SudoConfig};'
-    ]
+    additionalChainSpecCode: {
+      additionalCode: [
+        'use node_template_runtime::{SudoConfig};'
+      ]
+    }
   }
 }
 

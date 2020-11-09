@@ -87,9 +87,11 @@ const PalletBalancesConfig: IPalletConfig<EPalletBalancesTraits, EPalletBalances
         balances: 'endowed_accounts.iter().cloned().map(|k|(k, 1 << 60)).collect()'
       }
     },
-    additionalChainSpecCode: [
-      'use node_template_runtime::{BalancesConfig};'
-    ]
+    additionalChainSpecCode: {
+      additionalCode: [
+        'use node_template_runtime::{BalancesConfig};'
+      ]
+    }
   }
 };
 

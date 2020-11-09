@@ -88,9 +88,11 @@ const PalletGrandpaConfig: IPalletConfig<EPalletGrandpaTraits, EPalletGrandpaGen
         [EPalletGrandpaGenesisFields.authorities]: 'initial_authorities.iter().map(|x| (x.1.clone(), 1)).collect()'
       }
     },
-    additionalChainSpecCode: [
-      'use node_template_runtime::{GrandpaConfig};'
-    ]
+    additionalChainSpecCode: {
+      additionalCode: [
+        'use node_template_runtime::{GrandpaConfig};'
+      ]
+    }
   }
 }
 

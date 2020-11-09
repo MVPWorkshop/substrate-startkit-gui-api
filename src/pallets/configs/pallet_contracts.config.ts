@@ -125,9 +125,11 @@ const PalletContractsConfig: IPalletConfig<EPalletContractsTraits, EPalletContra
     additionalRuntimeLibCode: [
       'pub use contracts::Schedule as ContractsSchedule;'
     ],
-    additionalChainSpecCode: [
-      'use node_template_runtime::{ContractsConfig, ContractsSchedule};'
-    ]
+    additionalChainSpecCode: {
+      additionalCode: [
+        'use node_template_runtime::{ContractsConfig, ContractsSchedule};'
+      ]
+    }
   }
 };
 

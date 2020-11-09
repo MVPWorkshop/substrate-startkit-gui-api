@@ -68,9 +68,11 @@ const PalletAuraConfig: IPalletConfig<EPalletAuraTraits, EPalletAuraGenesisField
         [EPalletAuraGenesisFields.authorities]: 'initial_authorities.iter().map(|x| (x.0.clone())).collect()'
       }
     },
-    additionalChainSpecCode: [
-      'use node_template_runtime::{AuraConfig};'
-    ]
+    additionalChainSpecCode: {
+      additionalCode: [
+        'use node_template_runtime::{AuraConfig};'
+      ]
+    }
   }
 }
 
