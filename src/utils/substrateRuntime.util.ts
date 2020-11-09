@@ -1,5 +1,5 @@
 import { IPalletConfig } from '../pallets/pallets.types';
-import { tabs, toPascalCase } from './common.util';
+import { tabs, toPascalCase, toSnakeCase } from './common.util';
 
 interface IGenerateCodeReturn {
   runtimeLib: string;
@@ -58,7 +58,7 @@ class SubstrateRuntimeUtil {
 
   // Function used to implement pallet traits inside the code
   private addPalletTraits() {
-    let traitImplementation = `impl ${this.palletAlias}::Trait for Runtime { \n`;
+    let traitImplementation = `impl ${toSnakeCase(this.palletAlias)}::Trait for Runtime { \n`;
     let parameterTypes = `parameter_types! { \n`;
 
     // Counter which indicates if we should add parameterTypes to the code
@@ -103,7 +103,7 @@ class SubstrateRuntimeUtil {
 
   // Adds the pallet to construct runtime macro
   private addPalletToConstructRuntime() {
-    let constructRuntimeModule = `${tabs(2)}${toPascalCase(this.palletAlias)}: ${this.palletAlias}::{`;
+    let constructRuntimeModule = `${tabs(2)}${toPascalCase(this.palletAlias)}: ${toSnakeCase(this.palletAlias)}::{`;
 
     const numberOfModules = this._palletConfig.runtime.constructRuntime.modules.length
     for (let i = 0; i < numberOfModules; i++) {
@@ -173,13 +173,13 @@ class SubstrateRuntimeUtil {
     const { configStructName, structFields } = this._palletConfig.runtime.genesisConfig;
 
     genesisConfigCode += `${tabs(1)}`;
-    genesisConfigCode += `${this.palletAlias}: Some(${configStructName} {\n`;
+    genesisConfigCode += `${toSnakeCase(this.palletAlias)}: Some(${configStructName} {\n`;
 
     for (const structField in structFields) {
       // Adds the property of the struct
       genesisConfigCode += `${tabs(3)}${structField}: `;
       // Gives the value to the property
-      genesisConfigCode += `${structFields[structField]}\n`;
+      genesisConfigCode += `${structFields[structField]},\n`;
     }
 
     genesisConfigCode += `${tabs(2)}}),\n`

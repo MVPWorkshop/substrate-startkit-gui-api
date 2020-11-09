@@ -57,7 +57,6 @@ interface IPalletRuntimeConfig<Traits extends string, GenesisFields extends stri
     additionalCode?: string[];
     additionalVariables?: string[];
   };
-  additionalTestnetGenesisCode?: string[];
   additionalRuntimeLibCode?: string[];
 }
 
@@ -111,7 +110,8 @@ export enum EPalletCategories {
 }
 
 export enum ECommonAuthors {
-  PARITY_TECHNOLOGIES = 'PARITY_TECHNOLOGIES'
+  PARITY_TECHNOLOGIES = 'PARITY_TECHNOLOGIES',
+  CENTRALITY_DEVELOPERS = 'CENTRALITY_DEVELOPERS'
 }
 
 interface IPalletMetadata {
@@ -136,7 +136,8 @@ export enum ESupportedPallets {
   PALLET_RANDOMNESS_COLLECTIVE_FLIP = 'pallet-randomness-collective-flip',
   PALLET_SUDO = 'pallet-sudo',
   PALLET_TIMESTAMP = 'pallet-timestamp',
-  PALLET_TRANSACTION_PAYMENT = 'pallet-transaction-payment'
+  PALLET_TRANSACTION_PAYMENT = 'pallet-transaction-payment',
+  PALLET_GENERIC_ASSET = 'pallet-generic-asset'
 }
 
 export const defaultGitRepo = 'https://github.com/paritytech/substrate.git';
