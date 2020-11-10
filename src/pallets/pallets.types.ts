@@ -138,7 +138,8 @@ export enum ESupportedPallets {
   PALLET_TIMESTAMP = 'pallet-timestamp',
   PALLET_TRANSACTION_PAYMENT = 'pallet-transaction-payment',
   PALLET_GENERIC_ASSET = 'pallet-generic-asset',
-  PALLET_RECOVERY = 'pallet-recovery'
+  PALLET_RECOVERY = 'pallet-recovery',
+  PALLET_VESTING = 'pallet-vesting'
 }
 
 export const defaultGitRepo = 'https://github.com/paritytech/substrate.git';
