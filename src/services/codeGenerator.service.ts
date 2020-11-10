@@ -69,7 +69,6 @@ class CodeGeneratorService {
         // We call this function recursively to add new pallets and by adding
         // the dependencies first we ensure the code is in correct order.
         if (palletDependency.shouldImplement) {
-          this._generatedPallets.set(palletDependency.palletName, true);
           this.addPalletToCode(palletDependency.palletName);
         }
       }
@@ -77,6 +76,7 @@ class CodeGeneratorService {
 
     this.updateRuntime(config);
     this.updateManifest(config);
+    this._generatedPallets.set(palletName, true);
   }
 
   /**
@@ -97,7 +97,7 @@ class CodeGeneratorService {
       this._runtimeCode = (await FileUtil.readFile(runtimeLibPath)).toString();
       this._runtimeManifestCode = (await FileUtil.readFile(runtimeManifestPath)).toString();
       this._chainspecCode = (await FileUtil.readFile(chainspecPath)).toString();
-
+console.log(pallets)
       // Looping through given pallets to add them to code
       for (const pallet of pallets) {
         this.addPalletToCode(pallet);

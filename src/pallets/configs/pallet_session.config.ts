@@ -22,7 +22,7 @@ enum EPalletSessionTraits {
 }
 
 enum EPalletSessionGenesisFields {
-  authorities = 'authorities'
+  keys = 'keys'
 }
 
 const palletDescription = [
@@ -55,7 +55,8 @@ const PalletSessionConfig: IPalletConfig<EPalletSessionTraits, EPalletSessionGen
       defaultFeatures: false
     },
     additionalPallets: [
-      { palletName: ESupportedPallets.PALLET_TIMESTAMP, shouldImplement: false }
+      { palletName: ESupportedPallets.PALLET_TIMESTAMP, shouldImplement: false },
+      { palletName: ESupportedPallets.PALLET_BABE, shouldImplement: true }
     ]
   },
   runtime: {
@@ -88,9 +89,9 @@ const PalletSessionConfig: IPalletConfig<EPalletSessionTraits, EPalletSessionGen
     },
     genesisConfig: {
       structFields: {
-        [EPalletSessionGenesisFields.authorities]: 'vec![]'
+        [EPalletSessionGenesisFields.keys]: 'vec![]'
       },
-      configStructName: 'BabeConfig'
+      configStructName: 'SessionConfig'
     },
     additionalRuntimeLibCode: [
       'use sp_runtime::traits::{ OpaqueKeys };'
