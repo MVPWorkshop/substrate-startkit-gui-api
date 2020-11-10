@@ -29,7 +29,7 @@ const PalletVestingConfig: IPalletConfig<EPalletVestingTraits> = {
     size: 8700,
     updated: 1596018720,
     license: 'Apache-2.0',
-    authors: [ECommonAuthors.CENTRALITY_DEVELOPERS],
+    authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
     categories: [EPalletCategories.ACCOUNTS],
     description: palletDescription,
     shortDescription: 'FRAME pallet for manage vesting'
