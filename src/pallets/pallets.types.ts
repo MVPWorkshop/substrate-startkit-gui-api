@@ -140,6 +140,7 @@ export enum ESupportedPallets {
   PALLET_GENERIC_ASSET = 'pallet-generic-asset',
   PALLET_RECOVERY = 'pallet-recovery',
   PALLET_VESTING = 'pallet-vesting',
+  PALLET_SESSION = 'pallet-session',
   PALLET_ASSETS = 'pallet-assets'
 }
 

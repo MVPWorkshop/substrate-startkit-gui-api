@@ -21,6 +21,7 @@ import PalletGenericAsset from './configs/pallet_generic_asset.config';
 import PalletRecovery from './configs/pallet_recovery.config';
 import PalletVesting from './configs/pallet_vesting.config';
 import PalletAssets from './configs/pallet_assets.config';
+import PalletSession from './configs/pallet_session.config';
 
 type PalletConfigs = DynamicObject<IPalletConfig<string>, ESupportedPallets, AllKeysRequired>;
 
@@ -37,7 +38,8 @@ export const configs: PalletConfigs = {
   [ESupportedPallets.PALLET_GENERIC_ASSET]: PalletGenericAsset,
   [ESupportedPallets.PALLET_RECOVERY]: PalletRecovery,
   [ESupportedPallets.PALLET_VESTING]: PalletVesting,
-  [ESupportedPallets.PALLET_ASSETS]: PalletAssets
+  [ESupportedPallets.PALLET_ASSETS]: PalletAssets,
+  [ESupportedPallets.PALLET_SESSION]: PalletSession
 };
 
 export default configs;
