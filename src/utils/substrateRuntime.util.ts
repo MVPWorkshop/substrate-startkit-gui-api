@@ -188,6 +188,10 @@ class SubstrateRuntimeUtil {
   }
 
   private addAdditionalChainSpecCode() {
+    if (!this._palletConfig.runtime.additionalChainSpecCode) {
+      return;
+    }
+
     this._chainSpecCode = this.addAdditionalCode(
       this._chainSpecCode,
       this._palletConfig.runtime.additionalChainSpecCode.additionalCode,

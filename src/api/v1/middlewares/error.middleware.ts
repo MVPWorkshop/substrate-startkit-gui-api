@@ -9,7 +9,7 @@ import {
 import { APIResponse } from '../../../utils/response.util';
 
 export async function error(error: Error, request: Request, response: Response, next: NextFunction) {
-
+console.log(error)
   let status: number;
   let message: string;
   let errors: any | undefined;

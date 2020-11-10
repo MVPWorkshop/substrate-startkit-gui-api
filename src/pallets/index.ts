@@ -18,6 +18,7 @@ import PalletSudo from './configs/pallet_sudo.config';
 import PalletTimestamp from './configs/pallet_timestamp.config';
 import PalletTransactionPayment from './configs/pallet_transaction_payment.config';
 import PalletGenericAsset from './configs/pallet_generic_asset.config';
+import PalletRecovery from './configs/pallet_recovery.config';
 
 type PalletConfigs = DynamicObject<IPalletConfig<string>, ESupportedPallets, AllKeysRequired>;
 
@@ -31,7 +32,8 @@ export const configs: PalletConfigs = {
   [ESupportedPallets.PALLET_SUDO]: PalletSudo,
   [ESupportedPallets.PALLET_TIMESTAMP]: PalletTimestamp,
   [ESupportedPallets.PALLET_TRANSACTION_PAYMENT]: PalletTransactionPayment,
-  [ESupportedPallets.PALLET_GENERIC_ASSET]: PalletGenericAsset
+  [ESupportedPallets.PALLET_GENERIC_ASSET]: PalletGenericAsset,
+  [ESupportedPallets.PALLET_RECOVERY]: PalletRecovery
 };
 
 export default configs;
