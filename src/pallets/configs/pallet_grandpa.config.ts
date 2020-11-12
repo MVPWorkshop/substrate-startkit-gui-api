@@ -52,13 +52,10 @@ const PalletGrandpaConfig: IPalletConfig<EPalletGrandpaTraits, EPalletGrandpaGen
       gitRepo: defaultGitRepo,
       alias: 'grandpa'
     },
-    /**
-     * @TODO [ADDITIONAL PALLETS]
-     * pallet-finality-tracker
-     */
     additionalPallets: [
       { palletName: ESupportedPallets.PALLET_SESSION, shouldImplement: false },
-      { palletName: ESupportedPallets.PALLET_AUTHORSHIP, shouldImplement: false }
+      { palletName: ESupportedPallets.PALLET_AUTHORSHIP, shouldImplement: false },
+      { palletName: ESupportedPallets.PALLET_FINALITY_TRACKER, shouldImplement: false }
     ]
   },
   runtime: {

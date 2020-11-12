@@ -25,6 +25,7 @@ import PalletSession from './configs/pallet_session.config';
 import PalletBabeConfig from './configs/pallet_babe.config';
 import PalletAuthorityDiscoveryConfig from './configs/pallet_authority_discovery.config';
 import PalletAuthorship from './configs/pallet_authorship.config';
+import PalletFinalityTracker from './configs/pallet_finality_tracker.config';
 
 type PalletConfigs = DynamicObject<IPalletConfig<string>, ESupportedPallets, AllKeysRequired>;
 
@@ -45,7 +46,8 @@ export const configs: PalletConfigs = {
   [ESupportedPallets.PALLET_SESSION]: PalletSession,
   [ESupportedPallets.PALLET_BABE]: PalletBabeConfig,
   [ESupportedPallets.PALLET_AUTHORITY_DISCOVERY]: PalletAuthorityDiscoveryConfig,
-  [ESupportedPallets.PALLET_AUTHORSHIP]: PalletAuthorship
+  [ESupportedPallets.PALLET_AUTHORSHIP]: PalletAuthorship,
+  [ESupportedPallets.PALLET_FINALITY_TRACKER]: PalletFinalityTracker
 };
 
 export default configs;

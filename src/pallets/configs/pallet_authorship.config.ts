@@ -24,7 +24,7 @@ const PalletAuthorshipConfig: IPalletConfig<EPalletAuthorshipTraits> = {
   name: ESupportedPallets.PALLET_AUTHORSHIP,
   metadata: {
     compatibility: ESubstrateVersion.TWO,
-    size: 11900,
+    size: 7270,
     updated: 1596018720,
     license: 'Apache-2.0',
     authors: [ECommonAuthors.PARITY_TECHNOLOGIES],

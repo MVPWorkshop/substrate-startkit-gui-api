@@ -18,7 +18,7 @@ const PalletAuthorityDiscoveryConfig: IPalletConfig<string> = {
   name: ESupportedPallets.PALLET_AUTHORITY_DISCOVERY,
   metadata: {
     compatibility: ESubstrateVersion.TWO,
-    size: 11900,
+    size: 3840,
     updated: 1596018720,
     license: 'Apache-2.0',
     authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
