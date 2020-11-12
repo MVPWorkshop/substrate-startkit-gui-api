@@ -10,15 +10,11 @@ import {
 
 enum EPalletAuthorityDiscoveryTraits {}
 
-enum EPalletAuthorityDiscoveryGenesisFields {
-  keys = 'keys'
-}
-
 const palletDescription = [
   'This module is used by the client/authority-discovery to retrieve the current set of authorities.'
 ].join('\n');
 
-const PalletAuthorityDiscoveryConfig: IPalletConfig<string, EPalletAuthorityDiscoveryGenesisFields> = {
+const PalletAuthorityDiscoveryConfig: IPalletConfig<string> = {
   name: ESupportedPallets.PALLET_AUTHORITY_DISCOVERY,
   metadata: {
     compatibility: ESubstrateVersion.TWO,
@@ -50,17 +46,6 @@ const PalletAuthorityDiscoveryConfig: IPalletConfig<string, EPalletAuthorityDisc
         EPalletModuleParts.MODULE,
         EPalletModuleParts.CALL,
         EPalletModuleParts.STORAGE
-      ]
-    },
-    genesisConfig: {
-      structFields: {
-        [EPalletAuthorityDiscoveryGenesisFields.keys]: 'vec![]'
-      },
-      configStructName: 'AuthorityDiscoveryConfig'
-    },
-    additionalChainSpecCode: {
-      additionalCode: [
-        'use node_template_runtime::{AuthorityDiscoveryConfig};'
       ]
     }
   }

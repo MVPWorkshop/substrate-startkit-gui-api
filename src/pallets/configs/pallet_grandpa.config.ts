@@ -55,10 +55,10 @@ const PalletGrandpaConfig: IPalletConfig<EPalletGrandpaTraits, EPalletGrandpaGen
     /**
      * @TODO [ADDITIONAL PALLETS]
      * pallet-finality-tracker
-     * pallet-authorship
      */
     additionalPallets: [
-      { palletName: ESupportedPallets.PALLET_SESSION, shouldImplement: false }
+      { palletName: ESupportedPallets.PALLET_SESSION, shouldImplement: false },
+      { palletName: ESupportedPallets.PALLET_AUTHORSHIP, shouldImplement: false }
     ]
   },
   runtime: {

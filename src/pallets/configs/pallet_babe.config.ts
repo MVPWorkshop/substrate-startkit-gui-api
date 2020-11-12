@@ -51,7 +51,8 @@ const PalletBabeConfig: IPalletConfig<EPalletBabeTraits, EPalletBabeGenesisField
     },
     additionalPallets: [
       { palletName: ESupportedPallets.PALLET_SESSION, shouldImplement: false },
-      { palletName: ESupportedPallets.PALLET_TIMESTAMP, shouldImplement: false }
+      { palletName: ESupportedPallets.PALLET_TIMESTAMP, shouldImplement: false },
+      { palletName: ESupportedPallets.PALLET_AUTHORSHIP, shouldImplement: false }
     ]
   },
   runtime: {
