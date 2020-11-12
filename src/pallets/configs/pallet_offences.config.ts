@@ -1,0 +1,72 @@
+import {
+  defaultGitRepo,
+  ECommonAuthors,
+  EPalletCategories,
+  EPalletModuleParts,
+  ESubstrateVersion,
+  ESupportedPallets,
+  IPalletConfig
+} from '../pallets.types';
+
+enum EPalletOffencesTraits {
+  Event = 'Event',
+  IdentificationTuple = 'IdentificationTuple',
+  OnOffenceHandler = 'OnOffenceHandler',
+  WeightSoftLimit = 'WeightSoftLimit',
+  WeightInfo = 'WeightInfo'
+}
+
+const palletDescription = [
+  'Tracks reported offences'
+].join('\n');
+
+const PalletOffencesConfig: IPalletConfig<EPalletOffencesTraits> = {
+  name: ESupportedPallets.PALLET_OFFENCES,
+  metadata: {
+    size: 7040,
+    updated: 1596018720,
+    license: 'Apache-2.0',
+    compatibility: ESubstrateVersion.TWO,
+    authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
+    categories: [
+      EPalletCategories.CONSENSUS
+    ],
+    description: palletDescription,
+    shortDescription: 'FRAME offences pallet'
+  },
+  dependencies: {
+    pallet: {
+      alias: 'offences',
+      defaultFeatures: false,
+      package: 'pallet-offences',
+      tag: 'v2.0.0-rc5',
+      version: '2.0.0-rc5',
+      gitRepo: defaultGitRepo
+    },
+    additionalPallets: [
+      { palletName: ESupportedPallets.PALLET_BALANCE, shouldImplement: false },
+    ]
+  },
+  runtime: {
+    palletTraits: {
+      [EPalletOffencesTraits.Event]: 'Event',
+      [EPalletOffencesTraits.WeightInfo]: '()',
+      [EPalletOffencesTraits.IdentificationTuple]: '()',
+      [EPalletOffencesTraits.OnOffenceHandler]: '()',
+      [EPalletOffencesTraits.WeightSoftLimit]: {
+        constantType: 'Weight',
+        value: 'Perbill::from_percent(60) * MaximumBlockWeight::get()'
+      }
+    },
+    constructRuntime: {
+      modules: [
+        EPalletModuleParts.MODULE,
+        EPalletModuleParts.CALL,
+        EPalletModuleParts.STORAGE,
+        EPalletModuleParts.EVENT
+      ]
+    }
+  }
+}
+
+export default PalletOffencesConfig;
