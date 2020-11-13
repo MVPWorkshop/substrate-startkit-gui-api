@@ -152,7 +152,8 @@ export enum ESupportedPallets {
   PALLET_IM_ONLINE = 'pallet-im-online',
   PALLET_ATOMIC_SWAP = 'pallet-atomic-swap',
   PALLET_STAKING = 'pallet-staking',
-  PALLET_BENCHMARK = 'pallet-benchmark'
+  PALLET_BENCHMARK = 'pallet-benchmark',
+  PALLET_MULTISIG = 'pallet-multisig'
 }
 
 export const defaultGitRepo = 'https://github.com/paritytech/substrate.git';

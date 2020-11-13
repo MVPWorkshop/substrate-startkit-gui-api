@@ -31,6 +31,7 @@ import PalletImOnline from './configs/pallet_im_online.config';
 import PalletAtomicSwap from './configs/pallet_atomic_swap.config';
 import PalletStaking from './configs/pallet_staking.config';
 import PalletBenchmark from './configs/pallet_benchmark.config';
+import PalletMultisigConfig from './configs/pallet_multisig.config';
 
 type PalletConfigs = DynamicObject<IPalletConfig<string>, ESupportedPallets, AllKeysRequired>;
 
@@ -57,7 +58,8 @@ export const configs: PalletConfigs = {
   [ESupportedPallets.PALLET_IM_ONLINE]: PalletImOnline,
   [ESupportedPallets.PALLET_ATOMIC_SWAP]: PalletAtomicSwap,
   [ESupportedPallets.PALLET_STAKING]: PalletStaking,
-  [ESupportedPallets.PALLET_BENCHMARK]: PalletBenchmark
+  [ESupportedPallets.PALLET_BENCHMARK]: PalletBenchmark,
+  [ESupportedPallets.PALLET_MULTISIG]: PalletMultisigConfig
 };
 
 export default configs;
