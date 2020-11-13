@@ -96,20 +96,20 @@ const PalletContractsConfig: IPalletConfig<EPalletContractsTraits, EPalletContra
       RentPayment: '()',
       SignedClaimHandicap: 'contracts::DefaultSignedClaimHandicap',
       TombstoneDeposit: {
-        constantType: 'Balance',
+        type: 'Balance',
         value: "16_000_000_000"
       },
       StorageSizeOffset: 'contracts::DefaultStorageSizeOffset',
       RentByteFee: {
-        constantType: 'Balance',
+        type: 'Balance',
         value: "4_000_000_000"
       },
       RentDepositOffset: {
-        constantType: 'Balance',
+        type: 'Balance',
         value: "1_000_000_000_000"
       },
       SurchargeReward: {
-        constantType: 'Balance',
+        type: 'Balance',
         value: "150_000_000_000"
       },
       MaxDepth: 'contracts::DefaultMaxDepth',

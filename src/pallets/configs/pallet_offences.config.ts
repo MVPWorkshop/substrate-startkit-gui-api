@@ -54,7 +54,7 @@ const PalletOffencesConfig: IPalletConfig<EPalletOffencesTraits> = {
       [EPalletOffencesTraits.IdentificationTuple]: '()',
       [EPalletOffencesTraits.OnOffenceHandler]: '()',
       [EPalletOffencesTraits.WeightSoftLimit]: {
-        constantType: 'Weight',
+        type: 'Weight',
         value: 'Perbill::from_percent(60) * MaximumBlockWeight::get()'
       }
     },

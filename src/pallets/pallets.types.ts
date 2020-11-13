@@ -24,8 +24,9 @@ interface IPalletConstructRuntimeConfig {
 
 // Used for genereting a type inside parameter_types! macro
 interface IPalletTraitsConfig {
-  constantType: string;
+  type: string;
   value: string;
+  isNotConst?: boolean;
 }
 
 interface IPalletGenesisConfig<Fields extends string> {
@@ -72,7 +73,7 @@ export interface ICargoComplexDependency {
   version: string;
   alias: string;
   defaultFeatures?: false | string[];
-  gitRepo: string;
+  gitRepo?: string;
   tag: string;
 }
 
@@ -149,7 +150,8 @@ export enum ESupportedPallets {
   PALLET_FINALITY_TRACKER = 'pallet-finality-tracker',
   PALLET_OFFENCES = 'pallet-offences',
   PALLET_IM_ONLINE = 'pallet-im-online',
-  PALLET_ATOMIC_SWAP = 'pallet-atomic-swap'
+  PALLET_ATOMIC_SWAP = 'pallet-atomic-swap',
+  PALLET_STAKING = 'pallet-staking'
 }
 
 export const defaultGitRepo = 'https://github.com/paritytech/substrate.git';

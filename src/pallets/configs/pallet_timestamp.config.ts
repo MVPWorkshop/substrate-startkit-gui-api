@@ -54,7 +54,7 @@ const PalletTimestampConfig: IPalletConfig<EPalletTimestampTraits> = {
     palletTraits: {
       [EPalletTimestampTraits.MinimumPeriod]: {
         value: 'SLOT_DURATION / 2',
-        constantType: 'u64'
+        type: 'u64'
       },
       [EPalletTimestampTraits.Moment]: 'u64',
       [EPalletTimestampTraits.WeightInfo]: '()',

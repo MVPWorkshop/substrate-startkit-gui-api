@@ -44,11 +44,11 @@ const PalletFinalityTrackerConfig: IPalletConfig<EPalletFinalityTrackerTraits> =
     palletTraits: {
       [EPalletFinalityTrackerTraits.OnFinalizationStalled]: '()',
       [EPalletFinalityTrackerTraits.WindowSize]: {
-        constantType: 'BlockNumber',
+        type: 'BlockNumber',
         value: '101'
       },
       [EPalletFinalityTrackerTraits.ReportLatency]: {
-        constantType: 'BlockNumber',
+        type: 'BlockNumber',
         value: '1000'
       },
     },

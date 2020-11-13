@@ -129,6 +129,12 @@ git = 'https://github.com/paritytech/substrate.git'
 tag = 'v2.0.0-rc5'
 version = '2.0.0-rc5'
 
+[dependencies.sp-staking]
+default-features = false
+git = 'https://github.com/paritytech/substrate.git'
+tag = 'v2.0.0-rc5'
+version = '2.0.0-rc5'
+
 [dependencies.sudo]
 default-features = false
 git = 'https://github.com/paritytech/substrate.git'
@@ -185,6 +191,7 @@ std = [
     'sp-std/std',
     'sp-transaction-pool/std',
     'sp-version/std',
+    'sp-staking/std',
     'sudo/std',
     'system/std',
     'timestamp/std',

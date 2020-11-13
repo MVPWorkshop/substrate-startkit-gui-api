@@ -57,19 +57,19 @@ const PalletRecoveryConfig: IPalletConfig<EPalletRecoveryTraits> = {
       [EPalletRecoveryTraits.Call]: 'Call',
       [EPalletRecoveryTraits.Currency]: 'Balances',
       [EPalletRecoveryTraits.ConfigDepositBase]: {
-        constantType: 'Balance',
+        type: 'Balance',
         value: '5_000_000_000'
       },
       [EPalletRecoveryTraits.FriendDepositFactor]: {
-        constantType: 'Balance',
+        type: 'Balance',
         value: '50_000_000'
       },
       [EPalletRecoveryTraits.MaxFriends]: {
-        constantType: 'u16',
+        type: 'u16',
         value: '9'
       },
       [EPalletRecoveryTraits.RecoveryDeposit]: {
-        constantType: 'Balance',
+        type: 'Balance',
         value: '25_000_000_000'
       }
     },

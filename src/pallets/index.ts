@@ -23,12 +23,13 @@ import PalletVesting from './configs/pallet_vesting.config';
 import PalletAssets from './configs/pallet_assets.config';
 import PalletSession from './configs/pallet_session.config';
 import PalletBabeConfig from './configs/pallet_babe.config';
-import PalletAuthorityDiscoveryConfig from './configs/pallet_authority_discovery.config';
+import PalletAuthorityDiscovery from './configs/pallet_authority_discovery.config';
 import PalletAuthorship from './configs/pallet_authorship.config';
 import PalletFinalityTracker from './configs/pallet_finality_tracker.config';
 import PalletOffences from './configs/pallet_offences.config';
-import PalletImOnlineConfig from './configs/pallet_im_online.config';
+import PalletImOnline from './configs/pallet_im_online.config';
 import PalletAtomicSwap from './configs/pallet_atomic_swap.config';
+import PalletStaking from './configs/pallet_staking.config';
 
 type PalletConfigs = DynamicObject<IPalletConfig<string>, ESupportedPallets, AllKeysRequired>;
 
@@ -48,12 +49,13 @@ export const configs: PalletConfigs = {
   [ESupportedPallets.PALLET_ASSETS]: PalletAssets,
   [ESupportedPallets.PALLET_SESSION]: PalletSession,
   [ESupportedPallets.PALLET_BABE]: PalletBabeConfig,
-  [ESupportedPallets.PALLET_AUTHORITY_DISCOVERY]: PalletAuthorityDiscoveryConfig,
+  [ESupportedPallets.PALLET_AUTHORITY_DISCOVERY]: PalletAuthorityDiscovery,
   [ESupportedPallets.PALLET_AUTHORSHIP]: PalletAuthorship,
   [ESupportedPallets.PALLET_FINALITY_TRACKER]: PalletFinalityTracker,
   [ESupportedPallets.PALLET_OFFENCES]: PalletOffences,
-  [ESupportedPallets.PALLET_IM_ONLINE]: PalletImOnlineConfig,
-  [ESupportedPallets.PALLET_ATOMIC_SWAP]: PalletAtomicSwap
+  [ESupportedPallets.PALLET_IM_ONLINE]: PalletImOnline,
+  [ESupportedPallets.PALLET_ATOMIC_SWAP]: PalletAtomicSwap,
+  [ESupportedPallets.PALLET_STAKING]: PalletStaking
 };
 
 export default configs;

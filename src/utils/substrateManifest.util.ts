@@ -42,7 +42,7 @@ class SubstrateManifestUtil {
     let dependencyCode = '';
     dependencyCode += `[dependencies.${alias}]\n`;
     dependencyCode += `default-features = ${defaultFeatures}\n`;
-    dependencyCode += `git = '${gitRepo}'\n`;
+    gitRepo && (dependencyCode += `git = '${gitRepo}'\n`);
     dependencyCode += `package = '${palletPackageName}'\n`;
     dependencyCode += `tag = '${tag}'\n`;
     dependencyCode += `version = '${version}'\n\n`;
@@ -105,7 +105,7 @@ class SubstrateManifestUtil {
 
     for (const dependency of this._palletConfig.dependencies.additionalDeps) {
       if (dependency.simple === true) {
-        newSimpleDependenciesCode += `\n${dependency.package} = ${dependency.package}`;
+        newSimpleDependenciesCode += `\n${dependency.package} = '${dependency.version}'`;
       } else {
         newManifestFeaturesCode = this.generateComplexDependencyConfig(dependency) + newManifestFeaturesCode;
         newStd += `${tabs(1)}'${dependency.alias}/std',\n`

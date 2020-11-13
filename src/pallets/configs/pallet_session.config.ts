@@ -57,7 +57,8 @@ const PalletSessionConfig: IPalletConfig<EPalletSessionTraits, EPalletSessionGen
     },
     additionalPallets: [
       { palletName: ESupportedPallets.PALLET_TIMESTAMP, shouldImplement: false },
-      { palletName: ESupportedPallets.PALLET_BABE, shouldImplement: true }
+      { palletName: ESupportedPallets.PALLET_BABE, shouldImplement: true },
+      { palletName: ESupportedPallets.PALLET_STAKING, shouldImplement: true }
     ]
   },
   runtime: {
@@ -71,7 +72,7 @@ const PalletSessionConfig: IPalletConfig<EPalletSessionTraits, EPalletSessionGen
       [EPalletSessionTraits.SessionHandler]: '<opaque::SessionKeys as OpaqueKeys>::KeyTypeIdProviders',
       [EPalletSessionTraits.Keys]: 'opaque::SessionKeys',
       [EPalletSessionTraits.DisabledValidatorsThreshold]: {
-        constantType: 'Perbill',
+        type: 'Perbill',
         value: 'Perbill::from_percent(17)'
       },
       [EPalletSessionTraits.WeightInfo]: '()'
@@ -98,8 +99,8 @@ const PalletSessionConfig: IPalletConfig<EPalletSessionTraits, EPalletSessionGen
       'use sp_runtime::traits::{ OpaqueKeys };',
       [
         'impl session::historical::Trait for Runtime {',
-        `${tabs(1)}type FullIdentification = ();`,
-        `${tabs(1)}type FullIdentificationOf = ();`,
+        `${tabs(1)}type FullIdentification = staking::Exposure<AccountId, Balance>;`,
+        `${tabs(1)}type FullIdentificationOf = staking::ExposureOf<Runtime>;`,
         '}'
       ].join('\n')
     ],

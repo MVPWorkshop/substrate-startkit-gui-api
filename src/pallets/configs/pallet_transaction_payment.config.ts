@@ -60,7 +60,7 @@ const PalletTransactionPaymentConfig: IPalletConfig<EPalletTransactionPaymentTra
       [EPalletTransactionPaymentTraits.WeightToFee]: 'IdentityFee<Balance>',
       [EPalletTransactionPaymentTraits.TransactionByteFee]: {
         value: '1',
-        constantType: 'Balance'
+        type: 'Balance'
       }
     },
     constructRuntime: {

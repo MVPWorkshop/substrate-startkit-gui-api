@@ -69,16 +69,16 @@ const PalletNicksConfig: IPalletConfig<EPalletNicksTraits> = {
       [EPalletNicksTraits.ForceOrigin]: 'system::EnsureRoot<AccountId>',
       [EPalletNicksTraits.MinLength]: {
         value: '8',
-        constantType: 'usize'
+        type: 'usize'
       },
       [EPalletNicksTraits.MaxLength]: {
         value: '32',
-        constantType: 'usize'
+        type: 'usize'
       },
       [EPalletNicksTraits.Slashed]: '()',
       [EPalletNicksTraits.ReservationFee]: {
         value: '100',
-        constantType: 'u128'
+        type: 'u128'
       }
     }
   }

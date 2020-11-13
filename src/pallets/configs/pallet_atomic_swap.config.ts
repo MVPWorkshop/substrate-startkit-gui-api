@@ -46,7 +46,7 @@ const PalletAtomicSwapConfig: IPalletConfig<EPalletAtomicSwapTraits> = {
       [EPalletAtomicSwapTraits.Event]: 'Event',
       [EPalletAtomicSwapTraits.SwapAction]: 'atomic_swap::BalanceSwapAction<AccountId, Balances>',
       [EPalletAtomicSwapTraits.ProofLimit]: {
-        constantType: 'u32',
+        type: 'u32',
         value: '10'
       }
     },

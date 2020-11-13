@@ -74,7 +74,7 @@ class SubstrateRuntimeUtil {
       } else {
         // If object, it's a bit more sophisticated so we need to first add it to the
         // parameter types and then we can use it
-        parameterTypes += `${tabs(1)}pub const ${traitName}: ${trait.constantType} = ${trait.value};\n`
+        parameterTypes += `${tabs(1)}pub ${trait.isNotConst ? '' : 'const'} ${traitName}: ${trait.type} = ${trait.value};\n`
 
         // Adding the trait
         traitImplementation += `${tabs(1)}type ${traitName} = ${traitName};\n`;

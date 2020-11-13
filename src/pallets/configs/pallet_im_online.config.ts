@@ -7,7 +7,6 @@ import {
   ESupportedPallets,
   IPalletConfig
 } from '../pallets.types';
-import { tabs } from '../../utils/common.util';
 
 enum EPalletImOnlineTraits {
   AuthorityId = 'AuthorityId',
@@ -62,11 +61,11 @@ const PalletImOnlineConfig: IPalletConfig<EPalletImOnlineTraits, EPalletImOnline
       [EPalletImOnlineTraits.WeightInfo]: '()',
       [EPalletImOnlineTraits.ReportUnresponsiveness]: '()',
       [EPalletImOnlineTraits.SessionDuration]: {
-        constantType: 'BlockNumber',
+        type: 'BlockNumber',
         value: '200'
       },
       [EPalletImOnlineTraits.UnsignedPriority]: {
-        constantType: 'TransactionPriority',
+        type: 'TransactionPriority',
         value: 'TransactionPriority::max_value()'
       }
     },
@@ -85,14 +84,7 @@ const PalletImOnlineConfig: IPalletConfig<EPalletImOnlineTraits, EPalletImOnline
       }
     },
     additionalRuntimeLibCode: [
-      'use im_online::sr25519::AuthorityId as ImOnlineId;',
-      'use sp_runtime::transaction_validity::{ TransactionPriority };',
-      [
-        'impl<C> system::offchain::SendTransactionTypes<C> for Runtime where Call: From<C> {',
-        `${tabs(1)}type Extrinsic = UncheckedExtrinsic;`,
-        `${tabs(1)}type OverarchingCall = Call;`,
-        '}'
-      ].join('\n')
+      'use im_online::sr25519::AuthorityId as ImOnlineId;'
     ],
     genesisConfig: {
       configStructName: 'ImOnlineConfig',

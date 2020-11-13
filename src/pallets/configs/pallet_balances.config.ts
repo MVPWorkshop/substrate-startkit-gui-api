@@ -62,7 +62,7 @@ const PalletBalancesConfig: IPalletConfig<EPalletBalancesTraits, EPalletBalances
       Event: 'Event',
       DustRemoval: '()',
       ExistentialDeposit: {
-        constantType: 'u128',
+        type: 'u128',
         value: '500'
       },
       AccountStore: 'System',

@@ -58,11 +58,11 @@ const PalletBabeConfig: IPalletConfig<EPalletBabeTraits, EPalletBabeGenesisField
   runtime: {
     palletTraits: {
       [EPalletBabeTraits.EpochDuration]: {
-        constantType: 'u64',
+        type: 'u64',
         value: '200'
       },
       [EPalletBabeTraits.ExpectedBlockTime]: {
-        constantType: 'u64',
+        type: 'u64',
         value: '3000'
       },
       [EPalletBabeTraits.EpochChangeTrigger]: 'babe::ExternalTrigger',

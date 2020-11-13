@@ -7,12 +7,17 @@ import SubstrateRuntimeUtil from '../utils/substrateRuntime.util';
 import SubstrateManifestUtil from '../utils/substrateManifest.util';
 
 // Map indicating if the pallet has been generated or not
-type GeneratedPalletsMap = Map<ESupportedPallets, boolean>;
+type GeneratedPalletsMap = Map<ESupportedPallets, EPalletGenerationStatus>;
+
+enum EPalletGenerationStatus {
+  QUEUED = 'QUEUED',
+  GENERATED = 'GENERATED'
+}
 
 class CodeGeneratorService {
 
   private _templatePath = './generator/template'
-  private _generatedPallets: GeneratedPalletsMap = new Map<ESupportedPallets, boolean>();
+  private _generatedPallets: GeneratedPalletsMap = new Map<ESupportedPallets, EPalletGenerationStatus>();
 
   private _runtimeCode = '';
   private _runtimeManifestCode = '';
@@ -21,7 +26,7 @@ class CodeGeneratorService {
   constructor() {
     // Setting the already "generated" pallet map for the pallets included by default
     palletsIncludedInTemplate.map(palletName => {
-      this._generatedPallets.set(palletName, true)
+      this._generatedPallets.set(palletName, EPalletGenerationStatus.GENERATED)
     });
   }
 
@@ -56,19 +61,25 @@ class CodeGeneratorService {
   private addPalletToCode(palletName: ESupportedPallets)  {
 
     const isPalletGenerated = this._generatedPallets.get(palletName);
-    if (isPalletGenerated) {
+    if (isPalletGenerated && isPalletGenerated === EPalletGenerationStatus.GENERATED) {
       return; // Checking to see if this pallet was already generated, no point in doing it again.
     }
 
     const config = Pallets[palletName];
+    this._generatedPallets.set(palletName, EPalletGenerationStatus.QUEUED);
 
     // Checking if config specified any additional (dependant) pallets
     if (config.dependencies.additionalPallets) {
       // Loop through dependencies of each pallet to ensure that it's in code
       for (const palletDependency of config.dependencies.additionalPallets) {
+
+        // Some dependencies can be recursively dependant on each other, so that we escape an infinite loop
+        // we check if the dependency is already queued to be generated, in which case we skip it
+        const isDependencyQueued = this._generatedPallets.get(palletDependency.palletName) === EPalletGenerationStatus.QUEUED;
+
         // We call this function recursively to add new pallets and by adding
         // the dependencies first we ensure the code is in correct order.
-        if (palletDependency.shouldImplement) {
+        if (palletDependency.shouldImplement && !isDependencyQueued) {
           this.addPalletToCode(palletDependency.palletName);
         }
       }
@@ -76,7 +87,7 @@ class CodeGeneratorService {
 
     this.updateRuntime(config);
     this.updateManifest(config);
-    this._generatedPallets.set(palletName, true);
+    this._generatedPallets.set(palletName, EPalletGenerationStatus.GENERATED);
   }
 
   /**
@@ -97,7 +108,7 @@ class CodeGeneratorService {
       this._runtimeCode = (await FileUtil.readFile(runtimeLibPath)).toString();
       this._runtimeManifestCode = (await FileUtil.readFile(runtimeManifestPath)).toString();
       this._chainspecCode = (await FileUtil.readFile(chainspecPath)).toString();
-console.log(pallets)
+
       // Looping through given pallets to add them to code
       for (const pallet of pallets) {
         this.addPalletToCode(pallet);

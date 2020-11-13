@@ -53,7 +53,7 @@ const PalletVestingConfig: IPalletConfig<EPalletVestingTraits> = {
       [EPalletVestingTraits.Currency]: 'Balances',
       [EPalletVestingTraits.BlockNumberToBalance]: '()',
       [EPalletVestingTraits.MinVestedTransfer]: {
-        constantType: 'Balance',
+        type: 'Balance',
         value: '1000'
       },
       [EPalletVestingTraits.WeightInfo]: '()'

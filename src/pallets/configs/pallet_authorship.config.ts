@@ -52,7 +52,7 @@ const PalletAuthorshipConfig: IPalletConfig<EPalletAuthorshipTraits> = {
       [EPalletAuthorshipTraits.FilterUncle]: '()',
       [EPalletAuthorshipTraits.FindAuthor]: 'session::FindAccountFromAuthorIndex<Self, Babe>',
       [EPalletAuthorshipTraits.UncleGenerations]: {
-        constantType: 'BlockNumber',
+        type: 'BlockNumber',
         value: '5'
       }
     },

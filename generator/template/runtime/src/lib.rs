@@ -38,6 +38,13 @@ pub use frame_support::{
 	},
 };
 
+use system::{EnsureRoot, EnsureOneOf};
+use sp_runtime::transaction_validity::{ TransactionPriority };
+impl<C> system::offchain::SendTransactionTypes<C> for Runtime where Call: From<C> {
+	type Extrinsic = UncheckedExtrinsic;
+	type OverarchingCall = Call;
+}
+
 //Additional code
 
 /// An index to a block.
