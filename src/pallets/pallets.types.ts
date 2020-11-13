@@ -106,7 +106,8 @@ export enum EPalletCategories {
   GOVERNANCE = 'GOVERNANCE',
   IDENTITY = 'IDENTITY',
   RUNTIME = 'RUNTIME',
-  SMART_CONTRACTS = 'SMART_CONTRACTS'
+  SMART_CONTRACTS = 'SMART_CONTRACTS',
+  OTHER = 'OTHER'
 }
 
 export enum ECommonAuthors {
@@ -147,7 +148,8 @@ export enum ESupportedPallets {
   PALLET_AUTHORSHIP = 'pallet-authorship',
   PALLET_FINALITY_TRACKER = 'pallet-finality-tracker',
   PALLET_OFFENCES = 'pallet-offences',
-  PALLET_IM_ONLINE = 'pallet-im-online'
+  PALLET_IM_ONLINE = 'pallet-im-online',
+  PALLET_ATOMIC_SWAP = 'pallet-atomic-swap'
 }
 
 export const defaultGitRepo = 'https://github.com/paritytech/substrate.git';

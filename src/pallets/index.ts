@@ -28,6 +28,7 @@ import PalletAuthorship from './configs/pallet_authorship.config';
 import PalletFinalityTracker from './configs/pallet_finality_tracker.config';
 import PalletOffences from './configs/pallet_offences.config';
 import PalletImOnlineConfig from './configs/pallet_im_online.config';
+import PalletAtomicSwap from './configs/pallet_atomic_swap.config';
 
 type PalletConfigs = DynamicObject<IPalletConfig<string>, ESupportedPallets, AllKeysRequired>;
 
@@ -51,7 +52,8 @@ export const configs: PalletConfigs = {
   [ESupportedPallets.PALLET_AUTHORSHIP]: PalletAuthorship,
   [ESupportedPallets.PALLET_FINALITY_TRACKER]: PalletFinalityTracker,
   [ESupportedPallets.PALLET_OFFENCES]: PalletOffences,
-  [ESupportedPallets.PALLET_IM_ONLINE]: PalletImOnlineConfig
+  [ESupportedPallets.PALLET_IM_ONLINE]: PalletImOnlineConfig,
+  [ESupportedPallets.PALLET_ATOMIC_SWAP]: PalletAtomicSwap
 };
 
 export default configs;

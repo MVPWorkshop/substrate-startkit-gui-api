@@ -29,7 +29,12 @@ export interface IPalletAttributes {
   modelName: 'pallets',
   timestamps: true,
   underscored: true,
-  freezeTableName: true
+  freezeTableName: true,
+  defaultScope: {
+    order: [
+      ['name', 'ASC']
+    ]
+  }
 })
 export default class Pallet extends Model<Pallet> implements IPalletAttributes {
   @PrimaryKey
