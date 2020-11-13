@@ -27,6 +27,7 @@ import PalletAuthorityDiscoveryConfig from './configs/pallet_authority_discovery
 import PalletAuthorship from './configs/pallet_authorship.config';
 import PalletFinalityTracker from './configs/pallet_finality_tracker.config';
 import PalletOffences from './configs/pallet_offences.config';
+import PalletImOnlineConfig from './configs/pallet_im_online.config';
 
 type PalletConfigs = DynamicObject<IPalletConfig<string>, ESupportedPallets, AllKeysRequired>;
 
@@ -49,7 +50,8 @@ export const configs: PalletConfigs = {
   [ESupportedPallets.PALLET_AUTHORITY_DISCOVERY]: PalletAuthorityDiscoveryConfig,
   [ESupportedPallets.PALLET_AUTHORSHIP]: PalletAuthorship,
   [ESupportedPallets.PALLET_FINALITY_TRACKER]: PalletFinalityTracker,
-  [ESupportedPallets.PALLET_OFFENCES]: PalletOffences
+  [ESupportedPallets.PALLET_OFFENCES]: PalletOffences,
+  [ESupportedPallets.PALLET_IM_ONLINE]: PalletImOnlineConfig
 };
 
 export default configs;

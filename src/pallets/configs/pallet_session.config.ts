@@ -7,6 +7,7 @@ import {
   ESupportedPallets,
   IPalletConfig
 } from '../pallets.types';
+import { tabs } from '../../utils/common.util';
 
 enum EPalletSessionTraits {
   Event = 'Event',
@@ -94,7 +95,13 @@ const PalletSessionConfig: IPalletConfig<EPalletSessionTraits, EPalletSessionGen
       configStructName: 'SessionConfig'
     },
     additionalRuntimeLibCode: [
-      'use sp_runtime::traits::{ OpaqueKeys };'
+      'use sp_runtime::traits::{ OpaqueKeys };',
+      [
+        'impl session::historical::Trait for Runtime {',
+        `${tabs(1)}type FullIdentification = ();`,
+        `${tabs(1)}type FullIdentificationOf = ();`,
+        '}'
+      ].join('\n')
     ],
     additionalChainSpecCode: {
       additionalCode: [

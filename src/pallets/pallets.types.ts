@@ -146,7 +146,8 @@ export enum ESupportedPallets {
   PALLET_AUTHORITY_DISCOVERY = 'pallet-authority-discovery',
   PALLET_AUTHORSHIP = 'pallet-authorship',
   PALLET_FINALITY_TRACKER = 'pallet-finality-tracker',
-  PALLET_OFFENCES = 'pallet-offences'
+  PALLET_OFFENCES = 'pallet-offences',
+  PALLET_IM_ONLINE = 'pallet-im-online'
 }
 
 export const defaultGitRepo = 'https://github.com/paritytech/substrate.git';
