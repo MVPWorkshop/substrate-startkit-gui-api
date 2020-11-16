@@ -72,12 +72,14 @@ class SubstrateRuntimeUtil {
         // If trait is a string, we just copy the value to the right side of the trait name
         traitImplementation += `${tabs(1)}type ${traitName} = ${trait};\n`;
       } else {
+        const paramName = trait.customName || traitName;
+
         // If object, it's a bit more sophisticated so we need to first add it to the
         // parameter types and then we can use it
-        parameterTypes += `${tabs(1)}pub ${trait.isNotConst ? '' : 'const'} ${traitName}: ${trait.type} = ${trait.value};\n`
+        parameterTypes += `${tabs(1)}pub ${trait.isNotConst ? '' : 'const'} ${paramName}: ${trait.type} = ${trait.value};\n`
 
         // Adding the trait
-        traitImplementation += `${tabs(1)}type ${traitName} = ${traitName};\n`;
+        traitImplementation += `${tabs(1)}type ${traitName} = ${paramName};\n`;
 
         // We add +1 to the counter
         customParameterCounter++;

@@ -28,10 +28,10 @@ use sp_version::NativeVersion;
 pub use sp_runtime::BuildStorage;
 pub use timestamp::Call as TimestampCall;
 pub use balances::Call as BalancesCall;
-pub use sp_runtime::{Permill, Perbill};
+pub use sp_runtime::{Permill, Perbill, Percent};
 pub use frame_support::{
 	construct_runtime, parameter_types, StorageValue,
-	traits::{KeyOwnerProofSystem, Randomness},
+	traits::{KeyOwnerProofSystem, Randomness, LockIdentifier},
 	weights::{
 		Weight, IdentityFee,
 		constants::{BlockExecutionWeight, ExtrinsicBaseWeight, RocksDbWeight, WEIGHT_PER_SECOND},

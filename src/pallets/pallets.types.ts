@@ -22,8 +22,9 @@ interface IPalletConstructRuntimeConfig {
       >
 }
 
-// Used for genereting a type inside parameter_types! macro
+// Used for generating a type inside parameter_types! macro
 interface IPalletTraitsConfig {
+  customName?: string;
   type: string;
   value: string;
   isNotConst?: boolean;
@@ -156,7 +157,8 @@ export enum ESupportedPallets {
   PALLET_MULTISIG = 'pallet-multisig',
   PALLET_UTILITY = 'pallet-utility',
   PALLET_INDICES = 'pallet-indices',
-  PALLET_COLLECTIVE = 'pallet-collective'
+  PALLET_COLLECTIVE = 'pallet-collective',
+  PALLET_ELECTIONS_PHRAGMEN = 'pallet-elections-phragmen'
 }
 
 export const defaultGitRepo = 'https://github.com/paritytech/substrate.git';
