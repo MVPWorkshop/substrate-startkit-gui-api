@@ -33,6 +33,7 @@ import PalletStaking from './configs/pallet_staking.config';
 import PalletBenchmark from './configs/pallet_benchmark.config';
 import PalletMultisig from './configs/pallet_multisig.config';
 import PalletUtility from './configs/pallet_utility.config';
+import PalletIndices from './configs/pallet_indices.config';
 
 type PalletConfigs = DynamicObject<IPalletConfig<string>, ESupportedPallets, AllKeysRequired>;
 
@@ -61,7 +62,8 @@ export const configs: PalletConfigs = {
   [ESupportedPallets.PALLET_STAKING]: PalletStaking,
   [ESupportedPallets.PALLET_BENCHMARK]: PalletBenchmark,
   [ESupportedPallets.PALLET_MULTISIG]: PalletMultisig,
-  [ESupportedPallets.PALLET_UTILITY]: PalletUtility
+  [ESupportedPallets.PALLET_UTILITY]: PalletUtility,
+  [ESupportedPallets.PALLET_INDICES]: PalletIndices
 };
 
 export default configs;
