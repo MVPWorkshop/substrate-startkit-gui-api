@@ -38,6 +38,7 @@ import PalletCollective from './configs/pallet_collective.config';
 import PalletElectionsPhragmen from './configs/pallet_elections_phragmen.config';
 import PalletElections from './configs/pallet_elections.config';
 import PalletMembership from './configs/pallet_membership.config';
+import PalletTreasury from './configs/pallet_treasury.config';
 
 type PalletConfigs = DynamicObject<IPalletConfig<string>, ESupportedPallets, AllKeysRequired>;
 
@@ -71,7 +72,8 @@ export const configs: PalletConfigs = {
   [ESupportedPallets.PALLET_COLLECTIVE]: PalletCollective,
   [ESupportedPallets.PALLET_ELECTIONS_PHRAGMEN]: PalletElectionsPhragmen,
   [ESupportedPallets.PALLET_ELECTIONS]: PalletElections,
-  [ESupportedPallets.PALLET_MEMBERSHIP]: PalletMembership
+  [ESupportedPallets.PALLET_MEMBERSHIP]: PalletMembership,
+  [ESupportedPallets.PALLET_TREASURY]: PalletTreasury
 };
 
 export default configs;
