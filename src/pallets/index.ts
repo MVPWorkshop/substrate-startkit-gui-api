@@ -36,6 +36,7 @@ import PalletUtility from './configs/pallet_utility.config';
 import PalletIndices from './configs/pallet_indices.config';
 import PalletCollective from './configs/pallet_collective.config';
 import PalletElectionsPhragmen from './configs/pallet_elections_phragmen.config';
+import PalletElections from './configs/pallet_elections.config';
 
 type PalletConfigs = DynamicObject<IPalletConfig<string>, ESupportedPallets, AllKeysRequired>;
 
@@ -67,7 +68,8 @@ export const configs: PalletConfigs = {
   [ESupportedPallets.PALLET_UTILITY]: PalletUtility,
   [ESupportedPallets.PALLET_INDICES]: PalletIndices,
   [ESupportedPallets.PALLET_COLLECTIVE]: PalletCollective,
-  [ESupportedPallets.PALLET_ELECTIONS_PHRAGMEN]: PalletElectionsPhragmen
+  [ESupportedPallets.PALLET_ELECTIONS_PHRAGMEN]: PalletElectionsPhragmen,
+  [ESupportedPallets.PALLET_ELECTIONS]: PalletElections
 };
 
 export default configs;
