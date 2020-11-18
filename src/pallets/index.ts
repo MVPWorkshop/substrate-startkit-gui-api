@@ -41,6 +41,7 @@ import PalletMembership from './configs/pallet_membership.config';
 import PalletTreasury from './configs/pallet_treasury.config';
 import PalletIdentity from './configs/pallet_identity.config';
 import PalletScheduler from './configs/pallet_scheduler.config';
+import PalletDemocracy from './configs/pallet_democracy.config';
 
 type PalletConfigs = DynamicObject<IPalletConfig<string>, ESupportedPallets, AllKeysRequired>;
 
@@ -77,7 +78,8 @@ export const configs: PalletConfigs = {
   [ESupportedPallets.PALLET_MEMBERSHIP]: PalletMembership,
   [ESupportedPallets.PALLET_TREASURY]: PalletTreasury,
   [ESupportedPallets.PALLET_IDENTITY]: PalletIdentity,
-  [ESupportedPallets.PALLET_SCHEDULER]: PalletScheduler
+  [ESupportedPallets.PALLET_SCHEDULER]: PalletScheduler,
+  [ESupportedPallets.PALLET_DEMOCRACY]: PalletDemocracy
 };
 
 export default configs;
