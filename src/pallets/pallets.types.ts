@@ -162,7 +162,8 @@ export enum ESupportedPallets {
   PALLET_ELECTIONS = 'pallet-elections',
   PALLET_MEMBERSHIP = 'pallet-membership',
   PALLET_TREASURY = 'pallet-treasury',
-  PALLET_IDENTITY = 'pallet-identity'
+  PALLET_IDENTITY = 'pallet-identity',
+  PALLET_SCHEDULER = 'pallet-scheduler'
 }
 
 export const defaultGitRepo = 'https://github.com/paritytech/substrate.git';
