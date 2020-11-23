@@ -45,6 +45,7 @@ import PalletDemocracy from './configs/pallet_democracy.config';
 import PalletSociety from './configs/pallet_society.config';
 import PalletScoredPool from './configs/pallet_scored_pool.config';
 import PalletEvm from './configs/pallet_evm.config';
+import PalletProxy from './configs/pallet_proxy.config';
 
 type PalletConfigs = DynamicObject<IPalletConfig<string>, ESupportedPallets, AllKeysRequired>;
 
@@ -85,7 +86,8 @@ export const configs: PalletConfigs = {
   [ESupportedPallets.PALLET_DEMOCRACY]: PalletDemocracy,
   [ESupportedPallets.PALLET_SOCIETY]: PalletSociety,
   [ESupportedPallets.PALLET_SCORED_POOL]: PalletScoredPool,
-  [ESupportedPallets.PALLET_EVM]: PalletEvm
+  [ESupportedPallets.PALLET_EVM]: PalletEvm,
+  [ESupportedPallets.PALLET_PROXY]: PalletProxy
 };
 
 export default configs;
