@@ -1,5 +1,4 @@
 import {
-  defaultGitRepo,
   ECommonAuthors,
   EPalletCategories,
   EPalletModuleParts,
@@ -36,7 +35,7 @@ const PalletIdentityConfig: IPalletConfig<EPalletIdentityTraits> = {
   metadata: {
     compatibility: ESubstrateVersion.TWO,
     size: 15900,
-    updated: 1596018720,
+    updated: 1600801158,
     license: 'Apache-2.0',
     authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
     categories: [EPalletCategories.IDENTITY],
@@ -46,10 +45,8 @@ const PalletIdentityConfig: IPalletConfig<EPalletIdentityTraits> = {
   dependencies: {
     pallet: {
       alias: 'identity',
-      gitRepo: defaultGitRepo,
       package: 'pallet-identity',
-      tag: 'v2.0.0-rc5',
-      version: '2.0.0-rc5',
+      version: '2.0.0',
       defaultFeatures: false
     },
     additionalPallets: [
@@ -94,12 +91,10 @@ const PalletIdentityConfig: IPalletConfig<EPalletIdentityTraits> = {
         EPalletModuleParts.MODULE,
         EPalletModuleParts.CALL,
         EPalletModuleParts.STORAGE,
-        EPalletModuleParts.EVENT,
-        EPalletModuleParts.CONFIG
+        EPalletModuleParts.EVENT
       ],
       generic: {
-        [EPalletModuleParts.EVENT]: true,
-        [EPalletModuleParts.CONFIG]: true
+        [EPalletModuleParts.EVENT]: true
       }
     }
   }

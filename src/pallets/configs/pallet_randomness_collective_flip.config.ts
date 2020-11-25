@@ -1,5 +1,4 @@
 import {
-  defaultGitRepo,
   ECommonAuthors,
   EPalletCategories,
   EPalletModuleParts,
@@ -18,7 +17,7 @@ const PalletRandomnessCollectiveFlipConfig: IPalletConfig = {
   name: ESupportedPallets.PALLET_RANDOMNESS_COLLECTIVE_FLIP,
   metadata: {
     size: 4730,
-    updated: 1596018720,
+    updated: 1600801158,
     license: 'Apache-2.0',
     compatibility: ESubstrateVersion.TWO,
     authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
@@ -32,9 +31,7 @@ const PalletRandomnessCollectiveFlipConfig: IPalletConfig = {
     pallet: {
       defaultFeatures: false,
       package: 'pallet-randomness-collective-flip',
-      tag: 'v2.0.0-rc5',
-      version: '2.0.0-rc5',
-      gitRepo: defaultGitRepo,
+      version: '2.0.0',
       alias: 'randomness-collective-flip'
     }
   },

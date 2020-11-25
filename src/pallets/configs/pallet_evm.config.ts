@@ -1,5 +1,4 @@
 import {
-  defaultGitRepo,
   ECommonAuthors,
   EPalletCategories,
   EPalletModuleParts,
@@ -33,7 +32,7 @@ const PalletEvmConfig: IPalletConfig<EPalletEvmTraits, EPalletEvmGenesisFields> 
   metadata: {
     compatibility: ESubstrateVersion.TWO,
     size: 6480,
-    updated: 1596018720,
+    updated: 1600801158,
     license: 'Apache-2.0',
     authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
     categories: [EPalletCategories.SMART_CONTRACTS],
@@ -43,10 +42,8 @@ const PalletEvmConfig: IPalletConfig<EPalletEvmTraits, EPalletEvmGenesisFields> 
   dependencies: {
     pallet: {
       alias: 'evm',
-      gitRepo: defaultGitRepo,
       package: 'pallet-evm',
-      tag: 'v2.0.0-rc5',
-      version: '2.0.0-rc5',
+      version: '2.0.0',
       defaultFeatures: false
     },
     additionalPallets: [
@@ -65,7 +62,8 @@ const PalletEvmConfig: IPalletConfig<EPalletEvmTraits, EPalletEvmGenesisFields> 
       [EPalletEvmTraits.ChainId]: {
         customName: 'SystemChainId',
         type: 'u64',
-        value: 'sp_io::misc::chain_id()'
+        value: 'sp_io::misc::chain_id()',
+        isNotConst: true
       },
     },
     constructRuntime: {

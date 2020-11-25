@@ -1,5 +1,4 @@
 import {
-  defaultGitRepo,
   ECommonAuthors,
   EPalletCategories,
   EPalletModuleParts,
@@ -32,7 +31,7 @@ const PalletTransactionPaymentConfig: IPalletConfig<EPalletTransactionPaymentTra
   metadata: {
     compatibility: ESubstrateVersion.TWO,
     size: 7160,
-    updated: 1596018720,
+    updated: 1600801158,
     license: 'Apache-2.0',
     authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
     categories: [EPalletCategories.RUNTIME],
@@ -41,11 +40,9 @@ const PalletTransactionPaymentConfig: IPalletConfig<EPalletTransactionPaymentTra
   },
   dependencies: {
     pallet: {
-      alias: 'transaction-payment',
-      gitRepo: defaultGitRepo,
+      alias: 'pallet-transaction-payment',
       package: 'pallet-transaction-payment',
-      tag: 'v2.0.0-rc5',
-      version: '2.0.0-rc5',
+      version: '2.0.0',
       defaultFeatures: false,
     },
     additionalPallets: [

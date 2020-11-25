@@ -1,5 +1,4 @@
 import {
-  defaultGitRepo,
   ECommonAuthors,
   EPalletCategories,
   EPalletModuleParts,
@@ -48,7 +47,7 @@ const PalletDemocracyConfig: IPalletConfig<EPalletDemocracyTraits> = {
   metadata: {
     compatibility: ESubstrateVersion.TWO,
     size: 28700,
-    updated: 1596018720,
+    updated: 1600801158,
     license: 'Apache-2.0',
     authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
     categories: [EPalletCategories.GOVERNANCE],
@@ -58,10 +57,8 @@ const PalletDemocracyConfig: IPalletConfig<EPalletDemocracyTraits> = {
   dependencies: {
     pallet: {
       alias: 'democracy',
-      gitRepo: defaultGitRepo,
       package: 'pallet-democracy',
-      tag: 'v2.0.0-rc5',
-      version: '2.0.0-rc5',
+      version: '2.0.0',
       defaultFeatures: false
     },
     additionalPallets: [
@@ -99,13 +96,12 @@ const PalletDemocracyConfig: IPalletConfig<EPalletDemocracyTraits> = {
       [EPalletDemocracyTraits.FastTrackOrigin]: 'EnsureSigned<AccountId>',
       [EPalletDemocracyTraits.InstantOrigin]: 'EnsureSigned<AccountId>',
       [EPalletDemocracyTraits.InstantAllowed]: {
-        customName: '',
-        type: '',
-        value: ''
-      },
-      [EPalletDemocracyTraits.FastTrackVotingPeriod]: {
         type: 'bool',
         value: 'true'
+      },
+      [EPalletDemocracyTraits.FastTrackVotingPeriod]: {
+        type: 'BlockNumber',
+        value: '3 * 24 * 60 * 20'
       },
       [EPalletDemocracyTraits.CancellationOrigin]: 'EnsureNever<AccountId>',
       [EPalletDemocracyTraits.VetoOrigin]: 'EnsureNever<AccountId>',

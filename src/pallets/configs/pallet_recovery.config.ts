@@ -1,5 +1,4 @@
 import {
-  defaultGitRepo,
   ECommonAuthors,
   EPalletCategories,
   EPalletModuleParts,
@@ -28,7 +27,7 @@ const PalletRecoveryConfig: IPalletConfig<EPalletRecoveryTraits> = {
   name: ESupportedPallets.PALLET_RECOVERY,
   metadata: {
     size: 12100,
-    updated: 1596018720,
+    updated: 1600801158,
     license: 'Apache-2.0',
     compatibility: ESubstrateVersion.TWO,
     authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
@@ -42,9 +41,7 @@ const PalletRecoveryConfig: IPalletConfig<EPalletRecoveryTraits> = {
     pallet: {
       defaultFeatures: false,
       package: 'pallet-recovery',
-      tag: 'v2.0.0-rc5',
-      version: '2.0.0-rc5',
-      gitRepo: defaultGitRepo,
+      version: '2.0.0',
       alias: 'recovery'
     },
     additionalPallets: [

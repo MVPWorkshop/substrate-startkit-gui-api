@@ -1,5 +1,4 @@
 import {
-  defaultGitRepo,
   ECommonAuthors,
   EPalletCategories,
   EPalletModuleParts,
@@ -19,7 +18,7 @@ const PalletAuthorityDiscoveryConfig: IPalletConfig<string> = {
   metadata: {
     compatibility: ESubstrateVersion.TWO,
     size: 3840,
-    updated: 1596018720,
+    updated: 1600801158,
     license: 'Apache-2.0',
     authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
     categories: [EPalletCategories.CONSENSUS],
@@ -29,10 +28,8 @@ const PalletAuthorityDiscoveryConfig: IPalletConfig<string> = {
   dependencies: {
     pallet: {
       alias: 'authority-discovery',
-      gitRepo: defaultGitRepo,
       package: 'pallet-authority-discovery',
-      tag: 'v2.0.0-rc5',
-      version: '2.0.0-rc5',
+      version: '2.0.0',
       defaultFeatures: false
     },
     additionalPallets: [

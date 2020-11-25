@@ -17,7 +17,6 @@ import PalletRandomnessCollectiveFlip from './configs/pallet_randomness_collecti
 import PalletSudo from './configs/pallet_sudo.config';
 import PalletTimestamp from './configs/pallet_timestamp.config';
 import PalletTransactionPayment from './configs/pallet_transaction_payment.config';
-import PalletGenericAsset from './configs/pallet_generic_asset.config';
 import PalletRecovery from './configs/pallet_recovery.config';
 import PalletVesting from './configs/pallet_vesting.config';
 import PalletAssets from './configs/pallet_assets.config';
@@ -30,7 +29,6 @@ import PalletOffences from './configs/pallet_offences.config';
 import PalletImOnline from './configs/pallet_im_online.config';
 import PalletAtomicSwap from './configs/pallet_atomic_swap.config';
 import PalletStaking from './configs/pallet_staking.config';
-import PalletBenchmark from './configs/pallet_benchmark.config';
 import PalletMultisig from './configs/pallet_multisig.config';
 import PalletUtility from './configs/pallet_utility.config';
 import PalletIndices from './configs/pallet_indices.config';
@@ -59,7 +57,6 @@ export const configs: PalletConfigs = {
   [ESupportedPallets.PALLET_SUDO]: PalletSudo,
   [ESupportedPallets.PALLET_TIMESTAMP]: PalletTimestamp,
   [ESupportedPallets.PALLET_TRANSACTION_PAYMENT]: PalletTransactionPayment,
-  [ESupportedPallets.PALLET_GENERIC_ASSET]: PalletGenericAsset,
   [ESupportedPallets.PALLET_RECOVERY]: PalletRecovery,
   [ESupportedPallets.PALLET_VESTING]: PalletVesting,
   [ESupportedPallets.PALLET_ASSETS]: PalletAssets,
@@ -72,7 +69,6 @@ export const configs: PalletConfigs = {
   [ESupportedPallets.PALLET_IM_ONLINE]: PalletImOnline,
   [ESupportedPallets.PALLET_ATOMIC_SWAP]: PalletAtomicSwap,
   [ESupportedPallets.PALLET_STAKING]: PalletStaking,
-  [ESupportedPallets.PALLET_BENCHMARK]: PalletBenchmark,
   [ESupportedPallets.PALLET_MULTISIG]: PalletMultisig,
   [ESupportedPallets.PALLET_UTILITY]: PalletUtility,
   [ESupportedPallets.PALLET_INDICES]: PalletIndices,

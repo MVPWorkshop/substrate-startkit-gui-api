@@ -1,5 +1,4 @@
 import {
-  defaultGitRepo,
   ECommonAuthors,
   EPalletCategories,
   EPalletModuleParts,
@@ -25,7 +24,7 @@ const PalletAuthorshipConfig: IPalletConfig<EPalletAuthorshipTraits> = {
   metadata: {
     compatibility: ESubstrateVersion.TWO,
     size: 7270,
-    updated: 1596018720,
+    updated: 1600801158,
     license: 'Apache-2.0',
     authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
     categories: [EPalletCategories.CONSENSUS],
@@ -35,10 +34,8 @@ const PalletAuthorshipConfig: IPalletConfig<EPalletAuthorshipTraits> = {
   dependencies: {
     pallet: {
       alias: 'authorship',
-      gitRepo: defaultGitRepo,
       package: 'pallet-authorship',
-      tag: 'v2.0.0-rc5',
-      version: '2.0.0-rc5',
+      version: '2.0.0',
       defaultFeatures: false
     },
     additionalPallets: [

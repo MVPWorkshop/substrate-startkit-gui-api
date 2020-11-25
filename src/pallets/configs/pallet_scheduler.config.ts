@@ -1,5 +1,4 @@
 import {
-  defaultGitRepo,
   ECommonAuthors,
   EPalletCategories,
   EPalletModuleParts,
@@ -15,6 +14,7 @@ enum EPalletSchedulerTraits {
   Call = 'Call',
   MaximumWeight = 'MaximumWeight',
   ScheduleOrigin = 'ScheduleOrigin',
+  MaxScheduledPerBlock = 'MaxScheduledPerBlock',
   WeightInfo = 'WeightInfo'
 }
 
@@ -30,7 +30,7 @@ const PalletSchedulerConfig: IPalletConfig<EPalletSchedulerTraits> = {
   metadata: {
     compatibility: ESubstrateVersion.TWO,
     size: 8010,
-    updated: 1596018720,
+    updated: 1600801158,
     license: 'Apache-2.0',
     authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
     categories: [EPalletCategories.OTHER],
@@ -40,10 +40,8 @@ const PalletSchedulerConfig: IPalletConfig<EPalletSchedulerTraits> = {
   dependencies: {
     pallet: {
       alias: 'scheduler',
-      gitRepo: defaultGitRepo,
       package: 'pallet-scheduler',
-      tag: 'v2.0.0-rc5',
-      version: '2.0.0-rc5',
+      version: '2.0.0',
       defaultFeatures: false
     }
   },
@@ -56,9 +54,14 @@ const PalletSchedulerConfig: IPalletConfig<EPalletSchedulerTraits> = {
       [EPalletSchedulerTraits.MaximumWeight]: {
         customName: 'MaximumSchedulerWeight',
         type: 'Weight',
-        value: 'Perbill::from_percent(80) * MaximumBlockWeight::get()'
+        value: 'Perbill::from_percent(80) * MaximumBlockWeight::get()',
+        isNotConst: true
       },
       [EPalletSchedulerTraits.ScheduleOrigin]: 'EnsureRoot<AccountId>',
+      [EPalletSchedulerTraits.MaxScheduledPerBlock]: {
+        type: 'u32',
+        value: '50'
+      },
       [EPalletSchedulerTraits.WeightInfo]: '()'
     },
     constructRuntime: {

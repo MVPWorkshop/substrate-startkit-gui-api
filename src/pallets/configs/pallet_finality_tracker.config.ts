@@ -1,5 +1,4 @@
 import {
-  defaultGitRepo,
   ECommonAuthors,
   EPalletCategories,
   EPalletModuleParts,
@@ -23,7 +22,7 @@ const PalletFinalityTrackerConfig: IPalletConfig<EPalletFinalityTrackerTraits> =
   metadata: {
     compatibility: ESubstrateVersion.TWO,
     size: 4850,
-    updated: 1596018720,
+    updated: 1600801158,
     license: 'Apache-2.0',
     authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
     categories: [EPalletCategories.CONSENSUS],
@@ -33,10 +32,8 @@ const PalletFinalityTrackerConfig: IPalletConfig<EPalletFinalityTrackerTraits> =
   dependencies: {
     pallet: {
       alias: 'finality-tracker',
-      gitRepo: defaultGitRepo,
       package: 'pallet-finality-tracker',
-      tag: 'v2.0.0-rc5',
-      version: '2.0.0-rc5',
+      version: '2.0.0',
       defaultFeatures: false
     }
   },

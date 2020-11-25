@@ -1,5 +1,4 @@
 import {
-  defaultGitRepo,
   ECommonAuthors,
   EPalletCategories,
   EPalletModuleParts,
@@ -32,7 +31,7 @@ const PalletNicksConfig: IPalletConfig<EPalletNicksTraits> = {
     categories: [
       EPalletCategories.IDENTITY
     ],
-    updated: 1596018720,
+    updated: 1600801158,
     compatibility: ESubstrateVersion.TWO,
     description: palletDescription,
     license: 'Apache-2.0',
@@ -41,10 +40,8 @@ const PalletNicksConfig: IPalletConfig<EPalletNicksTraits> = {
   dependencies: {
     pallet: {
       alias: 'nicks',
-      gitRepo: defaultGitRepo,
       package: 'pallet-nicks',
-      tag: 'v2.0.0-rc5',
-      version: '2.0.0-rc5',
+      version: '2.0.0',
       defaultFeatures: false,
     },
     additionalPallets: [
@@ -66,7 +63,7 @@ const PalletNicksConfig: IPalletConfig<EPalletNicksTraits> = {
     palletTraits: {
       [EPalletNicksTraits.Currency]: 'Balances',
       [EPalletNicksTraits.Event]: 'Event',
-      [EPalletNicksTraits.ForceOrigin]: 'system::EnsureRoot<AccountId>',
+      [EPalletNicksTraits.ForceOrigin]: 'EnsureRoot<AccountId>',
       [EPalletNicksTraits.MinLength]: {
         value: '8',
         type: 'usize'

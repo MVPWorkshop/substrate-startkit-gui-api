@@ -1,5 +1,4 @@
 import {
-  defaultGitRepo,
   ECommonAuthors,
   EPalletCategories,
   EPalletModuleParts,
@@ -39,7 +38,7 @@ const PalletSessionConfig: IPalletConfig<EPalletSessionTraits, EPalletSessionGen
   metadata: {
     compatibility: ESubstrateVersion.TWO,
     size: 16200,
-    updated: 1596018720,
+    updated: 1600801158,
     license: 'Apache-2.0',
     authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
     categories: [EPalletCategories.RUNTIME],
@@ -49,10 +48,8 @@ const PalletSessionConfig: IPalletConfig<EPalletSessionTraits, EPalletSessionGen
   dependencies: {
     pallet: {
       alias: 'session',
-      gitRepo: defaultGitRepo,
       package: 'pallet-session',
-      tag: 'v2.0.0-rc5',
-      version: '2.0.0-rc5',
+      version: '2.0.0',
       defaultFeatures: false
     },
     additionalPallets: [
@@ -64,7 +61,7 @@ const PalletSessionConfig: IPalletConfig<EPalletSessionTraits, EPalletSessionGen
   runtime: {
     palletTraits: {
       [EPalletSessionTraits.Event]: 'Event',
-      [EPalletSessionTraits.ValidatorId]: '<Self as system::Trait>::AccountId',
+      [EPalletSessionTraits.ValidatorId]: 'AccountId',
       [EPalletSessionTraits.ValidatorIdOf]: '()',
       [EPalletSessionTraits.ShouldEndSession]: 'Babe',
       [EPalletSessionTraits.NextSessionRotation]: 'Babe',
@@ -91,7 +88,18 @@ const PalletSessionConfig: IPalletConfig<EPalletSessionTraits, EPalletSessionGen
     },
     genesisConfig: {
       structFields: {
-        [EPalletSessionGenesisFields.keys]: 'vec![]'
+        [EPalletSessionGenesisFields.keys]: [
+          'initial_authorities.iter().map(|x| {',
+          `${tabs(4)}(`,
+          `${tabs(5)}get_account_id_from_seed::<sr25519::Public>("Alice"),`,
+          `${tabs(5)}get_account_id_from_seed::<sr25519::Public>("Bob"),`,
+          `${tabs(5)}session_keys(`,
+          `${tabs(6)}x.0.clone(),`,
+          `${tabs(6)}x.1.clone()`,
+          `${tabs(5)})`,
+          `${tabs(4)})`,
+          `${tabs(3)}}).collect::<Vec<_>>()`,
+        ].join('\n')
       },
       configStructName: 'SessionConfig'
     },
@@ -106,7 +114,8 @@ const PalletSessionConfig: IPalletConfig<EPalletSessionTraits, EPalletSessionGen
     ],
     additionalChainSpecCode: {
       additionalCode: [
-        'use node_template_runtime::{SessionConfig};'
+        'use node_template_runtime::{SessionConfig};',
+        'use node_template_runtime::opaque::{SessionKeys};'
       ]
     }
   }

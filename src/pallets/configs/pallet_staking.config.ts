@@ -1,5 +1,4 @@
 import {
-  defaultGitRepo,
   ECommonAuthors,
   EPalletCategories,
   EPalletModuleParts,
@@ -55,7 +54,7 @@ const PalletStakingConfig: IPalletConfig<EPalletStakingTraits, EPalletStakingGen
   metadata: {
     compatibility: ESubstrateVersion.TWO,
     size: 86100,
-    updated: 1596018720,
+    updated: 1600801158,
     license: 'Apache-2.0',
     authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
     categories: [EPalletCategories.CONSENSUS],
@@ -65,14 +64,12 @@ const PalletStakingConfig: IPalletConfig<EPalletStakingTraits, EPalletStakingGen
   dependencies: {
     pallet: {
       alias: 'staking',
-      gitRepo: defaultGitRepo,
       package: 'pallet-staking',
-      tag: 'v2.0.0-rc5',
-      version: '2.0.0-rc5',
+      version: '2.0.0',
       defaultFeatures: false
     },
     additionalDeps: [
-      { simple: true, package: 'pallet-staking-reward-curve', version: '2.0.0-rc5' }
+      { simple: true, package: 'pallet-staking-reward-curve', version: '2.0.0' }
     ],
     additionalPallets: [
       { palletName: ESupportedPallets.PALLET_SESSION, shouldImplement: true },
@@ -128,6 +125,7 @@ const PalletStakingConfig: IPalletConfig<EPalletStakingTraits, EPalletStakingGen
         value: '256'
       },
       [EPalletStakingTraits.UnsignedPriority]: {
+        customName: 'UnsignedPriorityStaking',
         type: 'TransactionPriority',
         value: 'TransactionPriority::max_value() / 2'
       },

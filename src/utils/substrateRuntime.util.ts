@@ -1,5 +1,7 @@
-import { IPalletConfig } from '../pallets/pallets.types';
+import { ESupportedPallets, IPalletConfig } from '../pallets/pallets.types';
 import { tabs, toPascalCase, toSnakeCase } from './common.util';
+import PalletGrandpaConfig, { EPalletGrandpaGenesisFields } from '../pallets/configs/pallet_grandpa.config';
+import PalletAuraConfig, { EPalletAuraGenesisFields } from '../pallets/configs/pallet_aura.config';
 
 interface IGenerateCodeReturn {
   runtimeLib: string;
@@ -29,7 +31,7 @@ class SubstrateRuntimeUtil {
       constructRuntime: new RegExp(/construct_runtime!\(\s+pub\s+enum\s+Runtime[^{]+\{(?<pallets>[\s\S]+)\}\s+\);/),
       additionalCode: new RegExp(/\/\/Additional code/),
       additionalGenesisVariables: new RegExp(/\/\/Additional genesis variables/),
-      genesisConfig: new RegExp(/fn\s+testnet_genesis[^{]+\{[\s\S]+GenesisConfig\s+\{(?<configs>[\s\S]+)\}\s+\}/)
+      genesisConfig: new RegExp(/fn\s+testnet_genesis[^{]+\{[\s\S]+GenesisConfig\s+\{(?<configs>[\s\S]+)\}\s+\}/),
     }
 
     if (!this.regex.constructRuntime.test(runtimeCode)) {
@@ -158,6 +160,27 @@ class SubstrateRuntimeUtil {
     return existingCode.slice(0, positionOfAdditionalCode) + '\n\n' + additionalRuntimeCode + existingCode.slice(positionOfAdditionalCode)
   }
 
+  private replaceExistingGenesisFieldValue(structFieldName: string, genesisFieldName: string, newValue: string) {
+    const findGenesisStruct = new RegExp(
+      `${structFieldName}:[\\s\\S]+?(?<fieldLine>${genesisFieldName}:\\s(?<fieldValue>[\\S ]+),)`
+    );
+
+    const genesisStructTest = findGenesisStruct.exec(this._chainSpecCode);
+
+    if (!genesisStructTest) {
+      return;
+    }
+
+    const struct = genesisStructTest[0];
+    const structFieldLine = genesisStructTest.groups.fieldLine;
+    const structFieldValue = genesisStructTest.groups.fieldValue;
+
+    const newStructFieldLine = structFieldLine.replace(structFieldValue, newValue);
+    const newStruct = struct.replace(structFieldLine, newStructFieldLine);
+
+    this._chainSpecCode = this._chainSpecCode.replace(struct, newStruct);
+  }
+
   // Function which adds configuration to the genesis config (chain_spec.rs file)
   private addChainSpecCode() {
     if (!this._palletConfig.runtime.genesisConfig) {
@@ -187,6 +210,22 @@ class SubstrateRuntimeUtil {
     genesisConfigCode += `${tabs(2)}}),\n`
 
     this._chainSpecCode = this._chainSpecCode.replace(genesisConfig.groups.configs, genesisConfigCode);
+
+    // When we insert session pallet into the substrate code
+    // grandpa and aura can no longer use their authorities in the genesis.
+    if (this.palletName === ESupportedPallets.PALLET_SESSION) {
+      this.replaceExistingGenesisFieldValue(
+        toSnakeCase(PalletGrandpaConfig.dependencies.pallet.alias),
+        EPalletGrandpaGenesisFields.authorities,
+        'vec![]'
+      )
+
+      this.replaceExistingGenesisFieldValue(
+        toSnakeCase(PalletAuraConfig.dependencies.pallet.alias),
+        EPalletAuraGenesisFields.authorities,
+        'vec![]'
+      )
+    }
   }
 
   private addAdditionalChainSpecCode() {

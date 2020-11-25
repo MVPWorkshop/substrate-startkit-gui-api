@@ -1,5 +1,4 @@
 import {
-  defaultGitRepo,
   ECommonAuthors,
   EPalletCategories,
   EPalletModuleParts,
@@ -25,7 +24,7 @@ const PalletTimestampConfig: IPalletConfig<EPalletTimestampTraits> = {
   name: ESupportedPallets.PALLET_TIMESTAMP,
   metadata: {
     size: 5080,
-    updated: 1596018720,
+    updated: 1600801158,
     compatibility: ESubstrateVersion.TWO,
     license: 'Apache-2.0',
     categories: [
@@ -39,11 +38,9 @@ const PalletTimestampConfig: IPalletConfig<EPalletTimestampTraits> = {
   },
   dependencies: {
     pallet: {
-      alias: 'timestamp',
-      gitRepo: defaultGitRepo,
+      alias: 'pallet-timestamp',
       package: 'pallet-timestamp',
-      tag: 'v2.0.0-rc5',
-      version: '2.0.0-rc5',
+      version: '2.0.0',
       defaultFeatures: false,
     },
     additionalPallets: [

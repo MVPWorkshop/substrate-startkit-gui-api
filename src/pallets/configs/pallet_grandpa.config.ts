@@ -1,5 +1,4 @@
 import {
-  defaultGitRepo,
   ECommonAuthors,
   EPalletCategories,
   EPalletModuleParts,
@@ -15,10 +14,11 @@ enum EPalletGrandpaTraits {
   KeyOwnerProof = 'KeyOwnerProof',
   KeyOwnerIdentification = 'KeyOwnerIdentification',
   KeyOwnerProofSystem = 'KeyOwnerProofSystem',
-  HandleEquivocation = 'HandleEquivocation'
+  HandleEquivocation = 'HandleEquivocation',
+  WeightInfo = 'WeightInfo'
 }
 
-enum EPalletGrandpaGenesisFields {
+export enum EPalletGrandpaGenesisFields {
   authorities = 'authorities'
 }
 
@@ -33,7 +33,7 @@ const PalletGrandpaConfig: IPalletConfig<EPalletGrandpaTraits, EPalletGrandpaGen
   name: ESupportedPallets.PALLET_GRANDPA,
   metadata: {
     size: 8613,
-    updated: 1596018720,
+    updated: 1600801158,
     license: 'Apache-2.0',
     compatibility: ESubstrateVersion.TWO,
     authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
@@ -47,10 +47,8 @@ const PalletGrandpaConfig: IPalletConfig<EPalletGrandpaTraits, EPalletGrandpaGen
     pallet: {
       defaultFeatures: false,
       package: 'pallet-grandpa',
-      tag: 'v2.0.0-rc5',
-      version: '2.0.0-rc5',
-      gitRepo: defaultGitRepo,
-      alias: 'grandpa'
+      version: '2.0.0',
+      alias: 'pallet-grandpa'
     },
     additionalPallets: [
       { palletName: ESupportedPallets.PALLET_SESSION, shouldImplement: false },
@@ -70,7 +68,8 @@ const PalletGrandpaConfig: IPalletConfig<EPalletGrandpaTraits, EPalletGrandpaGen
         `${tabs(1)}GrandpaId,`,
         ')>>::IdentificationTuple'
       ].join('\n'),
-      [EPalletGrandpaTraits.KeyOwnerProof]: `\n${tabs(1)}<Self::KeyOwnerProofSystem as KeyOwnerProofSystem<(KeyTypeId, GrandpaId)>>::Proof`
+      [EPalletGrandpaTraits.KeyOwnerProof]: `\n${tabs(1)}<Self::KeyOwnerProofSystem as KeyOwnerProofSystem<(KeyTypeId, GrandpaId)>>::Proof`,
+      [EPalletGrandpaTraits.WeightInfo]: '()'
     },
     constructRuntime: {
       modules: [

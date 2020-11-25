@@ -2,51 +2,70 @@
 
 A new FRAME-based Substrate node, ready for hacking :rocket:
 
-## Local Development
+## Getting Started
 
-Follow these steps to prepare a local Substrate development environment :hammer_and_wrench:
+This project contains some configuration files to help get started :hammer_and_wrench:
 
-### Simple Setup
+### Rust Setup
 
-Install all the required dependencies with a single command (be patient, this can take up to 30
-minutes).
+Setup instructions for working with the [Rust](https://www.rust-lang.org/) programming language can
+be found at the
+[Substrate Developer Hub](https://substrate.dev/docs/en/knowledgebase/getting-started). Follow those
+steps to install [`rustup`](https://rustup.rs/) and configure the Rust toolchain to default to the
+latest stable version.
 
-```bash
-curl https://getsubstrate.io -sSf | bash -s -- --fast
-```
+### Makefile
 
-### Manual Setup
+This project uses a [Makefile](Makefile) to document helpful commands and make it easier to execute
+them. Get started by running these [`make`](https://www.gnu.org/software/make/manual/make.html)
+targets:
 
-Find manual setup instructions at the
-[Substrate Developer Hub](https://substrate.dev/docs/en/knowledgebase/getting-started/#manual-installation).
+1. `make init` - Run the [init script](scripts/init.sh) to configure the Rust toolchain for
+   [WebAssembly compilation](https://substrate.dev/docs/en/knowledgebase/getting-started/#webassembly-compilation).
+1. `make run` - Build and launch this project in development mode.
+
+The init script and Makefile both specify the version of the
+[Rust nightly compiler](https://substrate.dev/docs/en/knowledgebase/getting-started/#rust-nightly-toolchain)
+that this project depends on.
 
 ### Build
 
-Once the development environment is set up, build the node template. This command will build the
-[Wasm](https://substrate.dev/docs/en/knowledgebase/advanced/executor#wasm-execution) and
-[native](https://substrate.dev/docs/en/knowledgebase/advanced/executor#native-execution) code:
+The `make run` command will perform an initial build. Use the following command to build the node
+without launching it:
 
-```bash
-cargo build --release
+```sh
+make build
+```
+
+### Embedded Docs
+
+Once the project has been built, the following command can be used to explore all parameters and
+subcommands:
+
+```sh
+./target/release/node-template -h
 ```
 
 ## Run
 
-### Single Node Development Chain
+The `make run` command will launch a temporary node and its state will be discarded after you
+terminate the process. After the project has been built, there are other ways to launch the node.
 
-Purge any existing dev chain state:
+### Single-Node Development Chain
 
-```bash
-./target/release/node-template purge-chain --dev
-```
-
-Start a dev chain:
+This command will start the single-node development chain with persistent state:
 
 ```bash
 ./target/release/node-template --dev
 ```
 
-Or, start a dev chain with detailed logging:
+Purge the development chain's state:
+
+```bash
+./target/release/node-template purge-chain --dev
+```
+
+Start the development chain with detailed logging:
 
 ```bash
 RUST_LOG=debug RUST_BACKTRACE=1 ./target/release/node-template -lruntime=debug --dev
@@ -72,7 +91,8 @@ Substrate-based blockchain nodes expose a number of capabilities:
 -   Consensus: Blockchains must have a way to come to
     [consensus](https://substrate.dev/docs/en/knowledgebase/advanced/consensus) on the state of the
     network. Substrate makes it possible to supply custom consensus engines and also ships with
-    several consensus mechanisms that have been built on top of Web3 Foundation research.
+    several consensus mechanisms that have been built on top of
+    [Web3 Foundation research](https://research.web3.foundation/en/latest/polkadot/NPoS/index.html).
 -   RPC Server: A remote procedure call (RPC) server is used to interact with Substrate nodes.
 
 There are several files in the `node` directory - take special note of the following:
@@ -104,12 +124,17 @@ capabilities and configuration parameters that it exposes:
 
 ### Runtime
 
-The Substrate project in this repository uses the
-[FRAME](https://substrate.dev/docs/en/knowledgebase/runtime/frame) framework to construct a
+In Substrate, the terms
+"[runtime](https://substrate.dev/docs/en/knowledgebase/getting-started/glossary#runtime)" and
+"[state transition function](https://substrate.dev/docs/en/knowledgebase/getting-started/glossary#stf-state-transition-function)"
+are analogous - they refer to the core logic of the blockchain that is responsible for validating
+blocks and executing the state changes they define. The Substrate project in this repository uses
+the [FRAME](https://substrate.dev/docs/en/knowledgebase/runtime/frame) framework to construct a
 blockchain runtime. FRAME allows runtime developers to declare domain-specific logic in modules
 called "pallets". At the heart of FRAME is a helpful
 [macro language](https://substrate.dev/docs/en/knowledgebase/runtime/macros) that makes it easy to
-create pallets and flexibly compose them to create blockchains that can address a variety of needs.
+create pallets and flexibly compose them to create blockchains that can address
+[a variety of needs](https://www.substrate.io/substrate-users/).
 
 Review the [FRAME runtime implementation](./runtime/src/lib.rs) included in this template and note
 the following:

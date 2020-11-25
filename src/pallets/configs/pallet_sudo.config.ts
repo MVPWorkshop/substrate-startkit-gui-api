@@ -1,5 +1,4 @@
 import {
-  defaultGitRepo,
   ECommonAuthors,
   EPalletCategories,
   EPalletModuleParts,
@@ -26,7 +25,7 @@ const PalletSudoConfig: IPalletConfig<EPalletSudoTraits, EPalletSudoGenesisField
   name: ESupportedPallets.PALLET_SUDO,
   metadata: {
     size: 3420,
-    updated: 1596018720,
+    updated: 1600801158,
     compatibility: ESubstrateVersion.TWO,
     license: 'Apache-2.0',
     categories: [
@@ -40,11 +39,9 @@ const PalletSudoConfig: IPalletConfig<EPalletSudoTraits, EPalletSudoGenesisField
   },
   dependencies: {
     pallet: {
-      alias: 'sudo',
-      gitRepo: defaultGitRepo,
+      alias: 'pallet-sudo',
       package: 'pallet-sudo',
-      tag: 'v2.0.0-rc5',
-      version: '2.0.0-rc5',
+      version: '2.0.0',
       defaultFeatures: false,
     }
   },

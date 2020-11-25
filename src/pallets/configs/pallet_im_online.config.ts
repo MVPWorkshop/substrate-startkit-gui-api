@@ -1,5 +1,4 @@
 import {
-  defaultGitRepo,
   ECommonAuthors,
   EPalletCategories,
   EPalletModuleParts,
@@ -32,7 +31,7 @@ const PalletImOnlineConfig: IPalletConfig<EPalletImOnlineTraits, EPalletImOnline
   metadata: {
     compatibility: ESubstrateVersion.TWO,
     size: 13300,
-    updated: 1596018720,
+    updated: 1600801158,
     license: 'Apache-2.0',
     authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
     categories: [EPalletCategories.RUNTIME],
@@ -42,10 +41,8 @@ const PalletImOnlineConfig: IPalletConfig<EPalletImOnlineTraits, EPalletImOnline
   dependencies: {
     pallet: {
       alias: 'im-online',
-      gitRepo: defaultGitRepo,
       package: 'pallet-im-online',
-      tag: 'v2.0.0-rc5',
-      version: '2.0.0-rc5',
+      version: '2.0.0',
       defaultFeatures: false
     },
     additionalPallets: [
@@ -65,6 +62,7 @@ const PalletImOnlineConfig: IPalletConfig<EPalletImOnlineTraits, EPalletImOnline
         value: '200'
       },
       [EPalletImOnlineTraits.UnsignedPriority]: {
+        customName: 'UnsignedPriorityImOnline',
         type: 'TransactionPriority',
         value: 'TransactionPriority::max_value()'
       }

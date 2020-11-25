@@ -1,5 +1,4 @@
 import {
-  defaultGitRepo,
   ECommonAuthors,
   EPalletCategories,
   EPalletModuleParts,
@@ -27,7 +26,7 @@ const PalletAssetsConfig: IPalletConfig<EPalletAssetsTraits> = {
   metadata: {
     compatibility: ESubstrateVersion.TWO,
     size: 16200,
-    updated: 1596018720,
+    updated: 1600801158,
     license: 'Apache-2.0',
     authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
     categories: [EPalletCategories.ASSETS],
@@ -37,11 +36,9 @@ const PalletAssetsConfig: IPalletConfig<EPalletAssetsTraits> = {
   dependencies: {
     pallet: {
       alias: 'assets',
-      gitRepo: defaultGitRepo,
       defaultFeatures: false,
       package: 'pallet-assets',
-      tag: 'v2.0.0-rc5',
-      version: '2.0.0-rc5'
+      version: '2.0.0'
     },
     additionalPallets: [
       { palletName: ESupportedPallets.PALLET_BALANCE, shouldImplement: true }

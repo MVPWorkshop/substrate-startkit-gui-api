@@ -44,7 +44,7 @@ class SubstrateManifestUtil {
     dependencyCode += `default-features = ${defaultFeatures}\n`;
     gitRepo && (dependencyCode += `git = '${gitRepo}'\n`);
     dependencyCode += `package = '${palletPackageName}'\n`;
-    dependencyCode += `tag = '${tag}'\n`;
+    tag && (dependencyCode += `tag = '${tag}'\n`);
     dependencyCode += `version = '${version}'\n\n`;
 
     return dependencyCode;

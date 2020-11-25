@@ -1,6 +1,6 @@
 {
   "name": "Substrate Node template",
-  "dockerFile": "Dockerfile",
+  "context": "..",
   "settings": {
     "terminal.integrated.shell.linux": "/bin/bash",
     "lldb.executable": "/usr/bin/lldb"
@@ -14,5 +14,13 @@
     3000,
     9944
   ],
-  "image": "paritytech/substrate-playground-template-node-template:sha-8f769db"
+  "preCreateCommand": "cargo build --release && cargo check",
+  "postStartCommand": "./target/release/node-template --dev --ws-external",
+  "menuActions": [
+    {"id": "polkadotjs",
+     "label": "Open PolkadotJS Apps",
+     "type": "external-preview",
+     "args": ["https://polkadot.js.org/apps/?rpc=wss%3A%2F%2F/$HOST/wss"]}
+  ],
+  "image": "paritytech/substrate-playground-template-node-template:latest"
 }

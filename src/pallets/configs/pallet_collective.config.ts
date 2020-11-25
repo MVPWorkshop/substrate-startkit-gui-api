@@ -1,5 +1,4 @@
 import {
-  defaultGitRepo,
   ECommonAuthors,
   EPalletCategories,
   EPalletModuleParts,
@@ -14,6 +13,8 @@ enum EPalletCollectiveTraits {
   Event = 'Event',
   MotionDuration = 'MotionDuration',
   MaxProposals = 'MaxProposals',
+  MaxMembers = 'MaxMembers',
+  DefaultVote = 'DefaultVote',
   WeightInfo = 'WeightInfo'
 }
 
@@ -35,7 +36,7 @@ const PalletCollectiveConfig: IPalletConfig<EPalletCollectiveTraits, EPalletColl
   metadata: {
     compatibility: ESubstrateVersion.TWO,
     size: 15500,
-    updated: 1596018720,
+    updated: 1600801158,
     license: 'Apache-2.0',
     authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
     categories: [EPalletCategories.GOVERNANCE],
@@ -45,10 +46,8 @@ const PalletCollectiveConfig: IPalletConfig<EPalletCollectiveTraits, EPalletColl
   dependencies: {
     pallet: {
       alias: 'collective',
-      gitRepo: defaultGitRepo,
       package: 'pallet-collective',
-      tag: 'v2.0.0-rc5',
-      version: '2.0.0-rc5',
+      version: '2.0.0',
       defaultFeatures: false
     }
   },
@@ -65,7 +64,13 @@ const PalletCollectiveConfig: IPalletConfig<EPalletCollectiveTraits, EPalletColl
       [EPalletCollectiveTraits.MotionDuration]: {
         type: 'BlockNumber',
         value: '28_800'
-      }
+      },
+      [EPalletCollectiveTraits.MaxMembers]: {
+        customName: 'CouncilMaxMembers',
+        type: 'u32',
+        value: '100'
+      },
+      [EPalletCollectiveTraits.DefaultVote]: 'collective::PrimeDefaultVote'
     },
     constructRuntime: {
       modules: [

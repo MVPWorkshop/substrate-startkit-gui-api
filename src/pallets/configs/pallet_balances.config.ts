@@ -1,5 +1,4 @@
 import {
-  defaultGitRepo,
   ECommonAuthors,
   EPalletCategories,
   EPalletModuleParts,
@@ -9,6 +8,7 @@ import {
 } from '../pallets.types';
 
 enum EPalletBalancesTraits {
+  MaxLocks = "MaxLocks",
   Balance = "Balance",
   Event = "Event",
   DustRemoval = "DustRemoval",
@@ -39,7 +39,7 @@ const PalletBalancesConfig: IPalletConfig<EPalletBalancesTraits, EPalletBalances
   metadata: {
     compatibility: ESubstrateVersion.TWO,
     size: 20000,
-    updated: 1596018720,
+    updated: 1600801158,
     license: 'Apache-2.0',
     authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
     categories: [EPalletCategories.ACCOUNTS],
@@ -48,25 +48,27 @@ const PalletBalancesConfig: IPalletConfig<EPalletBalancesTraits, EPalletBalances
   },
   dependencies: {
     pallet: {
-      alias: 'balances',
-      gitRepo: defaultGitRepo,
+      alias: 'pallet-balances',
       defaultFeatures: false,
       package: 'pallet-balances',
-      tag: 'v2.0.0-rc5',
-      version: '2.0.0-rc5'
+      version: '2.0.0'
     }
   },
   runtime: {
     palletTraits: {
-      Balance: 'Balance',
-      Event: 'Event',
-      DustRemoval: '()',
-      ExistentialDeposit: {
+      [EPalletBalancesTraits.MaxLocks]: {
+        type: 'u32',
+        value: '50'
+      },
+      [EPalletBalancesTraits.Balance]: 'Balance',
+      [EPalletBalancesTraits.Event]: 'Event',
+      [EPalletBalancesTraits.DustRemoval]: '()',
+      [EPalletBalancesTraits.ExistentialDeposit]: {
         type: 'u128',
         value: '500'
       },
-      AccountStore: 'System',
-      WeightInfo: '()'
+      [EPalletBalancesTraits.AccountStore]: 'System',
+      [EPalletBalancesTraits.WeightInfo]: '()'
     },
     constructRuntime: {
       modules: [

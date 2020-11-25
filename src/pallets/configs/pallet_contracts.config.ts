@@ -1,11 +1,10 @@
 import {
-  IPalletConfig,
-  ESupportedPallets,
-  ESubstrateVersion,
-  EPalletCategories,
   ECommonAuthors,
+  EPalletCategories,
   EPalletModuleParts,
-  defaultGitRepo
+  ESubstrateVersion,
+  ESupportedPallets,
+  IPalletConfig
 } from '../pallets.types';
 
 enum EPalletContractsTraits {
@@ -43,7 +42,7 @@ const PalletContractsConfig: IPalletConfig<EPalletContractsTraits, EPalletContra
   metadata: {
     compatibility: ESubstrateVersion.TWO,
     size: 75500,
-    updated: 1596018720,
+    updated: 1600801158,
     license: 'Apache-2.0',
     authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
     categories: [EPalletCategories.SMART_CONTRACTS],
@@ -53,22 +52,21 @@ const PalletContractsConfig: IPalletConfig<EPalletContractsTraits, EPalletContra
   dependencies: {
     pallet: {
       alias: 'contracts',
-      gitRepo: defaultGitRepo,
       package: 'pallet-contracts',
-      tag: 'v2.0.0-rc5',
-      version: '2.0.0-rc5',
+      version: '2.0.0',
       defaultFeatures: false
     },
     additionalPallets: [
-      { palletName: ESupportedPallets.PALLET_BALANCE, shouldImplement: true }
+      { palletName: ESupportedPallets.PALLET_BALANCE, shouldImplement: true },
+      { palletName: ESupportedPallets.PALLET_TIMESTAMP, shouldImplement: true },
+      { palletName: ESupportedPallets.PALLET_TRANSACTION_PAYMENT, shouldImplement: true },
+      { palletName: ESupportedPallets.PALLET_RANDOMNESS_COLLECTIVE_FLIP, shouldImplement: true }
     ],
     additionalDeps: [
       {
         alias: 'contracts-primitives',
-        gitRepo: defaultGitRepo,
         package: 'pallet-contracts-primitives',
-        tag: 'v2.0.0-rc5',
-        version: '2.0.0-rc5',
+        version: '2.0.0',
         defaultFeatures: false
       }
     ]
@@ -114,12 +112,12 @@ const PalletContractsConfig: IPalletConfig<EPalletContractsTraits, EPalletContra
       },
       MaxDepth: 'contracts::DefaultMaxDepth',
       MaxValueSize: 'contracts::DefaultMaxValueSize',
-      WeightPrice: 'transaction_payment::Module<Self>'
+      WeightPrice: 'pallet_transaction_payment::Module<Self>'
     },
     genesisConfig: {
       configStructName: 'ContractsConfig',
       structFields: {
-        current_schedule: "ContractsSchedule {enable_println,..Default::default()}"
+        current_schedule: "ContractsSchedule {..Default::default()}"
       }
     },
     additionalRuntimeLibCode: [

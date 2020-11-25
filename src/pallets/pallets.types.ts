@@ -75,7 +75,7 @@ export interface ICargoComplexDependency {
   alias: string;
   defaultFeatures?: false | string[];
   gitRepo?: string;
-  tag: string;
+  tag?: string;
 }
 
 /**
@@ -140,7 +140,6 @@ export enum ESupportedPallets {
   PALLET_SUDO = 'pallet-sudo',
   PALLET_TIMESTAMP = 'pallet-timestamp',
   PALLET_TRANSACTION_PAYMENT = 'pallet-transaction-payment',
-  PALLET_GENERIC_ASSET = 'pallet-generic-asset',
   PALLET_RECOVERY = 'pallet-recovery',
   PALLET_VESTING = 'pallet-vesting',
   PALLET_SESSION = 'pallet-session',
@@ -153,7 +152,6 @@ export enum ESupportedPallets {
   PALLET_IM_ONLINE = 'pallet-im-online',
   PALLET_ATOMIC_SWAP = 'pallet-atomic-swap',
   PALLET_STAKING = 'pallet-staking',
-  PALLET_BENCHMARK = 'pallet-benchmark',
   PALLET_MULTISIG = 'pallet-multisig',
   PALLET_UTILITY = 'pallet-utility',
   PALLET_INDICES = 'pallet-indices',

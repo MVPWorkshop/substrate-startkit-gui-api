@@ -1,5 +1,4 @@
 import {
-  defaultGitRepo,
   ECommonAuthors,
   EPalletCategories,
   EPalletModuleParts,
@@ -53,7 +52,7 @@ const PalletElectionsPhragmenConfig: IPalletConfig<EPalletElectionsPhragmenTrait
   metadata: {
     compatibility: ESubstrateVersion.TWO,
     size: 24200,
-    updated: 1596018720,
+    updated: 1600801158,
     license: 'Apache-2.0',
     authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
     categories: [EPalletCategories.GOVERNANCE],
@@ -63,10 +62,8 @@ const PalletElectionsPhragmenConfig: IPalletConfig<EPalletElectionsPhragmenTrait
   dependencies: {
     pallet: {
       alias: 'elections-phragmen',
-      gitRepo: defaultGitRepo,
       package: 'pallet-elections-phragmen',
-      tag: 'v2.0.0-rc5',
-      version: '2.0.0-rc5',
+      version: '2.0.0',
       defaultFeatures: false
     },
     additionalPallets: [

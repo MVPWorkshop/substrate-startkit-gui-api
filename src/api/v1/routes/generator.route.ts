@@ -68,7 +68,7 @@ class GeneratorRoute {
       const remote = await nodegit.Remote.create(repo, 'origin', repositoryUrl);
 
       // Push the changes (the project)
-      await remote.push(["refs/heads/master:refs/heads/master"], {
+      await remote.push(["refs/heads/master:refs/heads/main"], {
         callbacks: {
           credentials: () => {
             // Users credentials used to authorize the push

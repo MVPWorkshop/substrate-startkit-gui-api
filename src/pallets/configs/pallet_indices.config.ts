@@ -1,5 +1,4 @@
 import {
-  defaultGitRepo,
   ECommonAuthors,
   EPalletCategories,
   EPalletModuleParts,
@@ -26,7 +25,7 @@ const PalletIndicesConfig: IPalletConfig<EPalletIndicesTraits> = {
   metadata: {
     compatibility: ESubstrateVersion.TWO,
     size: 6110,
-    updated: 1596018720,
+    updated: 1600801158,
     license: 'Apache-2.0',
     authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
     categories: [EPalletCategories.RUNTIME],
@@ -36,10 +35,8 @@ const PalletIndicesConfig: IPalletConfig<EPalletIndicesTraits> = {
   dependencies: {
     pallet: {
       alias: 'indices',
-      gitRepo: defaultGitRepo,
       package: 'pallet-indices',
-      tag: 'v2.0.0-rc5',
-      version: '2.0.0-rc5',
+      version: '2.0.0',
       defaultFeatures: false
     },
     additionalPallets: [

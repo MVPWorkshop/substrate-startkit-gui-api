@@ -1,5 +1,4 @@
 import {
-  defaultGitRepo,
   ECommonAuthors,
   EPalletCategories,
   EPalletModuleParts,
@@ -17,7 +16,11 @@ enum EPalletProxyTraits {
   ProxyDepositBase = 'ProxyDepositBase',
   ProxyDepositFactor = 'ProxyDepositFactor',
   MaxProxies = 'MaxProxies',
-  WeightInfo = 'WeightInfo'
+  WeightInfo = 'WeightInfo',
+  MaxPending = 'MaxPending',
+  CallHasher = 'CallHasher',
+  AnnouncementDepositBase = 'AnnouncementDepositBase',
+  AnnouncementDepositFactor = 'AnnouncementDepositFactor'
 }
 
 const palletDescription = [
@@ -62,7 +65,7 @@ const PalletProxyConfig: IPalletConfig<EPalletProxyTraits> = {
   metadata: {
     compatibility: ESubstrateVersion.TWO,
     size: 8890,
-    updated: 1596018720,
+    updated: 1600801158,
     license: 'Apache-2.0',
     authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
     categories: [EPalletCategories.OTHER],
@@ -72,11 +75,9 @@ const PalletProxyConfig: IPalletConfig<EPalletProxyTraits> = {
   dependencies: {
     pallet: {
       alias: 'proxy',
-      gitRepo: defaultGitRepo,
       defaultFeatures: false,
       package: 'pallet-proxy',
-      tag: 'v2.0.0-rc5',
-      version: '2.0.0-rc5'
+      version: '2.0.0'
     },
     additionalPallets: [
       { palletName: ESupportedPallets.PALLET_BALANCE, shouldImplement: true }
@@ -101,6 +102,19 @@ const PalletProxyConfig: IPalletConfig<EPalletProxyTraits> = {
         value: '32'
       },
       [EPalletProxyTraits.WeightInfo]: '()',
+      [EPalletProxyTraits.MaxPending]: {
+        type: 'u16',
+        value: '32'
+      },
+      [EPalletProxyTraits.CallHasher]: 'BlakeTwo256',
+      [EPalletProxyTraits.AnnouncementDepositBase]: {
+        type: 'Balance',
+        value: '63_000_000_000_000'
+      },
+      [EPalletProxyTraits.AnnouncementDepositFactor]: {
+        type: 'Balance',
+        value: '396_000_000_000_000'
+      }
     },
     constructRuntime: {
       modules: [

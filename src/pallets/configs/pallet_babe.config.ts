@@ -1,5 +1,4 @@
 import {
-  defaultGitRepo,
   ECommonAuthors,
   EPalletCategories,
   EPalletModuleParts,
@@ -16,7 +15,8 @@ enum EPalletBabeTraits {
   KeyOwnerProofSystem = 'KeyOwnerProofSystem',
   KeyOwnerProof = 'KeyOwnerProof',
   KeyOwnerIdentification = 'KeyOwnerIdentification',
-  HandleEquivocation = 'HandleEquivocation'
+  HandleEquivocation = 'HandleEquivocation',
+  WeightInfo = 'WeightInfo'
 }
 
 enum EPalletBabeGenesisFields {
@@ -33,20 +33,18 @@ const PalletBabeConfig: IPalletConfig<EPalletBabeTraits, EPalletBabeGenesisField
   metadata: {
     compatibility: ESubstrateVersion.TWO,
     size: 11900,
-    updated: 1596018720,
+    updated: 1600801158,
     license: 'Apache-2.0',
     authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
     categories: [EPalletCategories.CONSENSUS],
     description: palletDescription,
-    shortDescription: 'FRAME pallet for BABE consensuc'
+    shortDescription: 'FRAME pallet for BABE consensus'
   },
   dependencies: {
     pallet: {
       alias: 'babe',
-      gitRepo: defaultGitRepo,
       package: 'pallet-babe',
-      tag: 'v2.0.0-rc5',
-      version: '2.0.0-rc5',
+      version: '2.0.0',
       defaultFeatures: false
     },
     additionalPallets: [
@@ -79,7 +77,8 @@ const PalletBabeConfig: IPalletConfig<EPalletBabeTraits, EPalletBabeGenesisField
         `${tabs(2)}babe::AuthorityId,`,
         `${tabs(1)})>>::IdentificationTuple`
       ].join('\n'),
-      [EPalletBabeTraits.HandleEquivocation]: '()'
+      [EPalletBabeTraits.HandleEquivocation]: '()',
+      [EPalletBabeTraits.WeightInfo]: '()'
     },
     constructRuntime: {
       modules: [

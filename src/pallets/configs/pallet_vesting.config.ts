@@ -1,5 +1,4 @@
 import {
-  defaultGitRepo,
   ECommonAuthors,
   EPalletCategories,
   EPalletModuleParts,
@@ -27,7 +26,7 @@ const PalletVestingConfig: IPalletConfig<EPalletVestingTraits> = {
   metadata: {
     compatibility: ESubstrateVersion.TWO,
     size: 8700,
-    updated: 1596018720,
+    updated: 1600801158,
     license: 'Apache-2.0',
     authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
     categories: [EPalletCategories.ACCOUNTS],
@@ -37,11 +36,9 @@ const PalletVestingConfig: IPalletConfig<EPalletVestingTraits> = {
   dependencies: {
     pallet: {
       alias: 'vesting',
-      gitRepo: defaultGitRepo,
       defaultFeatures: false,
       package: 'pallet-vesting',
-      tag: 'v2.0.0-rc5',
-      version: '2.0.0-rc5'
+      version: '2.0.0'
     },
     additionalPallets: [
       { palletName: ESupportedPallets.PALLET_BALANCE, shouldImplement: true }

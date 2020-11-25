@@ -1,5 +1,4 @@
 import {
-  defaultGitRepo,
   ECommonAuthors,
   EPalletCategories,
   EPalletModuleParts,
@@ -23,9 +22,15 @@ enum EPalletTreasuryTraits {
   SpendPeriod = 'SpendPeriod',
   Burn = 'Burn',
   BurnDestination = 'BurnDestination',
-  TipReportDepositPerByte = 'TipReportDepositPerByte',
   WeightInfo = 'WeightInfo',
-  ProposalRejection = 'ProposalRejection'
+  DataDepositPerByte = 'DataDepositPerByte',
+  OnSlash = 'OnSlash',
+  BountyDepositBase = 'BountyDepositBase',
+  BountyDepositPayoutDelay = 'BountyDepositPayoutDelay',
+  BountyUpdatePeriod = 'BountyUpdatePeriod',
+  BountyCuratorDeposit = 'BountyCuratorDeposit',
+  BountyValueMinimum = 'BountyValueMinimum',
+  MaximumReasonLength = 'MaximumReasonLength'
 }
 
 const palletDescription = [
@@ -45,7 +50,7 @@ const PalletTreasuryConfig: IPalletConfig<EPalletTreasuryTraits> = {
   metadata: {
     compatibility: ESubstrateVersion.TWO,
     size: 14100,
-    updated: 1596018720,
+    updated: 1600801158,
     license: 'Apache-2.0',
     authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
     categories: [EPalletCategories.GOVERNANCE],
@@ -55,10 +60,8 @@ const PalletTreasuryConfig: IPalletConfig<EPalletTreasuryTraits> = {
   dependencies: {
     pallet: {
       alias: 'treasury',
-      gitRepo: defaultGitRepo,
       package: 'pallet-treasury',
-      tag: 'v2.0.0-rc5',
-      version: '2.0.0-rc5',
+      version: '2.0.0',
       defaultFeatures: false
     },
     additionalPallets: [
@@ -107,12 +110,36 @@ const PalletTreasuryConfig: IPalletConfig<EPalletTreasuryTraits> = {
         value: 'Permill::from_percent(50)'
       },
       [EPalletTreasuryTraits.BurnDestination]: '()',
-      [EPalletTreasuryTraits.TipReportDepositPerByte]: {
+      [EPalletTreasuryTraits.WeightInfo]: '()',
+      [EPalletTreasuryTraits.DataDepositPerByte]: {
         type: 'Balance',
         value: '1_000_000_000_000'
       },
-      [EPalletTreasuryTraits.WeightInfo]: '()',
-      [EPalletTreasuryTraits.ProposalRejection]: '()',
+      [EPalletTreasuryTraits.OnSlash]: '()',
+      [EPalletTreasuryTraits.BountyDepositBase]: {
+        type: 'Balance',
+        value: '100_000_000_000_000'
+      },
+      [EPalletTreasuryTraits.BountyDepositPayoutDelay]: {
+        type: 'BlockNumber',
+        value: '28800'
+      },
+      [EPalletTreasuryTraits.BountyUpdatePeriod]: {
+        type: 'BlockNumber',
+        value: '403200'
+      },
+      [EPalletTreasuryTraits.BountyCuratorDeposit]: {
+        type: 'Permill',
+        value: 'Permill::from_percent(50)'
+      },
+      [EPalletTreasuryTraits.BountyValueMinimum]: {
+        type: 'Balance',
+        value: '500_000_000_000_000'
+      },
+      [EPalletTreasuryTraits.MaximumReasonLength]: {
+        type: 'u32',
+        value: '16384'
+      }
     },
     constructRuntime: {
       modules: [

@@ -1,5 +1,4 @@
 import {
-  defaultGitRepo,
   ECommonAuthors,
   EPalletCategories,
   EPalletModuleParts,
@@ -36,7 +35,7 @@ const PalletMembershipConfig: IPalletConfig<EPalletMembershipTraits, EPalletMemb
   metadata: {
     compatibility: ESubstrateVersion.TWO,
     size: 5300,
-    updated: 1596018720,
+    updated: 1600801158,
     license: 'Apache-2.0',
     authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
     categories: [EPalletCategories.GOVERNANCE],
@@ -46,10 +45,8 @@ const PalletMembershipConfig: IPalletConfig<EPalletMembershipTraits, EPalletMemb
   dependencies: {
     pallet: {
       alias: 'membership',
-      gitRepo: defaultGitRepo,
       package: 'pallet-membership',
-      tag: 'v2.0.0-rc5',
-      version: '2.0.0-rc5',
+      version: '2.0.0',
       defaultFeatures: false
     }
   },

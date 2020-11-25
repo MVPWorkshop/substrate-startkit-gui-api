@@ -1,5 +1,4 @@
 import {
-  defaultGitRepo,
   ECommonAuthors,
   EPalletCategories,
   EPalletModuleParts,
@@ -12,7 +11,7 @@ enum EPalletAuraTraits {
   AuthorityId = 'AuthorityId'
 }
 
-enum EPalletAuraGenesisFields {
+export enum EPalletAuraGenesisFields {
   authorities = 'authorities'
 }
 
@@ -24,7 +23,7 @@ const PalletAuraConfig: IPalletConfig<EPalletAuraTraits, EPalletAuraGenesisField
   name: ESupportedPallets.PALLET_AURA,
   metadata: {
     size: 5078,
-    updated: 1596018720,
+    updated: 1600801158,
     license: 'Apache-2.0',
     compatibility: ESubstrateVersion.TWO,
     authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
@@ -38,10 +37,8 @@ const PalletAuraConfig: IPalletConfig<EPalletAuraTraits, EPalletAuraGenesisField
     pallet: {
       defaultFeatures: false,
       package: 'pallet-aura',
-      tag: 'v2.0.0-rc5',
-      version: '2.0.0-rc5',
-      gitRepo: defaultGitRepo,
-      alias: 'aura'
+      version: '2.0.0',
+      alias: 'pallet-aura'
     }
   },
   runtime: {

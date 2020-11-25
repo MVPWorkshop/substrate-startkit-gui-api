@@ -1,5 +1,4 @@
 import {
-  defaultGitRepo,
   ECommonAuthors,
   EPalletCategories,
   EPalletModuleParts,
@@ -13,7 +12,6 @@ enum EPalletOffencesTraits {
   IdentificationTuple = 'IdentificationTuple',
   OnOffenceHandler = 'OnOffenceHandler',
   WeightSoftLimit = 'WeightSoftLimit',
-  WeightInfo = 'WeightInfo'
 }
 
 const palletDescription = [
@@ -24,7 +22,7 @@ const PalletOffencesConfig: IPalletConfig<EPalletOffencesTraits> = {
   name: ESupportedPallets.PALLET_OFFENCES,
   metadata: {
     size: 7040,
-    updated: 1596018720,
+    updated: 1600801158,
     license: 'Apache-2.0',
     compatibility: ESubstrateVersion.TWO,
     authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
@@ -39,9 +37,7 @@ const PalletOffencesConfig: IPalletConfig<EPalletOffencesTraits> = {
       alias: 'offences',
       defaultFeatures: false,
       package: 'pallet-offences',
-      tag: 'v2.0.0-rc5',
-      version: '2.0.0-rc5',
-      gitRepo: defaultGitRepo
+      version: '2.0.0'
     },
     additionalPallets: [
       { palletName: ESupportedPallets.PALLET_BALANCE, shouldImplement: false },
@@ -50,12 +46,12 @@ const PalletOffencesConfig: IPalletConfig<EPalletOffencesTraits> = {
   runtime: {
     palletTraits: {
       [EPalletOffencesTraits.Event]: 'Event',
-      [EPalletOffencesTraits.WeightInfo]: '()',
       [EPalletOffencesTraits.IdentificationTuple]: '()',
       [EPalletOffencesTraits.OnOffenceHandler]: '()',
       [EPalletOffencesTraits.WeightSoftLimit]: {
         type: 'Weight',
-        value: 'Perbill::from_percent(60) * MaximumBlockWeight::get()'
+        value: 'Perbill::from_percent(60) * MaximumBlockWeight::get()',
+        isNotConst: true
       }
     },
     constructRuntime: {
