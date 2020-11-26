@@ -22,7 +22,7 @@ const PalletRegistrarConfig: IPalletConfig<EPalletRegistrarTraits> = {
     size: 1587,
     updated: 1600801158,
     license: '/',
-    authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
+    authors: [ECommonAuthors.SUBSTRATE_DEV_HUB],
     categories: [EPalletCategories.OTHER],
     shortDescription: 'FRAME pallet organization registrar',
     description: palletDescription
