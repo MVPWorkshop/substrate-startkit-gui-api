@@ -36,7 +36,8 @@ class SubstrateManifestUtil {
       gitRepo,
       alias,
       defaultFeatures,
-      tag
+      tag,
+      branch
     } = config;
 
     let dependencyCode = '';
@@ -45,6 +46,7 @@ class SubstrateManifestUtil {
     gitRepo && (dependencyCode += `git = '${gitRepo}'\n`);
     dependencyCode += `package = '${palletPackageName}'\n`;
     tag && (dependencyCode += `tag = '${tag}'\n`);
+    branch && (dependencyCode += `branch = '${branch}'\n`);
     dependencyCode += `version = '${version}'\n\n`;
 
     return dependencyCode;

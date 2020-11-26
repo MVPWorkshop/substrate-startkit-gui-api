@@ -76,6 +76,7 @@ export interface ICargoComplexDependency {
   defaultFeatures?: false | string[];
   gitRepo?: string;
   tag?: string;
+  branch?: string;
 }
 
 /**
@@ -171,7 +172,8 @@ export enum ESupportedPallets {
   PALLET_DID = 'pallet-did',
   PALLET_REGISTRAR = 'pallet-registrar',
   PALLET_PRODUCT_REGISTRY = 'pallet-product-registry',
-  PALLET_PRODUCT_TRACKING = 'pallet-product-tracking'
+  PALLET_PRODUCT_TRACKING = 'pallet-product-tracking',
+  PALLET_RBAC = 'pallet-rbac'
 }
 
 export const defaultGitRepo = 'https://github.com/paritytech/substrate.git';
