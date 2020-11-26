@@ -166,7 +166,8 @@ export enum ESupportedPallets {
   PALLET_SOCIETY = 'pallet-society',
   PALLET_SCORED_POOL = 'pallet-scored-pool',
   PALLET_EVM = 'pallet-evm',
-  PALLET_PROXY = 'pallet-proxy'
+  PALLET_PROXY = 'pallet-proxy',
+  PALLET_DID = 'pallet-did'
 }
 
 export const defaultGitRepo = 'https://github.com/paritytech/substrate.git';
