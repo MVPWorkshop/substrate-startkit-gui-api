@@ -49,6 +49,7 @@ import PalletRegistrar from './configs/pallet_registrar.config';
 import PalletProductRegistry from './configs/pallet_product_registry.config';
 import PalletProductTracking from './configs/pallet_product_tracking';
 import PalletRbac from './configs/pallet_rbac.config';
+import PalletValidatorSet from './configs/pallet_validator_set.config';
 
 type PalletConfigs = DynamicObject<IPalletConfig<string>, ESupportedPallets, AllKeysRequired>;
 
@@ -93,7 +94,8 @@ export const configs: PalletConfigs = {
   [ESupportedPallets.PALLET_REGISTRAR]: PalletRegistrar,
   [ESupportedPallets.PALLET_PRODUCT_REGISTRY]: PalletProductRegistry,
   [ESupportedPallets.PALLET_PRODUCT_TRACKING]: PalletProductTracking,
-  [ESupportedPallets.PALLET_RBAC]: PalletRbac
+  [ESupportedPallets.PALLET_RBAC]: PalletRbac,
+  [ESupportedPallets.PALLET_VALIDATOR_SET]: PalletValidatorSet
 };
 
 export default configs;

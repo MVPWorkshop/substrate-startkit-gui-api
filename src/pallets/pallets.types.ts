@@ -173,7 +173,8 @@ export enum ESupportedPallets {
   PALLET_REGISTRAR = 'pallet-registrar',
   PALLET_PRODUCT_REGISTRY = 'pallet-product-registry',
   PALLET_PRODUCT_TRACKING = 'pallet-product-tracking',
-  PALLET_RBAC = 'pallet-rbac'
+  PALLET_RBAC = 'substrate-rbac',
+  PALLET_VALIDATOR_SET = 'substrate-validator-set'
 }
 
 export const defaultGitRepo = 'https://github.com/paritytech/substrate.git';
