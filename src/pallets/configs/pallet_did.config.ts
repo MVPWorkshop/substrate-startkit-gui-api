@@ -31,10 +31,10 @@ const PalletDidConfig: IPalletConfig<EPalletDidTraits> = {
   name: ESupportedPallets.PALLET_DID,
   metadata: {
     compatibility: ESubstrateVersion.TWO,
-    size: 16200,
+    size: 50500,
     updated: 1600801158,
-    license: 'Apache-2.0',
-    authors: [ECommonAuthors.PARITY_TECHNOLOGIES],
+    license: 'GPL-3.0',
+    authors: [ECommonAuthors.SUBSTRATE_DEV_HUB],
     categories: [EPalletCategories.IDENTITY],
     shortDescription: 'Pallet for Decentralized identifiers (DIDs)',
     description: palletDescription

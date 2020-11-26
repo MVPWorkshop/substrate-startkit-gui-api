@@ -114,7 +114,8 @@ export enum EPalletCategories {
 
 export enum ECommonAuthors {
   PARITY_TECHNOLOGIES = 'PARITY_TECHNOLOGIES',
-  CENTRALITY_DEVELOPERS = 'CENTRALITY_DEVELOPERS'
+  CENTRALITY_DEVELOPERS = 'CENTRALITY_DEVELOPERS',
+  SUBSTRATE_DEV_HUB = 'SUBSTRATE_DEV_HUB'
 }
 
 interface IPalletMetadata {
@@ -167,7 +168,8 @@ export enum ESupportedPallets {
   PALLET_SCORED_POOL = 'pallet-scored-pool',
   PALLET_EVM = 'pallet-evm',
   PALLET_PROXY = 'pallet-proxy',
-  PALLET_DID = 'pallet-did'
+  PALLET_DID = 'pallet-did',
+  PALLET_REGISTRAR = 'pallet-registrar'
 }
 
 export const defaultGitRepo = 'https://github.com/paritytech/substrate.git';
