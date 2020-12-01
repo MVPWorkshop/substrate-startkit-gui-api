@@ -18,7 +18,7 @@ const templatesTableMigration: SequelizeMigration = () => {
         allowNull: false,
       },
       description: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(1500),
         allowNull: false,
       },
       author_id: {
