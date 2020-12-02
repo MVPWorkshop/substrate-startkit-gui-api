@@ -17,3 +17,6 @@ Thumbs.db
 dist/**/*
 
 generator/temporary
+
+# Docker
+postgres-data
