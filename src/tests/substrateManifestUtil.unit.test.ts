@@ -21,17 +21,17 @@ describe('Manifest is generated correctly for provided pallets', () => {
   const newManifestCode = utilInstance.generateCode().runtimeManifest;
 
   test("Pallet is added to the manifest", () => {
-    const isPalletPresent: boolean = newManifestCode.indexOf(
+    const isPalletPresent: boolean = newManifestCode.includes(
       `[dependencies.${palletAlias}]`
-    ) !== -1;
+    );
 
     expect(isPalletPresent).toBeTruthy();
   })
 
   test("Std feature of pallet is added to the std list", () => {
-    const isStdAdded: boolean = newManifestCode.indexOf(
+    const isStdAdded: boolean = newManifestCode.includes(
       `${palletAlias}/std`
-    ) !== -1;
+    );
 
     expect(isStdAdded).toBeTruthy();
   })
