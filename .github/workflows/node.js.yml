@@ -29,6 +29,9 @@ jobs:
       run: |
         yarn
         yarn build
-    - name: Run tests
+    - name: Run unit tests
       run: |
-        yarn test
+        yarn test:unit
+    - name: Run integration tests
+        run: |
+          yarn test:integration

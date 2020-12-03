@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "test:integration": "jest int",
+    "test:unit": "jest unit",
     "start": "npm run serve",
     "dev": "nodemon",
     "build": "npm run build-ts",
