@@ -6,12 +6,17 @@ class AuthService {
     const [dbUser] = await User.findOrCreate({
       where: {
         github_user_id: profile.id
+      },
+      defaults: {
+        github_user_id: profile.id,
+        github_username: profile.username
       }
     });
 
     return {
       id: dbUser.id,
       githubUserId: dbUser.github_user_id,
+      githubUsername: dbUser.github_username,
       accessToken
     };
   }

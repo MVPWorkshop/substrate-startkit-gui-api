@@ -2,9 +2,9 @@ import '../../../config/passport.config';
 import AuthRouteDefinitions, { EAuthRoute } from '../definitions/auth.route.d';
 import passport from 'passport';
 import User from '../../../models/User.model';
-import { AuthorizationError } from '../../../utils/errors.util';
 import { APIResponse } from '../../../utils/response.util';
 import { ILoggedInUser } from '../../../entities/user.entity';
+import { CONFIG } from '../../../config';
 
 class AuthRoute {
   public static me: AuthRouteDefinitions.RouteMethod<EAuthRoute.GetMe> = async (request, response, next) => {
@@ -12,9 +12,14 @@ class AuthRoute {
 
       const user = request.user as ILoggedInUser;
 
-      return response.status(200).json(APIResponse.success(user))
-    } catch (e) {
-      next(e);
+      return response.status(200).json(APIResponse.success({
+        id: user.id,
+        githubUserId: user.githubUserId,
+        githubUsername: user.githubUsername
+      }));
+
+    } catch (error) {
+      next(error);
     }
   };
 
@@ -25,8 +30,8 @@ class AuthRoute {
         scope: ['repo', 'user:email', 'read:user']
       })(request, response, next);
 
-    } catch (e) {
-      next(e);
+    } catch (error) {
+      next(error);
     }
   };
 
@@ -35,26 +40,22 @@ class AuthRoute {
 
       passport.authenticate('github', (err: Error, user: User) => {
 
-        if (err) {
-          next(err);
-        }
-
-        if (!user) {
-          throw new AuthorizationError();
+        if (err || !user) {
+          return response.status(401).redirect(CONFIG.GITHUB_LOGIN_ERROR_REDIRECT_URL)
         }
 
         request.logIn(user, (err) => {
           if (err) {
-            next(err);
+            return response.status(401).redirect(CONFIG.GITHUB_LOGIN_ERROR_REDIRECT_URL)
           }
 
-          return response.status(200).json(APIResponse.success(user as unknown as ILoggedInUser));
+          return response.status(200).redirect(CONFIG.GITHUB_LOGIN_SUCCESS_REDIRECT_URL);
         })
 
       })(request, response, next);
 
-    } catch (e) {
-      next(e);
+    } catch (error) {
+      next(error);
     }
   }
 }

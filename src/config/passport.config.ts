@@ -3,7 +3,6 @@ import { Strategy as GitHubStrategy } from 'passport-github2';
 import { AuthenticationError } from '../utils/errors.util';
 import { VerifyCallback } from 'passport-oauth2';
 import { CONFIG } from './index';
-import User from '../models/User.model';
 import AuthService from '../services/auth.service';
 import { ILoggedInUser } from '../entities/user.entity';
 

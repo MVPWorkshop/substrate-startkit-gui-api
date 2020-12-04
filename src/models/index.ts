@@ -6,7 +6,11 @@ const db =  new Sequelize({
   dialect: CONFIG.DB_DIALECT as any,
   username: CONFIG.DB_USER,
   password: CONFIG.DB_PASSWORD,
+  host: CONFIG.DB_HOST,
   models: [__dirname + '/*.model.*'],
+  retry: {
+    max: 5
+  },
   logging: (query) => console.log(query)
 });
 

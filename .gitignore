@@ -15,3 +15,8 @@ Thumbs.db
 
 # Ignore built ts files
 dist/**/*
+
+generator/temporary
+
+# Docker
+postgres-data

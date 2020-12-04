@@ -1,9 +1,10 @@
-'use strict';
+import { QueryInterface } from 'sequelize';
+import { SequelizeMigration } from '../../src/types/util.types';
 
-const tableName = 'users';
+const usersTableMigration: SequelizeMigration = () => {
+  const tableName = 'users';
 
-module.exports = {
-  up: (queryInterface, Sequelize) => {
+  const up = (queryInterface: QueryInterface, Sequelize: any) => {
     return queryInterface.createTable(tableName, {
       id: {
         type: Sequelize.UUID,
@@ -25,9 +26,18 @@ module.exports = {
         allowNull: false,
       },
     })
-  },
-
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable(tableName)
   }
-};
+
+  const down = (queryInterface: QueryInterface, Sequelize: any) => {
+    return queryInterface.dropTable(tableName, {cascade: true});
+  }
+
+  return {
+    up,
+    down
+  }
+}
+
+module.exports = {
+  ...usersTableMigration()
+}

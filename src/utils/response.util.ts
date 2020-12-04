@@ -1,6 +1,6 @@
 import { DynamicObject } from '../types/util.types';
 
-export interface IResponseSuccess<T extends DynamicObject> {
+export interface IResponseSuccess<T extends DynamicObject | Array<any>> {
   result: T;
 }
 
@@ -13,9 +13,10 @@ interface IResponseError {
 }
 
 export class APIResponse {
-  public static success<T extends DynamicObject>(data: T): IResponseSuccess<T> {
+  public static success<T extends DynamicObject | Array<any>>(data: T): IResponseSuccess<T> {
+
     const response: IResponseSuccess<T> = {
-      result: {...data}
+      result: data
     };
 
     return response;
