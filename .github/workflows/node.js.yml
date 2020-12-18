@@ -48,8 +48,8 @@ jobs:
         envkey_HOST_ADDRESS: "http://localhost:3001"
         envkey_DB_HOST: "postgres"
         envkey_TEST_DB_HOST: "postgres"
-        envkey_DB_PORT: "5432"
-        envkey_TEST_DB_PORT: "5432"
+        envkey_DB_PORT: ${{ job.services.postgres.ports[5432] }}
+        envkey_TEST_DB_PORT: ${{ job.services.postgres.ports[5432] }}
         envkey_DB_NAME: ${{ secrets.DB_NAME }}
         envkey_TEST_DB_NAME: ${{ secrets.DB_NAME }}
         envkey_DB_DIALECT: "postgres"
