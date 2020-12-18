@@ -20,7 +20,7 @@ export default class User extends Model<User> {
   @Unique
   @PrimaryKey
   @Default(DataType.UUIDV4)
-  @Column({type: DataType.UUIDV4})
+  @Column({type: DataType.UUID})
   id: string;
 
   @AllowNull(false)

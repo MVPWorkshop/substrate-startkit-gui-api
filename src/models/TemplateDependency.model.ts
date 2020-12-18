@@ -29,11 +29,11 @@ export default class TemplateDependency extends Model<TemplateDependency> implem
   @PrimaryKey
   @Unique
   @Default(DataType.UUIDV4)
-  @Column({type: DataType.UUIDV4})
+  @Column({type: DataType.UUID})
   id: string;
 
   @ForeignKey(() => Template)
-  @Column
+  @Column({type: DataType.UUID})
   template_id: string;
 
   @ForeignKey(() => Pallet)

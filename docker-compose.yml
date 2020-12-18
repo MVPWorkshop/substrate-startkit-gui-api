@@ -8,13 +8,28 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_USER: ${DB_USER}
       POSTGRES_DB: ${DB_NAME}
+      PGPORT: ${DB_PORT}
     ports:
       - ${DB_PORT}:${DB_PORT}
     volumes:
-      - ./postgres-data:/var/lib/postgresql/data
+      - ./database/postgres-data:/var/lib/postgresql/data
+  pg_test:
+    image: "postgres:12"
+    container_name: "postgres_test"
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_DB: ${TEST_DB_NAME}
+      PGPORT: ${TEST_DB_PORT}
+    ports:
+      - ${TEST_DB_PORT}:${TEST_DB_PORT}
+    volumes:
+      - ./database/postgres-test-data:/var/lib/postgresql/data
   node_backend:
     depends_on:
       - pg
+      - pg_test
     container_name: "node_backend"
     build: .
     entrypoint: ["./wait-for-it.sh", "-t", "30", "pg:${DB_PORT}", "--", "./docker-entrypoint.sh"]
