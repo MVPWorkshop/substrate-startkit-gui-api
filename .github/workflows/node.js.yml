@@ -42,30 +42,30 @@ jobs:
     - name: Make environment file
       uses: SpicyPizza/create-envfile@v1
       with:
-        NODE_ENV: "test"
-        NODE_PORT: "3001"
-        NODE_HOST: "0.0.0.0"
-        HOST_ADDRESS: "http://localhost:3001"
-        DB_HOST: "postgres"
-        TEST_DB_HOST: "postgres"
-        DB_PORT: "5432"
-        TEST_DB_PORT: "5432"
-        DB_NAME: ${{ secrets.DB_NAME }}
-        TEST_DB_NAME: ${{ secrets.DB_NAME }}
-        DB_DIALECT: "postgres"
-        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-        DB_USER: ${{ secrets.DB_USER }}
-        COOKIE_SECRET: "substratestartkitapp"
-        COOKIE_DOMAIN: "localhost"
-        COOKIE_HTTP_ONLY: false
-        COOKIE_SECURE: false
-        COOKIE_NAME: substratestartkitapp.sid
-        SESSION_TABLE: session
-        GITHUB_APP_CLIENT_ID: ${{ secrets.OAUTH_GITHUB_APP_CLIENT_ID }}
-        GITHUB_APP_CLIENT_SECRET: ${{ secrets.OAUTH_GITHUB_APP_CLIENT_SECRET }}
-        GITHUB_API_URL: "https://api.github.com/"
-        GITHUB_LOGIN_SUCCESS_REDIRECT_URL: "http://localhost:3000/#/github/success"
-        GITHUB_LOGIN_ERROR_REDIRECT_URL: "http://localhost:3000/#/github/error"
+        envkey_NODE_ENV: "test"
+        envkey_NODE_PORT: "3001"
+        envkey_NODE_HOST: "0.0.0.0"
+        envkey_HOST_ADDRESS: "http://localhost:3001"
+        envkey_DB_HOST: "postgres"
+        envkey_TEST_DB_HOST: "postgres"
+        envkey_DB_PORT: "5432"
+        envkey_TEST_DB_PORT: "5432"
+        envkey_DB_NAME: ${{ secrets.DB_NAME }}
+        envkey_TEST_DB_NAME: ${{ secrets.DB_NAME }}
+        envkey_DB_DIALECT: "postgres"
+        envkey_DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        envkey_DB_USER: ${{ secrets.DB_USER }}
+        envkey_COOKIE_SECRET: "substratestartkitapp"
+        envkey_COOKIE_DOMAIN: "localhost"
+        envkey_COOKIE_HTTP_ONLY: false
+        envkey_COOKIE_SECURE: false
+        envkey_COOKIE_NAME: substratestartkitapp.sid
+        envkey_SESSION_TABLE: session
+        envkey_GITHUB_APP_CLIENT_ID: ${{ secrets.OAUTH_GITHUB_APP_CLIENT_ID }}
+        envkey_GITHUB_APP_CLIENT_SECRET: ${{ secrets.OAUTH_GITHUB_APP_CLIENT_SECRET }}
+        envkey_GITHUB_API_URL: "https://api.github.com/"
+        envkey_GITHUB_LOGIN_SUCCESS_REDIRECT_URL: "http://localhost:3000/#/github/success"
+        envkey_GITHUB_LOGIN_ERROR_REDIRECT_URL: "http://localhost:3000/#/github/error"
     - name: Build code
       run: |
         yarn
