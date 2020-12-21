@@ -7,6 +7,7 @@ import { IPalletCategoryAttributes } from '../../models/PalletCategory.model';
 import { IPalletDependencyAttributes } from '../../models/PalletDependency.model';
 import { IUserAttributes } from '../../models/User.model';
 import { ISessionAttributes } from '../../models/Session.model';
+import { ITemplateAttributes } from '../../models/Template.model';
 
 const pallet: IPalletAttributes = {
   name: ESupportedPallets.PALLET_TREASURY,
@@ -65,6 +66,22 @@ const session: ISessionAttributes = {
   sid: 'session_id'
 }
 
+const template: ITemplateAttributes = {
+  id: v4(),
+  author_id: user.id,
+  description: 'example-description',
+  name: 'Public template',
+  public: true
+}
+
+const privateTemplate: ITemplateAttributes = {
+  id: v4(),
+  author_id: v4(),
+  description: 'private-example-description',
+  name: 'Private template',
+  public: false
+}
+
 export const ModelsMockData = {
   pallet,
   palletAuthor,
@@ -73,5 +90,7 @@ export const ModelsMockData = {
   dependantPallet,
   user,
   session,
+  template,
+  privateTemplate,
   generateMockPallet
 }
