@@ -1,6 +1,7 @@
 import db from '../../models';
 import Pallet from '../../models/Pallet.model';
 import { ESubstrateVersion, ESupportedPallets } from '../../pallets/pallets.types';
+import { ModelsMockData } from './_mock_data_';
 
 describe("Pallet model test", () => {
   beforeAll(async () => {
@@ -13,22 +14,11 @@ describe("Pallet model test", () => {
 
   describe("Create pallet", () => {
     it("Creates a pallet", async () => {
-      const pallet = new Pallet({
-        name: ESupportedPallets.PALLET_TREASURY,
-        size: 1000,
-        downloads: 0,
-        package_name: 'pallet-treasury',
-        version: '2.0.0',
-        license: 'Apache',
-        package_last_update: 1000,
-        description: 'Long description',
-        short_description: 'Short Description',
-        compatibility: ESubstrateVersion.TWO,
-      })
+      const pallet = new Pallet(ModelsMockData.pallet)
 
       const dbData = await pallet.save();
       expect(dbData).toBeTruthy();
-      expect(dbData.name).toBe(ESupportedPallets.PALLET_TREASURY)
+      expect(dbData.name).toBe(ModelsMockData.pallet.name)
     })
   })
 
@@ -36,12 +26,12 @@ describe("Pallet model test", () => {
     it("Gets a pallet", async () => {
       const dbData = await Pallet.findOne({
         where: {
-          name: ESupportedPallets.PALLET_TREASURY
+          name: ModelsMockData.pallet.name
         }
       })
 
       expect(dbData).toBeTruthy();
-      expect(dbData.name).toBe(ESupportedPallets.PALLET_TREASURY);
+      expect(dbData.name).toBe(ModelsMockData.pallet.name);
     })
   })
 })
