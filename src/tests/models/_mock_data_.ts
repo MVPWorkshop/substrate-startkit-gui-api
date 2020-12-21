@@ -5,6 +5,7 @@ import { IPalletAuthorAttributes } from '../../models/PalletAuthor.model';
 import { v4 } from 'uuid';
 import { IPalletCategoryAttributes } from '../../models/PalletCategory.model';
 import { IPalletDependencyAttributes } from '../../models/PalletDependency.model';
+import { IUserAttributes } from '../../models/User.model';
 
 const pallet: IPalletAttributes = {
   name: ESupportedPallets.PALLET_TREASURY,
@@ -51,11 +52,18 @@ const dependantPallet: IPalletDependencyAttributes = {
   pallet_name: ESupportedPallets.PALLET_DEMOCRACY
 }
 
+const user: IUserAttributes = {
+  id: v4(),
+  github_user_id: '42151917',
+  github_username: 'pajicf'
+}
+
 export const ModelsMockData = {
   pallet,
   palletAuthor,
   palletCategory,
   palletDependency,
   dependantPallet,
+  user,
   generateMockPallet
 }

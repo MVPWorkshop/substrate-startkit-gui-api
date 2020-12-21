@@ -10,13 +10,19 @@ import {
 } from 'sequelize-typescript';
 import Template from './Template.model';
 
+export interface IUserAttributes {
+  id: string;
+  github_user_id: string;
+  github_username: string;
+}
+
 @Table({
   freezeTableName: true,
   modelName: 'users',
   timestamps: true,
   underscored: true
 })
-export default class User extends Model<User> {
+export default class User extends Model<User> implements IUserAttributes {
   @Unique
   @PrimaryKey
   @Default(DataType.UUIDV4)
