@@ -6,6 +6,7 @@ import { v4 } from 'uuid';
 import { IPalletCategoryAttributes } from '../../models/PalletCategory.model';
 import { IPalletDependencyAttributes } from '../../models/PalletDependency.model';
 import { IUserAttributes } from '../../models/User.model';
+import { ISessionAttributes } from '../../models/Session.model';
 
 const pallet: IPalletAttributes = {
   name: ESupportedPallets.PALLET_TREASURY,
@@ -58,6 +59,12 @@ const user: IUserAttributes = {
   github_username: 'pajicf'
 }
 
+const session: ISessionAttributes = {
+  data: 'testData',
+  expires: moment('18.10.2020', 'DD.MM.YYYY').toDate(),
+  sid: 'session_id'
+}
+
 export const ModelsMockData = {
   pallet,
   palletAuthor,
@@ -65,5 +72,6 @@ export const ModelsMockData = {
   palletDependency,
   dependantPallet,
   user,
+  session,
   generateMockPallet
 }
