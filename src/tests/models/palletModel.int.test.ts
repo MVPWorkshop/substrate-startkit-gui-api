@@ -1,6 +1,5 @@
 import db from '../../models';
 import Pallet from '../../models/Pallet.model';
-import { ESubstrateVersion, ESupportedPallets } from '../../pallets/pallets.types';
 import { ModelsMockData } from './_mock_data_';
 
 describe("Pallet model test", () => {

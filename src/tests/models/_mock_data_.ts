@@ -4,6 +4,7 @@ import moment from 'moment';
 import { IPalletAuthorAttributes } from '../../models/PalletAuthor.model';
 import { v4 } from 'uuid';
 import { IPalletCategoryAttributes } from '../../models/PalletCategory.model';
+import { IPalletDependencyAttributes } from '../../models/PalletDependency.model';
 
 const pallet: IPalletAttributes = {
   name: ESupportedPallets.PALLET_TREASURY,
@@ -18,6 +19,14 @@ const pallet: IPalletAttributes = {
   compatibility: ESubstrateVersion.TWO,
 }
 
+const generateMockPallet = (palletName: ESupportedPallets, packageName: string): IPalletAttributes => {
+  return {
+    ...pallet,
+    name: palletName,
+    package_name: packageName
+  }
+}
+
 const palletAuthor: IPalletAuthorAttributes = {
   id: v4(),
   author: 'TEST_AUTHOR',
@@ -30,8 +39,23 @@ const palletCategory: IPalletCategoryAttributes = {
   pallet_name: pallet.name
 }
 
+const palletDependency: IPalletDependencyAttributes = {
+  id: v4(),
+  dependency_pallet_name: ESupportedPallets.PALLET_MEMBERSHIP,
+  pallet_name: pallet.name
+}
+
+const dependantPallet: IPalletDependencyAttributes = {
+  id: v4(),
+  dependency_pallet_name: pallet.name,
+  pallet_name: ESupportedPallets.PALLET_DEMOCRACY
+}
+
 export const ModelsMockData = {
   pallet,
   palletAuthor,
-  palletCategory
+  palletCategory,
+  palletDependency,
+  dependantPallet,
+  generateMockPallet
 }
