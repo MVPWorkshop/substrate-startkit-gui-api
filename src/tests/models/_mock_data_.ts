@@ -1,8 +1,9 @@
 import { IPalletAttributes } from '../../models/Pallet.model';
-import { ESubstrateVersion, ESupportedPallets } from '../../pallets/pallets.types';
+import { EPalletCategories, ESubstrateVersion, ESupportedPallets } from '../../pallets/pallets.types';
 import moment from 'moment';
 import { IPalletAuthorAttributes } from '../../models/PalletAuthor.model';
 import { v4 } from 'uuid';
+import { IPalletCategoryAttributes } from '../../models/PalletCategory.model';
 
 const pallet: IPalletAttributes = {
   name: ESupportedPallets.PALLET_TREASURY,
@@ -23,7 +24,14 @@ const palletAuthor: IPalletAuthorAttributes = {
   pallet_name: pallet.name
 }
 
+const palletCategory: IPalletCategoryAttributes = {
+  id: v4(),
+  category: EPalletCategories.GOVERNANCE,
+  pallet_name: pallet.name
+}
+
 export const ModelsMockData = {
   pallet,
-  palletAuthor
+  palletAuthor,
+  palletCategory
 }
