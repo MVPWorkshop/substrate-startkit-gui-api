@@ -32,10 +32,6 @@ class TemplatesService {
     })
   }
 
-  public static async delete(templateName: string): Promise<void> {
-
-  }
-
   public static async createTemplate(data: {
     templateName: string;
     authorUserId: string;
