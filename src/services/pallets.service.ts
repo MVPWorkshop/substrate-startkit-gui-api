@@ -1,4 +1,3 @@
-
 import Pallet from '../models/Pallet.model';
 import PalletCategory, { IPalletCategoryAttributes } from '../models/PalletCategory.model';
 import PalletAuthor from '../models/PalletAuthor.model';

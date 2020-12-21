@@ -1,4 +1,4 @@
-import * as CommonUtil from '../utils/common.util';
+import * as CommonUtil from '../../utils/common.util';
 
 describe("'Kebab case' text will become 'Camel case' text", () => {
   const value = 'test-text';
