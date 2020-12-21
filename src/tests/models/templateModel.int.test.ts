@@ -14,7 +14,7 @@ describe("Template model test", () => {
 
   describe("Template creation", () => {
     test("Public template creation", async () => {
-      const userData = await User.create(ModelsMockData.user);
+      await User.create(ModelsMockData.user);
       const dbData = await Template.create(ModelsMockData.template);
 
       expect(dbData).toBeTruthy();

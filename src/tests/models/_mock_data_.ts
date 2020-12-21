@@ -8,6 +8,7 @@ import { IPalletDependencyAttributes } from '../../models/PalletDependency.model
 import { IUserAttributes } from '../../models/User.model';
 import { ISessionAttributes } from '../../models/Session.model';
 import { ITemplateAttributes } from '../../models/Template.model';
+import { ITemplateDependencyAttributes } from '../../models/TemplateDependency.model';
 
 const pallet: IPalletAttributes = {
   name: ESupportedPallets.PALLET_TREASURY,
@@ -82,6 +83,12 @@ const privateTemplate: ITemplateAttributes = {
   public: false
 }
 
+const templateDependency: ITemplateDependencyAttributes = {
+  id: v4(),
+  dependency_name: ESupportedPallets.PALLET_DEMOCRACY,
+  template_id: template.id
+}
+
 export const ModelsMockData = {
   pallet,
   palletAuthor,
@@ -92,5 +99,6 @@ export const ModelsMockData = {
   session,
   template,
   privateTemplate,
+  templateDependency,
   generateMockPallet
 }
