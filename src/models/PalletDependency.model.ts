@@ -28,7 +28,7 @@ export default class PalletDependency extends Model<PalletDependency> implements
   @PrimaryKey
   @Unique
   @Default(DataType.UUIDV4)
-  @Column({type: DataType.UUIDV4})
+  @Column({type: DataType.UUID})
   id: string;
 
   @ForeignKey(() => Pallet)

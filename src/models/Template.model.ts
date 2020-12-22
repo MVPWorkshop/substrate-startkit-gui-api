@@ -26,7 +26,7 @@ export default class Template extends Model<Template> implements ITemplateAttrib
   @PrimaryKey
   @Unique
   @Default(DataType.UUIDV4)
-  @Column({type: DataType.UUIDV4})
+  @Column({type: DataType.UUID})
   id: string;
 
   @AllowNull(false)
@@ -39,7 +39,7 @@ export default class Template extends Model<Template> implements ITemplateAttrib
 
   @AllowNull(false)
   @ForeignKey(() => User)
-  @Column
+  @Column({type: DataType.UUID})
   author_id: string;
 
   @AllowNull(false)
