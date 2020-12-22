@@ -1,9 +1,9 @@
-import CodeGeneratorService from '../services/codeGenerator.service';
-import { IUser } from '../entities/user.entity';
-import { ESupportedPallets } from '../pallets/pallets.types';
+import CodeGeneratorService from '../../services/codeGenerator.service';
+import { IUser } from '../../entities/user.entity';
+import { ESupportedPallets } from '../../pallets/pallets.types';
 import { ChildProcess, exec } from 'child_process';
-import { kill } from '../utils/scripts.util';
-import FileUtil from '../utils/file.util';
+import { kill } from '../../utils/scripts.util';
+import FileUtil from '../../utils/file.util';
 
 const RealDate = Date.now;
 

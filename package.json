@@ -1,12 +1,12 @@
 {
   "name": "substrate-startkit-gui-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "API for substrate startkit gui frontend",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "test:integration": "jest int",
-    "test:unit": "jest unit",
+    "test": "jest --runInBand",
+    "test:integration": "npm run test int",
+    "test:unit": "npm run test unit",
     "start": "npm run serve",
     "dev": "nodemon",
     "build": "npm run build-ts",
@@ -36,6 +36,7 @@
   },
   "homepage": "https://github.com/MVPWorkshop/substrate-startkit-gui-api#readme",
   "dependencies": {
+    "@types/supertest": "^2.0.10",
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "connect-session-sequelize": "^7.0.0",
@@ -57,6 +58,7 @@
     "reflect-metadata": "^0.1.13",
     "sequelize": "^5.21.13",
     "sequelize-typescript": "^1.1.0",
+    "supertest": "^6.0.1",
     "uuid": "^8.3.0"
   },
   "devDependencies": {
@@ -80,7 +82,7 @@
     "jest": "^26.4.1",
     "nodemon": "^2.0.4",
     "sequelize-cli": "^6.2.0",
-    "ts-jest": "^26.2.0",
+    "ts-jest": "^26.4.4",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.5"
   }

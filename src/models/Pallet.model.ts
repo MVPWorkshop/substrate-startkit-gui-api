@@ -5,7 +5,8 @@ import {
   PrimaryKey,
   Table,
   Unique,
-  HasMany
+  HasMany,
+  DataType
 } from 'sequelize-typescript';
 import PalletCategory from './PalletCategory.model';
 import { ESubstrateVersion, ESupportedPallets } from '../pallets/pallets.types';
@@ -67,7 +68,7 @@ export default class Pallet extends Model<Pallet> implements IPalletAttributes {
   package_last_update: Date;
 
   @AllowNull(false)
-  @Column
+  @Column({type: DataType.TEXT})
   description: string;
 
   @AllowNull(false)

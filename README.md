@@ -7,8 +7,9 @@ API for substrate startkit gui frontend
         * Installed [Docker](https://www.docker.com/)
         * Installed docker-compose (Bundled with the official Docker setup)
     * If setting up locally
+        * Installed [Node.js 12](https://nodejs.org/en/)
         * Installed [yarn](https://yarnpkg.com/) package manager
-        * Installed [PostgreSQL](https://www.postgresql.org/)
+        * Installed [PostgreSQL 12](https://www.postgresql.org/)
         * Installed [GIT](https://git-scm.com/) version control system
 
 # Installation guide

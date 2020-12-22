@@ -29,7 +29,7 @@ export default class PalletCategory extends Model<PalletCategory> implements IPa
   @PrimaryKey
   @Unique
   @Default(DataType.UUIDV4)
-  @Column({type: DataType.UUIDV4})
+  @Column({type: DataType.UUID})
   id: string;
 
   @ForeignKey(() => Pallet)

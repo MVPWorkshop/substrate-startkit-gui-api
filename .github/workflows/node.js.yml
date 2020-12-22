@@ -11,8 +11,26 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
+
+    container:
+      image: node:12
+
+    services:
+      postgres:
+        image: postgres:12
+        env:
+          POSTGRES_USER: ${{ secrets.DB_USER }}
+          POSTGRES_DB: ${{ secrets.DB_NAME }}
+          POSTGRES_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+          --name postgres
+        ports:
+        - 5432:5432
 
     strategy:
       matrix:
@@ -25,6 +43,33 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install -g yarn
+    - name: Make environment file
+      uses: SpicyPizza/create-envfile@v1
+      with:
+        envkey_NODE_ENV: "test"
+        envkey_NODE_PORT: "3001"
+        envkey_NODE_HOST: "0.0.0.0"
+        envkey_HOST_ADDRESS: "http://localhost:3001"
+        envkey_DB_HOST: "postgres"
+        envkey_TEST_DB_HOST: "postgres"
+        envkey_DB_PORT: ${{ job.services.postgres.ports[5432] }}
+        envkey_TEST_DB_PORT: ${{ job.services.postgres.ports[5432] }}
+        envkey_DB_NAME: ${{ secrets.DB_NAME }}
+        envkey_TEST_DB_NAME: ${{ secrets.DB_NAME }}
+        envkey_DB_DIALECT: "postgres"
+        envkey_DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        envkey_DB_USER: ${{ secrets.DB_USER }}
+        envkey_COOKIE_SECRET: "substratestartkitapp"
+        envkey_COOKIE_DOMAIN: "localhost"
+        envkey_COOKIE_HTTP_ONLY: false
+        envkey_COOKIE_SECURE: false
+        envkey_COOKIE_NAME: substratestartkitapp.sid
+        envkey_SESSION_TABLE: session
+        envkey_GITHUB_APP_CLIENT_ID: ${{ secrets.OAUTH_GITHUB_APP_CLIENT_ID }}
+        envkey_GITHUB_APP_CLIENT_SECRET: ${{ secrets.OAUTH_GITHUB_APP_CLIENT_SECRET }}
+        envkey_GITHUB_API_URL: "https://api.github.com/"
+        envkey_GITHUB_LOGIN_SUCCESS_REDIRECT_URL: "http://localhost:3000/#/github/success"
+        envkey_GITHUB_LOGIN_ERROR_REDIRECT_URL: "http://localhost:3000/#/github/error"
     - name: Build code
       run: |
         yarn
