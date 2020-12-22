@@ -1,7 +1,7 @@
 import request from 'supertest';
 import app from '../../../app';
 
-describe("Pallets route test", () => {
+describe("Status route test", () => {
   test("List pallets test",(done) => {
     return request(app)
       .get('/api/v1/status')
