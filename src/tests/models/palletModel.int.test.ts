@@ -3,8 +3,9 @@ import Pallet from '../../models/Pallet.model';
 import { ModelsMockData } from './_mock_data_';
 
 describe("Pallet model test", () => {
-  beforeAll(async () => {
+  beforeAll(async (done) => {
     await db.sync({force: true});
+    done()
   })
 
   afterAll(async () => {

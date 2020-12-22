@@ -4,8 +4,9 @@ import { ModelsMockData } from './_mock_data_';
 import User from '../../models/User.model';
 
 describe("Template model test", () => {
-  beforeAll(async () => {
+  beforeAll(async (done) => {
     await db.sync({force: true});
+    done();
   })
 
   afterAll(async () => {

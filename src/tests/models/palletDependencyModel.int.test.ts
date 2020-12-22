@@ -5,8 +5,9 @@ import Pallet from '../../models/Pallet.model';
 import { ESupportedPallets } from '../../pallets/pallets.types';
 
 describe("Pallet Dependency model test", () => {
-  beforeAll(async () => {
+  beforeAll(async (done) => {
     await db.sync({force: true});
+    done();
   })
 
   afterAll(async () => {

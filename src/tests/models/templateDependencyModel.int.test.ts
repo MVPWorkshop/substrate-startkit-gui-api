@@ -5,8 +5,9 @@ import User from '../../models/User.model';
 import TemplateDependency from '../../models/TemplateDependency.model';
 
 describe("Template dependency model test", () => {
-  beforeAll(async () => {
+  beforeAll(async (done) => {
     await db.sync({force: true});
+    done();
   })
 
   afterAll(async () => {

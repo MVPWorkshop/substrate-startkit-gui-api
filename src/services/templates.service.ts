@@ -47,10 +47,10 @@ class TemplatesService {
         public: data.public
       }, { transaction: tx });
 
-
       const dpTemplateDependencies = data.dependencies.map(dependency => (
         TemplateDependency.create({
           template_name: dbTemplate.name,
+          template_id: dbTemplate.id,
           dependency_name: dependency
         }, { transaction: tx })
       ))
@@ -66,6 +66,7 @@ class TemplatesService {
         ]
       });
     } catch (error) {
+      console.log(error)
       tx.rollback();
     }
   }

@@ -3,8 +3,9 @@ import Session from '../../models/Session.model';
 import { ModelsMockData } from './_mock_data_';
 
 describe("Session model test", () => {
-  beforeAll(async () => {
+  beforeAll(async (done) => {
     await db.sync({force: true});
+    done();
   })
 
   afterAll(async () => {

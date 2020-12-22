@@ -8,21 +8,25 @@ import { IPalletEntity } from '../../../entities/pallet.entity';
 
 describe("Pallets route test", () => {
 
-  beforeAll(async () => {
-    db.sync({ force: true });
+  beforeAll(async (done) => {
+    await db.sync({ force: true });
     await seed(
       ETablesToSeed.PALLET,
       ETablesToSeed.PALLET_CATEGORIES,
       ETablesToSeed.PALLET_DEPENDENCIES,
       ETablesToSeed.PALLET_AUTHORS
     );
+
+    done()
   })
 
-  afterAll(async () => {
+  afterAll(async (done) => {
     db.close();
+
+    done()
   })
 
-  test("List pallets test",() => {
+  test("List pallets test",(done) => {
     return request(app)
       .get('/api/v1/pallets')
       .set('Accept', 'application/json')
@@ -33,10 +37,11 @@ describe("Pallets route test", () => {
         expect(Array.isArray(response.body.result)).toBeDefined()
 
         expect(response.body.result).toHaveLength(Object.keys(configs).length);
+        done();
       })
   })
 
-  test("List only pallets of a specific category", () => {
+  test("List only pallets of a specific category", (done) => {
     return request(app)
       .get(`/api/v1/pallets?category=${EPalletCategories.IDENTITY}`)
       .set('Accept', 'application/json')
@@ -49,10 +54,12 @@ describe("Pallets route test", () => {
         response.body.result.map((result: IPalletEntity) => {
           expect(result.categories.includes(EPalletCategories.IDENTITY))
         })
+
+        done()
       })
   })
 
-  test("List should return 422 for non existing category", () => {
+  test("List should return 422 for non existing category", (done) => {
     return request(app)
       .get(`/api/v1/pallets?category=NONEXISTINGCATEGORY`)
       .set('Accept', 'application/json')
@@ -62,10 +69,12 @@ describe("Pallets route test", () => {
         expect(response.body.error).toBeDefined();
         expect(response.body.error.code).toBe(422);
         expect(response.body.error.message).toBeDefined();
+
+        done()
       })
   })
 
-  test("Fetching non existing pallet should yield not found", () => {
+  test("Fetching non existing pallet should yield not found", (done) => {
     return request(app)
       .get(`/api/v1/pallets/nonExistingPalletName`)
       .set('Accept', 'application/json')
@@ -75,10 +84,12 @@ describe("Pallets route test", () => {
         expect(response.body.error).toBeDefined();
         expect(response.body.error.code).toBe(404);
         expect(response.body.error.message).toBeDefined();
+
+        done()
       })
   })
 
-  test("Fetching pallet", () => {
+  test("Fetching pallet", (done) => {
     return request(app)
       .get(`/api/v1/pallets/${ESupportedPallets.PALLET_DEMOCRACY}`)
       .set('Accept', 'application/json')
@@ -101,6 +112,8 @@ describe("Pallets route test", () => {
         expect(response.body.result.dependencies).toBeDefined();
         expect(response.body.result.dependencies.using).toBeDefined();
         expect(response.body.result.dependencies.usedBy).toBeDefined();
+
+        done()
       })
   })
 })

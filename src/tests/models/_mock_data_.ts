@@ -61,6 +61,12 @@ const user: IUserAttributes = {
   github_username: 'pajicf'
 }
 
+const user2: IUserAttributes = {
+  id: v4(),
+  github_user_id: '42151918',
+  github_username: 'username'
+}
+
 const session: ISessionAttributes = {
   data: 'testData',
   expires: moment('18.10.2020', 'DD.MM.YYYY').toDate(),
@@ -77,7 +83,7 @@ const template: ITemplateAttributes = {
 
 const privateTemplate: ITemplateAttributes = {
   id: v4(),
-  author_id: v4(),
+  author_id: user2.id,
   description: 'private-example-description',
   name: 'Private template',
   public: false
@@ -89,6 +95,12 @@ const templateDependency: ITemplateDependencyAttributes = {
   template_id: template.id
 }
 
+const privateTemplateDependency: ITemplateDependencyAttributes = {
+  id: v4(),
+  dependency_name: ESupportedPallets.PALLET_MEMBERSHIP,
+  template_id: privateTemplate.id
+}
+
 export const ModelsMockData = {
   pallet,
   palletAuthor,
@@ -96,9 +108,11 @@ export const ModelsMockData = {
   palletDependency,
   dependantPallet,
   user,
+  user2,
   session,
   template,
   privateTemplate,
   templateDependency,
+  privateTemplateDependency,
   generateMockPallet
 }

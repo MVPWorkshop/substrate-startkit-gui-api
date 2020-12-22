@@ -9,6 +9,10 @@ import {
 import PalletCategory from '../../models/PalletCategory.model';
 import PalletAuthor from '../../models/PalletAuthor.model';
 import PalletDependency from '../../models/PalletDependency.model';
+import { ModelsMockData } from '../models/_mock_data_';
+import Template from '../../models/Template.model';
+import TemplateDependency from '../../models/TemplateDependency.model';
+import User from '../../models/User.model';
 
 const seedPallets = async () => {
   const rows = Object.keys(Configs).map(key => {
@@ -71,11 +75,35 @@ const seedPalletDependencies = async () => {
   await PalletDependency.bulkCreate(rows);
 }
 
+const seedUsers = async () => {
+  await User.bulkCreate([
+    ModelsMockData.user,
+    ModelsMockData.user2
+  ]);
+}
+
+const seedTemplates = async () => {
+  await Template.bulkCreate([
+    ModelsMockData.template,
+    ModelsMockData.privateTemplate
+  ])
+}
+
+const seedTemplateDependencies = async () => {
+  await TemplateDependency.bulkCreate([
+    ModelsMockData.templateDependency,
+    ModelsMockData.privateTemplateDependency
+  ])
+}
+
 export enum ETablesToSeed {
   PALLET = 'PALLET',
   PALLET_CATEGORIES = 'PALLET_CATEGORIES',
   PALLET_AUTHORS = 'PALLET_AUTHORS',
-  PALLET_DEPENDENCIES = 'PALLET_DEPENDENCIES'
+  PALLET_DEPENDENCIES = 'PALLET_DEPENDENCIES',
+  TEMPLATE = 'TEMPLATE',
+  TEMPLATE_DEPENDENCIES = 'TEMPLATE_DEPENDENCIES',
+  USER = 'USER'
 }
 
 export const seed = async (...tablesToSeed: ETablesToSeed[]) => {
@@ -91,6 +119,18 @@ export const seed = async (...tablesToSeed: ETablesToSeed[]) => {
     }
     if (tablesToSeed.includes(ETablesToSeed.PALLET_DEPENDENCIES)) {
       await seedPalletDependencies();
+    }
+
+    if (tablesToSeed.includes(ETablesToSeed.USER)) {
+      await seedUsers();
+
+      if (tablesToSeed.includes(ETablesToSeed.TEMPLATE)) {
+        await seedTemplates();
+
+        if (tablesToSeed.includes(ETablesToSeed.TEMPLATE_DEPENDENCIES)) {
+          await seedTemplateDependencies();
+        }
+      }
     }
   }
 }
